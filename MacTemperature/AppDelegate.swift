@@ -10,11 +10,15 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    var window: NSWindow?
     
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        let mainController = MainModuleAssembly.configureMoule()
+        
+        window = NSWindow(contentViewController: mainController)
+        window?.makeKeyAndOrderFront(nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
