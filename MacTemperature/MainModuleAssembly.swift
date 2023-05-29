@@ -11,7 +11,7 @@ import Cocoa
 class MainModuleAssembly {
     
     class func configureMoule() -> NSViewController {
-        let view = ViewController()
+        let view = MainViewController()
         
         
         
