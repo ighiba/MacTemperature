@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "E121C5DE-ABB0-4829-B3F1-62ADF83CF347"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A78238DE-EAF7-48B2-AD49-09F02C4B48D6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacTemperature/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "getTemperature(for:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A78238DE-EAF7-48B2-AD49-09F02C4B48D6 - 1fa7cf3c30fd5624"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacTemperature.ViewController.getTemperature() -&gt; ()"
+                  moduleName = "MacTemperature"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ighiba/Documents/XcodeProjects/macOS/MacTemperature/MacTemperature/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "3084">
+               </Location>
+               <Location
+                  uuid = "A78238DE-EAF7-48B2-AD49-09F02C4B48D6 - 1fa7cf3c30fd5624"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacTemperature.ViewController.getTemperature() -&gt; ()"
+                  moduleName = "MacTemperature"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ighiba/Documents/XcodeProjects/macOS/MacTemperature/MacTemperature/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "2956">
+               </Location>
+               <Location
+                  uuid = "A78238DE-EAF7-48B2-AD49-09F02C4B48D6 - 1fa7cf3c30fd5624"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacTemperature.ViewController.getTemperature() -&gt; ()"
+                  moduleName = "MacTemperature"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ighiba/Documents/XcodeProjects/macOS/MacTemperature/MacTemperature/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "3028">
+               </Location>
+               <Location
+                  uuid = "A78238DE-EAF7-48B2-AD49-09F02C4B48D6 - 1fa7cf3c30fd5624"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacTemperature.ViewController.getTemperature() -&gt; ()"
+                  moduleName = "MacTemperature"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ighiba/Documents/XcodeProjects/macOS/MacTemperature/MacTemperature/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "3032">
+               </Location>
+               <Location
+                  uuid = "A78238DE-EAF7-48B2-AD49-09F02C4B48D6 - 1fa7cf3c30fd5624"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacTemperature.ViewController.getTemperature() -&gt; ()"
+                  moduleName = "MacTemperature"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ighiba/Documents/XcodeProjects/macOS/MacTemperature/MacTemperature/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "3036">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C0697315-879A-43D4-8B9C-43BD985C1DD8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacTemperature/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "getTemperature(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B568C0D7-5080-4389-BBC7-4B1CCFE93B7B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacTemperature/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "getTemperature(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
