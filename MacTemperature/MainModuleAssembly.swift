@@ -11,7 +11,6 @@ import Cocoa
 class MainModuleAssembly {
     
     class func configureMoule() -> NSViewController {
-        
         let presenter = MainPresenter()
         let view = MainViewController()
         
@@ -19,6 +18,5 @@ class MainModuleAssembly {
         presenter.input = view
         
         return view
-        
     }
 }
