@@ -9,10 +9,7 @@ class MainViewController: NSViewController, MainViewInput {
     
     override func loadView() {
         self.view = mainView
-        let values = SensorsManager().getValues(Sensor.allCases)
-        let tempStatusData = values.map {
-            TemperatureStatusData(smcValue: $0)
-        }
+        let tempStatusData = output.getSampleData()
         mainView.setRows(data: tempStatusData)
     }
     

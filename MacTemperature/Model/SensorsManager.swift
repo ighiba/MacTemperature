@@ -7,13 +7,15 @@
 
 import Foundation
 
-class SensorsManager {
-    
+protocol SensorsManager {
+    func getValues(_ sensors: [Sensor]) -> [SMCVal_t]
+}
+
+class SensorsManagerImpl: SensorsManager {
     
     init() {
         
     }
-    
     
     func getValues(_ sensors: [Sensor]) -> [SMCVal_t] {
         guard !sensors.isEmpty else { return [] }

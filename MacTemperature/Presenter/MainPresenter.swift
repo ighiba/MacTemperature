@@ -8,6 +8,7 @@
 import Foundation
 
 protocol MainViewOutput: AnyObject {
+    func getSampleData() -> [TemperatureStatusData]
     func startMeasuringTemperature()
 }
 
@@ -20,11 +21,18 @@ class MainPresenter: MainViewOutput {
     weak var input: MainViewInput!
     
     var temperatureManager: TemperatureManager!
+    var sensorsManager: SensorsManager!
     
+    func getSampleData() -> [TemperatureStatusData] {
+        let values = sensorsManager.getValues(Sensor.allCases)
+        let tempStatusData = values.map {
+            TemperatureStatusData(smcValue: $0)
+        }
+        return tempStatusData
+    }
     
     func startMeasuringTemperature() {
-        
-        var values = SensorsManager().getValues(Sensor.allCases)
+        var values = sensorsManager.getValues(Sensor.allCases)
     
         DispatchQueue.global().async {
             while true {
