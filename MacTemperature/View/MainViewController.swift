@@ -1,8 +1,10 @@
 import Cocoa
 import IOKit
 
-class MainViewController: NSViewController {
+class MainViewController: NSViewController, MainViewInput {
 
+    var output: MainViewOutput!
+    
     var mainView = MainView()
     
     override func loadView() {
