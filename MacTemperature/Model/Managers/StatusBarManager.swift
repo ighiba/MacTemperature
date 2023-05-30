@@ -26,17 +26,19 @@ class StatusBarManager {
         self.statusItem.button?.target = self
         self.statusItem.button?.action = #selector(statusBarButtonClicked)
         
-        let menuItem1 = NSMenuItem(title: "Enable icon", action: #selector(statusBarButtonClicked), keyEquivalent: "")
-        let menuItem2 = NSMenuItem(title: "CPU Temp", action: #selector(statusBarButtonClicked), keyEquivalent: "")
-        menuItem1.view = EnableIconMenuItem(self)
-        //menuItem2.view = CpuTempMenuView()
+        let enableIconItem = NSMenuItem(title: "Enable icon", action: nil, keyEquivalent: "")
+        //let cpuTempItem = NSMenuItem(title: "CPU Temp", action: nil, keyEquivalent: "")
+        let closeItem = NSMenuItem(title: "Close", action: #selector(closeButtonClicked), keyEquivalent: "q")
+        closeItem.target = self
         
+        enableIconItem.view = EnableIconMenuItem(self)
+        //cpuTempItem.view = CpuTempMenuView(self)
         
-        menu.addItem(menuItem1)
+        menu.addItem(enableIconItem)
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(menuItem2)
-        //menu.addItem(menuItem2)
-        
+        //menu.addItem(cpuTempItem)
+        //menu.addItem(NSMenuItem.separator())
+        menu.addItem(closeItem)
         
         statusItem.menu = menu
     }
@@ -80,6 +82,10 @@ extension StatusBarManager: StatusBarDelegate {
         if let button = statusItem.button {
             button.image = isIconEnabled ? currentLevel.getImage() : nil
         }
+    }
+    
+    @objc func closeButtonClicked(_ sender: NSMenuItem) {
+        NSApplication.shared.terminate(nil)
     }
     
 }
