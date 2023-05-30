@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let mainController = MainModuleAssembly.configureMoule()
         
-        StatusBarManager.shared.updateTitle("123")
+        //StatusBarManager.shared.updateTitle("123")
 
         window = NSWindow(contentViewController: mainController)
         window?.makeKeyAndOrderFront(nil)

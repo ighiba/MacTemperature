@@ -20,10 +20,11 @@ class StatusBarManager {
     func updateTemperature(_ floatValue: Float) {
         let stringValue = String(format: "%.0f", floatValue)
         let newTitle = "\(stringValue)°C"
+        
+        let currentLevel = TemperatureLevel.getLevel(floatValue)
 
         let attributedTitle = NSMutableAttributedString(string: newTitle)
-
-        let attributesValue: [NSAttributedString.Key: Any] = [.foregroundColor: NSColor.systemOrange]
+        let attributesValue: [NSAttributedString.Key: Any] = [.foregroundColor: currentLevel.getColor()]
         let attributesC: [NSAttributedString.Key: Any] = [.foregroundColor: NSColor.labelColor]
         let rangeToPaintValue = NSRange(location: 0, length: newTitle.count - 1)
         let rangeToPaintC = NSRange(location: newTitle.count - 2, length: abs(2 - newTitle.count))
