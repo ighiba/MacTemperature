@@ -1,5 +1,4 @@
 import Cocoa
-import IOKit
 
 class MainViewController: NSViewController, MainViewInput {
 
@@ -33,7 +32,6 @@ extension MainViewController: NSTableViewDelegate {
 }
     
 extension MainViewController: NSTableViewDataSource {
-    
     func numberOfRows(in tableView: NSTableView) -> Int {
         return self.output.getSampleData().count
     }

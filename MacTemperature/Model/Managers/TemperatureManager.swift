@@ -8,24 +8,24 @@
 import Foundation
 
 protocol TemperatureManager: AnyObject {
-    func updateTempValue(_ value: UnsafeMutablePointer<SMCVal_t>)
+    func updateTemperatureValue(_ value: UnsafeMutablePointer<SMCVal_t>)
+    func getAverageTemperatureFor(_ values: [SMCVal_t]) -> Float
 }
 
 class TemperatureManagerImpl: TemperatureManager {
-    
     
     init() {
         
     }
     
-    func updateTempValue(_ value: UnsafeMutablePointer<SMCVal_t>) {
+    func updateTemperatureValue(_ value: UnsafeMutablePointer<SMCVal_t>) {
         let result = AppleSMC.shared.read(value)
         if result != kIOReturnSuccess {
             fatalError("Error")
         }
     }
     
-    func getAverageTempFor(_ values: [SMCVal_t]) -> Float {
+    func getAverageTemperatureFor(_ values: [SMCVal_t]) -> Float {
         let temps = values.map { Float($0.bytes) ?? 0.0 }
         let sum = temps.reduce(0, +)
         

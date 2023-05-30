@@ -12,7 +12,6 @@ struct TemperatureStatusData {
     var title: String
     var floatValue: Float
     
-    
     init(key: String, title: String, floatValue: Float) {
         self.key = key
         self.title = title

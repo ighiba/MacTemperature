@@ -38,7 +38,7 @@ class MainPresenter: MainViewOutput {
             while true {
                 sleep(1)
                 for i in 0..<values.count {
-                    self.temperatureManager.updateTempValue(&values[i])
+                    self.temperatureManager.updateTemperatureValue(&values[i])
                 }
                 
                 DispatchQueue.main.async {
@@ -46,6 +46,9 @@ class MainPresenter: MainViewOutput {
                         TemperatureStatusData(smcValue: $0)
                     }
                     self.input.updateRows(data: tempStatusData)
+                    
+                    let avgCPUTemp = self.temperatureManager.getAverageTemperatureFor(values)
+                    StatusBarManager.shared.updateTemperature(avgCPUTemp)
                 }
                 
             }

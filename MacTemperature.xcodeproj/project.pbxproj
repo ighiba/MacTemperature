@@ -11,6 +11,7 @@
 		C00269D92A25714C000BA655 /* TemperatureStatusRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269D82A25714C000BA655 /* TemperatureStatusRow.swift */; };
 		C00269DB2A2571DC000BA655 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269DA2A2571DC000BA655 /* MainView.swift */; };
 		C00269DE2A25741D000BA655 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269DD2A25741D000BA655 /* MainPresenter.swift */; };
+		C00269E32A264AFD000BA655 /* StatusBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E22A264AFD000BA655 /* StatusBarManager.swift */; };
 		C065AC962A23D1B400A82183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065AC952A23D1B400A82183 /* AppDelegate.swift */; };
 		C065AC982A23D1B400A82183 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065AC972A23D1B400A82183 /* MainViewController.swift */; };
 		C065AC9A2A23D1B500A82183 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065AC992A23D1B500A82183 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		C00269D82A25714C000BA655 /* TemperatureStatusRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureStatusRow.swift; sourceTree = "<group>"; };
 		C00269DA2A2571DC000BA655 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C00269DD2A25741D000BA655 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		C00269E22A264AFD000BA655 /* StatusBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarManager.swift; sourceTree = "<group>"; };
 		C065AC922A23D1B400A82183 /* MacTemperature.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacTemperature.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C065AC952A23D1B400A82183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C065AC972A23D1B400A82183 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,16 @@
 				C00269DD2A25741D000BA655 /* MainPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C00269E12A264AEA000BA655 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C065ACC82A25161200A82183 /* SensorsManager.swift */,
+				C065ACCA2A2517BC00A82183 /* TemperatureManager.swift */,
+				C00269E22A264AFD000BA655 /* StatusBarManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		C065AC892A23D1B400A82183 = {
@@ -155,10 +167,9 @@
 		C065ACC02A24F23400A82183 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C00269E12A264AEA000BA655 /* Managers */,
 				C065ACC12A24F24300A82183 /* AppleSMC.swift */,
 				C065ACC32A24F37D00A82183 /* Sensor.swift */,
-				C065ACC82A25161200A82183 /* SensorsManager.swift */,
-				C065ACCA2A2517BC00A82183 /* TemperatureManager.swift */,
 				C00269D62A257118000BA655 /* TemperatureStatusData.swift */,
 			);
 			path = Model;
@@ -308,6 +319,7 @@
 				C065AC982A23D1B400A82183 /* MainViewController.swift in Sources */,
 				C065ACC42A24F37D00A82183 /* Sensor.swift in Sources */,
 				C00269D92A25714C000BA655 /* TemperatureStatusRow.swift in Sources */,
+				C00269E32A264AFD000BA655 /* StatusBarManager.swift in Sources */,
 				C065ACCD2A252D4200A82183 /* MainModuleAssembly.swift in Sources */,
 				C065AC962A23D1B400A82183 /* AppDelegate.swift in Sources */,
 				C065ACC92A25161200A82183 /* SensorsManager.swift in Sources */,
