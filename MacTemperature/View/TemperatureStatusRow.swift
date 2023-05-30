@@ -20,7 +20,6 @@ class TemperatureStatusRow: NSView {
         self.titleTextField.stringValue = title
         self.valueTextField.stringValue = "\(value)"
         
-        
         self.addSubview(titleTextField)
         self.addSubview(valueTextField)
     }

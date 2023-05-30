@@ -33,9 +33,9 @@ enum Sensor: String, CaseIterable {
     var title: String {
         switch self {
         case .Tp09:
-            return "CPU Effiency core 1"
+            return "CPU Efficiency core 1"
         case .Tp0T:
-            return "CPU Effiency core 2"
+            return "CPU Efficiency core 2"
         case .Tp01:
             return "CPU Performance core 1"
         case .Tp05:

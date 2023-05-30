@@ -11,14 +11,13 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow?
-    
-
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let mainController = MainModuleAssembly.configureMoule()
         
         window = NSWindow(contentViewController: mainController)
         window?.makeKeyAndOrderFront(nil)
+        window?.title = "MacTemperature"
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
