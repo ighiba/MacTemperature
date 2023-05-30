@@ -11,7 +11,7 @@ class TemperatureTextField: NSTextField {
     
     init() {
         super.init(frame: NSRect(x: 0 , y: 0, width: 200, height: 50))
-        self.font = self.font?.withSize(40)
+        //self.font = self.font?.withSize(40)
         self.isEditable = false
     }
     
@@ -24,7 +24,7 @@ class TemperatureTextField: NSTextField {
         if temp > 55.0 {
             self.textColor = NSColor.orange
         } else {
-            self.textColor = NSColor.black
+            self.textColor = NSColor.textColor
         }
     }
     

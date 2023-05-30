@@ -22,6 +22,7 @@ class TemperatureStatusRow: NSView {
         
         self.addSubview(titleTextField)
         self.addSubview(valueTextField)
+        setupLayout()
     }
     
     convenience init(data: TemperatureStatusData) {
@@ -30,11 +31,6 @@ class TemperatureStatusRow: NSView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewWillDraw() {
-        super.viewWillDraw()
-        setupLayout()
     }
     
     func setupLayout() {
@@ -58,8 +54,10 @@ class TemperatureStatusRow: NSView {
         
         textField.stringValue = "CPU 1"
         
+        textField.isBezeled = false
         textField.isEditable = false
-        textField.font = textField.font?.withSize(20)
+        //textField.font = textField.font?.withSize(20)
+        textField.drawsBackground = false
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         
@@ -70,11 +68,31 @@ class TemperatureStatusRow: NSView {
     var valueTextField: TemperatureTextField = {
         let textField = TemperatureTextField()
         
+        textField.isBezeled = false
         textField.setTemperature(45.3)
+        textField.drawsBackground = false
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
     }()
     
+}
+
+
+class ColoredNSView: NSView {
+    
+    var backgroundColor = NSColor.clear {
+        didSet {
+            self.needsDisplay = true
+        }
+    }
+    
+    override func draw(_ dirtyRect: NSRect) {
+        if backgroundColor != NSColor.clear {
+            backgroundColor.setFill()
+            dirtyRect.fill()
+        }
+        super.draw(dirtyRect)
+    }
 }

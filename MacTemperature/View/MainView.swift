@@ -9,13 +9,16 @@ import Cocoa
 
 class MainView: NSView {
     
+    var viewController: MainViewController!
+    
     var rows: [TemperatureStatusRow]!
     
     init() {
-        super.init(frame: NSRect())
+        super.init(frame: NSRect(x: 0, y: 0, width: 400, height: 400))
         
-        //setupLayout()
+        self.addSubview(tableView)
         
+        setupLayout()
     }
     
     override init(frame frameRect: NSRect) {
@@ -26,38 +29,31 @@ class MainView: NSView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    lazy var tableView: NSTableView = {
+        let table = NSTableView()
+        
+        table.style = .plain
+        table.usesAlternatingRowBackgroundColors = true
+        table.backgroundColor = NSColor.windowBackgroundColor
+        
+        table.translatesAutoresizingMaskIntoConstraints = false
+        
+        return table
+    }()
+    
     func setupLayout() {
-        rows.forEach { statusRow in
-            statusRow.translatesAutoresizingMaskIntoConstraints = true
-            statusRow.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0).isActive = true
-        }
+        NSLayoutConstraint.activate([
+            tableView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0),
+            tableView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1.0),
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: self.topAnchor)
+        ])
     }
     
     func setRows(data: [TemperatureStatusData]) {
         self.rows = data.map {
             TemperatureStatusRow(data: $0)
         }
-        
-        let stackView = NSStackView(views: rows )
-        stackView.orientation = .vertical
-        
-        self.addSubview(stackView)
-
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-        ])
-        
-        self.rows.forEach { row in
-            row.translatesAutoresizingMaskIntoConstraints = false
-            row.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0).isActive = true
-            row.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
-        }
-        //setupLayout()
     }
     
     func updateRows(data: [TemperatureStatusData]) {
