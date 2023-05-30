@@ -16,6 +16,7 @@ class MainModuleAssembly {
         
         view.output = presenter
         presenter.input = view
+        presenter.temperatureManager = TemperatureManagerImpl()
         
         return view
     }

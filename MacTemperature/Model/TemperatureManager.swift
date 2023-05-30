@@ -7,7 +7,11 @@
 
 import Foundation
 
-class TemperatureManager {
+protocol TemperatureManager: AnyObject {
+    func updateTempValue(_ value: UnsafeMutablePointer<SMCVal_t>)
+}
+
+class TemperatureManagerImpl: TemperatureManager {
     
     
     init() {
