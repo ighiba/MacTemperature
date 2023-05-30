@@ -33,6 +33,7 @@ class StatusBarManager {
         
         if let button = self.statusItem.button {
             button.attributedTitle = attributedTitle
+            button.image = currentLevel.getImage()
         }
     }
     
