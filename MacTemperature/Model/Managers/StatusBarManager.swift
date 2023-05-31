@@ -8,6 +8,8 @@
 import Foundation
 import AppKit
 
+let statusBarMenuWidth: CGFloat = 220
+
 @objc protocol StatusBarDelegate: AnyObject {
     func enableIconSwitched(sender: NSSwitch)
 }
@@ -19,6 +21,8 @@ class StatusBarManager {
     private var isIconEnabled = true
     private var currentLevel: TemperatureLevel = .low
     
+    var temperatureManager: TemperatureManager!
+    
     var menu = NSMenu()
     
     private init() {
@@ -27,20 +31,34 @@ class StatusBarManager {
         self.statusItem.button?.action = #selector(statusBarButtonClicked)
         
         let enableIconItem = NSMenuItem(title: "Enable icon", action: nil, keyEquivalent: "")
-        //let cpuTempItem = NSMenuItem(title: "CPU Temp", action: nil, keyEquivalent: "")
+        let cpuTempItem = NSMenuItem(title: "CPU Temp", action: nil, keyEquivalent: "")
         let closeItem = NSMenuItem(title: "Close", action: #selector(closeButtonClicked), keyEquivalent: "q")
         closeItem.target = self
         
         enableIconItem.view = EnableIconMenuItem(self)
-        //cpuTempItem.view = CpuTempMenuView(self)
+        let cpuTempView = TemperaturesMenuView(title: "CPU Temperatures", self)
+        cpuTempItem.view = cpuTempView
         
         menu.addItem(enableIconItem)
         menu.addItem(NSMenuItem.separator())
-        //menu.addItem(cpuTempItem)
-        //menu.addItem(NSMenuItem.separator())
+        menu.addItem(cpuTempItem)
+        menu.addItem(NSMenuItem.separator())
         menu.addItem(closeItem)
         
         statusItem.menu = menu
+        
+        NotificationCenter.default.addObserver(forName: TemperatureMonitor.temperatureUpdateNotifaction, object: nil, queue: nil) { notification in
+            guard let values = notification.object as? [SMCVal_t] else { return }
+            DispatchQueue.main.async {
+                let tempStatusData = values.map {
+                    TemperatureStatusData(smcValue: $0)
+                }
+                cpuTempView.updateRows(data: tempStatusData)
+                
+                let avgCPUTemp = self.temperatureManager.getAverageTemperatureFor(values)
+                self.updateTemperature(avgCPUTemp)
+            }
+        }
     }
 
     func updateTemperature(_ floatValue: Float) {
@@ -62,13 +80,6 @@ class StatusBarManager {
             button.image = isIconEnabled ? currentLevel.getImage() : nil
         }
     }
-    
-    func updateTitle(_ title: String) {
-        if let button = self.statusItem.button {
-            button.title = title
-            button.contentTintColor = NSColor.systemTeal
-        }
-    }
 }
 
 extension StatusBarManager: StatusBarDelegate {
@@ -87,5 +98,4 @@ extension StatusBarManager: StatusBarDelegate {
     @objc func closeButtonClicked(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(nil)
     }
-    
 }

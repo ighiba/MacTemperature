@@ -1,0 +1,86 @@
+//
+//  TemperaturesMenuView.swift
+//  MacTemperature
+//
+//  Created by Ivan Ghiba on 31.05.2023.
+//
+
+import Cocoa
+
+class TemperaturesMenuView: NSView {
+    private var delegate: StatusBarDelegate!
+    
+    private var titleLabel: NSTextField!
+    private var stackView: NSStackView!
+    private var rows: [TemperatureStatusBarRow] = []
+    
+    init(title: String, _ delegate: StatusBarDelegate) {
+        super.init(frame: NSRect(x: 0, y: 0, width: statusBarMenuWidth, height: 300))
+        
+        self.delegate = delegate
+        
+        self.titleLabel = NSTextField(labelWithString: title)
+        self.titleLabel.font = .boldSystemFont(ofSize: 13)
+        self.loadDummyData()
+
+        self.stackView = NSStackView(views: rows)
+        self.stackView.orientation = .vertical
+
+        self.addSubview(titleLabel)
+        self.addSubview(stackView)
+        
+        self.setupLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layout() {
+        super.layout()
+        self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: statusBarMenuWidth,
+                                                                height: stackView.frame.height * 1.21))
+    }
+    
+    private func setupLayout() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+
+            stackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.85),
+            stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            
+            titleLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.7),
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+        ])
+        
+        for row in rows {
+            row.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                row.widthAnchor.constraint(equalTo: stackView.widthAnchor),
+            ])
+        }
+    }
+    
+    private func loadDummyData() {
+        let sensorsManager = SensorsManagerImpl()
+        let values = sensorsManager.getValues(Sensor.allCases)
+        let tempStatusData = values.map {
+            TemperatureStatusData(smcValue: $0)
+        }
+        rows = tempStatusData.map {
+            TemperatureStatusBarRow(data: $0)
+        }
+    }
+    
+    public func updateRows(data: [TemperatureStatusData]) {
+        for item in data {
+            let row = rows.first(where: { $0.key == item.key } )
+            guard let row else { continue }
+            row.valueTextField.setTemperature(item.floatValue)
+        }
+    }
+}

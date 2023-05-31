@@ -17,6 +17,7 @@
 		C00269EA2A2668DB000BA655 /* TemperatureLevel+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E92A2668DB000BA655 /* TemperatureLevel+NSImage.swift */; };
 		C03C210B2A26B621009A7C8E /* EnableIconMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210A2A26B621009A7C8E /* EnableIconMenuView.swift */; };
 		C03C210D2A26BD6B009A7C8E /* TemperatureMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */; };
+		C03C210F2A275165009A7C8E /* TemperaturesMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210E2A275165009A7C8E /* TemperaturesMenuView.swift */; };
 		C065AC962A23D1B400A82183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065AC952A23D1B400A82183 /* AppDelegate.swift */; };
 		C065AC982A23D1B400A82183 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065AC972A23D1B400A82183 /* MainViewController.swift */; };
 		C065AC9A2A23D1B500A82183 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065AC992A23D1B500A82183 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		C00269E92A2668DB000BA655 /* TemperatureLevel+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TemperatureLevel+NSImage.swift"; sourceTree = "<group>"; };
 		C03C210A2A26B621009A7C8E /* EnableIconMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableIconMenuView.swift; sourceTree = "<group>"; };
 		C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureMonitor.swift; sourceTree = "<group>"; };
+		C03C210E2A275165009A7C8E /* TemperaturesMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperaturesMenuView.swift; sourceTree = "<group>"; };
 		C065AC922A23D1B400A82183 /* MacTemperature.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacTemperature.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C065AC952A23D1B400A82183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C065AC972A23D1B400A82183 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				C03C210A2A26B621009A7C8E /* EnableIconMenuView.swift */,
+				C03C210E2A275165009A7C8E /* TemperaturesMenuView.swift */,
 			);
 			path = StatusBarMenu;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				C00269E62A2665B2000BA655 /* TemperatureLevel.swift in Sources */,
 				C00269E32A264AFD000BA655 /* StatusBarManager.swift in Sources */,
 				C065ACCD2A252D4200A82183 /* MainModuleAssembly.swift in Sources */,
+				C03C210F2A275165009A7C8E /* TemperaturesMenuView.swift in Sources */,
 				C065AC962A23D1B400A82183 /* AppDelegate.swift in Sources */,
 				C065ACC92A25161200A82183 /* SensorsManager.swift in Sources */,
 				C065ACC72A25114C00A82183 /* TemperatureTextField.swift in Sources */,
@@ -534,7 +538,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 586JQB45F3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -545,7 +549,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ighiba.MacTemperature;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -562,7 +566,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 586JQB45F3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -573,7 +577,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ighiba.MacTemperature;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

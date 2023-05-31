@@ -13,7 +13,7 @@ class EnableIconMenuItem: NSView {
     
     init(_ delegate: StatusBarDelegate) {
         self.delegate = delegate
-        super.init(frame: NSRect(x: 0, y: 0, width: 200, height: 30))
+        super.init(frame: NSRect(x: 0, y: 0, width: statusBarMenuWidth, height: 30))
         
         let textLabel = NSTextField(labelWithString: "Enable icon")
         
@@ -42,7 +42,6 @@ class EnableIconMenuItem: NSView {
             textLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.7),
             textLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             
-            enableIconSwitch.leadingAnchor.constraint(equalTo: textLabel.trailingAnchor),
             enableIconSwitch.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             enableIconSwitch.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
         ])
