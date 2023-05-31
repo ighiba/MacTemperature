@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "6CFDCDA3-C327-4F8D-86C6-399D20FF7E34",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MacTemperature.xcodeproj",
+      "identifier" : "C065AC912A23D1B400A82183",
+      "name" : "MacTemperature"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MacTemperature.xcodeproj",
+        "identifier" : "C065ACA22A23D1B500A82183",
+        "name" : "MacTemperatureTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MacTemperature.xcodeproj",
+        "identifier" : "C065ACAC2A23D1B500A82183",
+        "name" : "MacTemperatureUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
