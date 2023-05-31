@@ -8,11 +8,11 @@
 import Foundation
 
 protocol MainViewOutput: AnyObject {
-    func getSampleData() -> [TemperatureStatusData]
+    func getSampleData() -> [TemperatureData]
 }
 
 protocol MainViewInput: AnyObject {
-    func updateRows(data: [TemperatureStatusData])
+    func updateRows(data: [TemperatureData])
 }
 
 class MainPresenter: MainViewOutput {
@@ -25,19 +25,19 @@ class MainPresenter: MainViewOutput {
         NotificationCenter.default.addObserver(forName: TemperatureMonitor.temperatureUpdateNotifaction, object: nil, queue: nil) { notification in
             if let values = notification.object as? [SMCVal_t] {
                 DispatchQueue.main.async {
-                    let tempStatusData = values.map {
-                        TemperatureStatusData(smcValue: $0)
+                    let tempData = values.map {
+                        TemperatureData(smcValue: $0)
                     }
-                    self.input.updateRows(data: tempStatusData)
+                    self.input.updateRows(data: tempData)
                 }
             }
         }
     }
     
-    func getSampleData() -> [TemperatureStatusData] {
+    func getSampleData() -> [TemperatureData] {
         let values = sensorsManager.getValues(Sensor.allCases)
         let tempStatusData = values.map {
-            TemperatureStatusData(smcValue: $0)
+            TemperatureData(smcValue: $0)
         }
         return tempStatusData
     }

@@ -69,16 +69,16 @@ class TemperaturesMenuView: NSView {
         let sensorsManager = SensorsManagerImpl()
         let values = sensorsManager.getValues(Sensor.allCases)
         let tempStatusData = values.map {
-            TemperatureStatusData(smcValue: $0)
+            TemperatureData(smcValue: $0)
         }
         rows = tempStatusData.map {
             TemperatureStatusBarRow(data: $0)
         }
     }
     
-    public func updateRows(data: [TemperatureStatusData]) {
+    public func updateRows(data: [TemperatureData]) {
         for item in data {
-            let row = rows.first(where: { $0.key == item.key } )
+            let row = rows.first(where: { $0.key == item.id } )
             guard let row else { continue }
             row.valueTextField.setTemperature(item.floatValue)
         }

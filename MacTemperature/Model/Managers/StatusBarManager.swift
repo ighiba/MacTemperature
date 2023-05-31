@@ -51,7 +51,7 @@ class StatusBarManager {
             guard let values = notification.object as? [SMCVal_t] else { return }
             DispatchQueue.main.async {
                 let tempStatusData = values.map {
-                    TemperatureStatusData(smcValue: $0)
+                    TemperatureData(smcValue: $0)
                 }
                 cpuTempView.updateRows(data: tempStatusData)
                 

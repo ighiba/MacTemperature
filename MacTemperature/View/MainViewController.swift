@@ -1,25 +1,39 @@
 import Cocoa
+import SwiftUI
 
-class MainViewController: NSViewController, MainViewInput {
+class MainViewController: NSViewController, MainViewInput, ObservableObject {
 
     var output: MainViewOutput!
     
-    var mainView = MainView()
+    private var mainView = MainView()
+    private var tableViewSwiftUI = TemperatureTableView()
     
+    private var isSwiftUITable = true
+
     override func loadView() {
-        self.view = mainView
-        let tempStatusData = output.getSampleData()
-        mainView.setRows(data: tempStatusData)
-        mainView.tableView.dataSource = self
-        mainView.tableView.delegate = self
+        if isSwiftUITable {
+            // SwiftUI
+            let hostingController = NSHostingController(rootView: tableViewSwiftUI)
+            hostingController.view.frame = NSRect(x: 0, y: 0, width: 600, height: 400)
+            self.view = hostingController.view
+        } else {
+            // Cocoa
+            self.view = mainView
+            mainView.tableView.dataSource = self
+            mainView.tableView.delegate = self
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func updateRows(data: [TemperatureStatusData]) {
-        mainView.updateRows(data: data)
+    func updateRows(data: [TemperatureData]) {
+        if isSwiftUITable {
+            tableViewSwiftUI.updateData(data)
+        } else {
+            mainView.updateRows(data: data)
+        }
     }
 
 }
@@ -41,10 +55,12 @@ extension MainViewController: NSTableViewDataSource {
         let statusRow = mainView.rows[row]
         rowView.addSubview(statusRow)
         statusRow.translatesAutoresizingMaskIntoConstraints = false
-        statusRow.widthAnchor.constraint(equalTo: rowView.widthAnchor, multiplier: 0.9).isActive = true
-        statusRow.centerXAnchor.constraint(equalTo: rowView.centerXAnchor).isActive = true
-        statusRow.centerYAnchor.constraint(equalTo: rowView.centerYAnchor).isActive = true
-        
+        NSLayoutConstraint.activate([
+            statusRow.widthAnchor.constraint(equalTo: rowView.widthAnchor, multiplier: 0.9),
+            statusRow.centerXAnchor.constraint(equalTo: rowView.centerXAnchor),
+            statusRow.centerYAnchor.constraint(equalTo: rowView.centerYAnchor)
+        ])
+
         return rowView
     }
     

@@ -15,7 +15,7 @@ class MainView: NSView {
     
     init() {
         super.init(frame: NSRect(x: 0, y: 0, width: 400, height: 400))
-        
+        self.loadDummyData()
         self.addSubview(tableView)
         
         setupLayout()
@@ -50,18 +50,30 @@ class MainView: NSView {
         ])
     }
     
-    func setRows(data: [TemperatureStatusData]) {
-        self.rows = data.map {
+    private func loadDummyData() {
+        let sensorsManager = SensorsManagerImpl()
+        let values = sensorsManager.getValues(Sensor.allCases)
+        let tempStatusData = values.map {
+            TemperatureData(smcValue: $0)
+        }
+        rows = tempStatusData.map {
             TemperatureStatusRow(data: $0)
         }
     }
     
-    func updateRows(data: [TemperatureStatusData]) {
+    func updateRows(data: [TemperatureData]) {
+        // Update row's temperatureText (Causes crash in UITests)
         for item in data {
-            let row = rows.first(where: { $0.key == item.key } )
+            let row = rows.first(where: { $0.key == item.id } )
             guard let row else { continue }
             row.valueTextField.setTemperature(item.floatValue)
         }
+        
+        // Update full table
+//        rows = data.map {
+//            TemperatureStatusRow(data: $0)
+//        }
+//        tableView.reloadData()
     }
     
 }
