@@ -9,7 +9,6 @@ import Foundation
 
 protocol MainViewOutput: AnyObject {
     func getSampleData() -> [TemperatureStatusData]
-    func startMeasuringTemperature()
 }
 
 protocol MainViewInput: AnyObject {
@@ -23,23 +22,10 @@ class MainPresenter: MainViewOutput {
     var temperatureManager: TemperatureManager!
     var sensorsManager: SensorsManager!
     
-    func getSampleData() -> [TemperatureStatusData] {
-        let values = sensorsManager.getValues(Sensor.allCases)
-        let tempStatusData = values.map {
-            TemperatureStatusData(smcValue: $0)
-        }
-        return tempStatusData
-    }
     
-    func startMeasuringTemperature() {
-        var values = sensorsManager.getValues(Sensor.allCases)
-    
-        DispatchQueue.global().async {
-            while true {
-                for i in 0..<values.count {
-                    self.temperatureManager.updateTemperatureValue(&values[i])
-                }
-                
+    init() {
+        NotificationCenter.default.addObserver(forName: TemperatureMonitor.temperatureUpdateNotifaction, object: nil, queue: nil) { notification in
+            if let values = notification.object as? [SMCVal_t] {
                 DispatchQueue.main.async {
                     let tempStatusData = values.map {
                         TemperatureStatusData(smcValue: $0)
@@ -49,9 +35,16 @@ class MainPresenter: MainViewOutput {
                     let avgCPUTemp = self.temperatureManager.getAverageTemperatureFor(values)
                     StatusBarManager.shared.updateTemperature(avgCPUTemp)
                 }
-                sleep(1)
             }
         }
+    }
+    
+    func getSampleData() -> [TemperatureStatusData] {
+        let values = sensorsManager.getValues(Sensor.allCases)
+        let tempStatusData = values.map {
+            TemperatureStatusData(smcValue: $0)
+        }
+        return tempStatusData
     }
     
 }

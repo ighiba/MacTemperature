@@ -16,7 +16,6 @@ class MainViewController: NSViewController, MainViewInput {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        output.startMeasuringTemperature()
     }
     
     func updateRows(data: [TemperatureStatusData]) {
