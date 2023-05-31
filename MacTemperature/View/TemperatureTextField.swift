@@ -22,7 +22,7 @@ class TemperatureTextField: NSTextField {
     public func setTemperature(_ temp: Float) {
         self.stringValue = String(format: "%.1f", temp)
         if temp > 55.0 {
-            self.textColor = NSColor.orange
+            self.textColor = NSColor.systemOrange
         } else {
             self.textColor = NSColor.textColor
         }

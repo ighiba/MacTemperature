@@ -18,10 +18,8 @@ protocol MainViewInput: AnyObject {
 class MainPresenter: MainViewOutput {
     
     weak var input: MainViewInput!
-    
-    var temperatureManager: TemperatureManager!
+
     var sensorsManager: SensorsManager!
-    
     
     init() {
         NotificationCenter.default.addObserver(forName: TemperatureMonitor.temperatureUpdateNotifaction, object: nil, queue: nil) { notification in
@@ -31,9 +29,6 @@ class MainPresenter: MainViewOutput {
                         TemperatureStatusData(smcValue: $0)
                     }
                     self.input.updateRows(data: tempStatusData)
-                    
-                    let avgCPUTemp = self.temperatureManager.getAverageTemperatureFor(values)
-                    StatusBarManager.shared.updateTemperature(avgCPUTemp)
                 }
             }
         }

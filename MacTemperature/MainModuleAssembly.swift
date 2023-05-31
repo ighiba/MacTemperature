@@ -16,13 +16,14 @@ class MainModuleAssembly {
         
         view.output = presenter
         presenter.input = view
-        presenter.temperatureManager = TemperatureManagerImpl()
         presenter.sensorsManager = SensorsManagerImpl()
+        
+        StatusBarManager.shared.temperatureManager = TemperatureManagerImpl()
         
         TemperatureMonitor.shared.temperatureManager = TemperatureManagerImpl()
         TemperatureMonitor.shared.sensorsManager = SensorsManagerImpl()
         TemperatureMonitor.shared.start()
-        
+
         return view
     }
 }
