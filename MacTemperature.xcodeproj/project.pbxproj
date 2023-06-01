@@ -13,10 +13,11 @@
 		C00269DE2A25741D000BA655 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269DD2A25741D000BA655 /* MainPresenter.swift */; };
 		C00269E32A264AFD000BA655 /* StatusBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E22A264AFD000BA655 /* StatusBarManager.swift */; };
 		C00269E62A2665B2000BA655 /* TemperatureLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E52A2665B2000BA655 /* TemperatureLevel.swift */; };
-		C00269E82A2668BB000BA655 /* TemperatureLevel+NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E72A2668BB000BA655 /* TemperatureLevel+NSColor.swift */; };
+		C00269E82A2668BB000BA655 /* TemperatureLevel+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */; };
 		C00269EA2A2668DB000BA655 /* TemperatureLevel+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E92A2668DB000BA655 /* TemperatureLevel+NSImage.swift */; };
 		C01DDC712A27C9FD00E30383 /* TemperatureTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DDC702A27C9FD00E30383 /* TemperatureTableView.swift */; };
 		C01DDC732A27F26500E30383 /* TemperatureDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DDC722A27F26500E30383 /* TemperatureDataContainer.swift */; };
+		C01DDC752A289ACA00E30383 /* HorizontalBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DDC742A289ACA00E30383 /* HorizontalBar.swift */; };
 		C03C210B2A26B621009A7C8E /* EnableIconMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210A2A26B621009A7C8E /* EnableIconMenuView.swift */; };
 		C03C210D2A26BD6B009A7C8E /* TemperatureMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */; };
 		C03C210F2A275165009A7C8E /* TemperaturesMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210E2A275165009A7C8E /* TemperaturesMenuView.swift */; };
@@ -59,11 +60,12 @@
 		C00269DD2A25741D000BA655 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		C00269E22A264AFD000BA655 /* StatusBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarManager.swift; sourceTree = "<group>"; };
 		C00269E52A2665B2000BA655 /* TemperatureLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureLevel.swift; sourceTree = "<group>"; };
-		C00269E72A2668BB000BA655 /* TemperatureLevel+NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TemperatureLevel+NSColor.swift"; sourceTree = "<group>"; };
+		C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TemperatureLevel+Color.swift"; sourceTree = "<group>"; };
 		C00269E92A2668DB000BA655 /* TemperatureLevel+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TemperatureLevel+NSImage.swift"; sourceTree = "<group>"; };
 		C01DDC6F2A27898D00E30383 /* MacTemperature.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MacTemperature.xctestplan; sourceTree = "<group>"; };
 		C01DDC702A27C9FD00E30383 /* TemperatureTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureTableView.swift; sourceTree = "<group>"; };
 		C01DDC722A27F26500E30383 /* TemperatureDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureDataContainer.swift; sourceTree = "<group>"; };
+		C01DDC742A289ACA00E30383 /* HorizontalBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBar.swift; sourceTree = "<group>"; };
 		C03C210A2A26B621009A7C8E /* EnableIconMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableIconMenuView.swift; sourceTree = "<group>"; };
 		C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureMonitor.swift; sourceTree = "<group>"; };
 		C03C210E2A275165009A7C8E /* TemperaturesMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperaturesMenuView.swift; sourceTree = "<group>"; };
@@ -134,9 +136,18 @@
 			children = (
 				C00269E52A2665B2000BA655 /* TemperatureLevel.swift */,
 				C00269E92A2668DB000BA655 /* TemperatureLevel+NSImage.swift */,
-				C00269E72A2668BB000BA655 /* TemperatureLevel+NSColor.swift */,
+				C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C01DDC782A28BAA200E30383 /* TemperatureTableView */ = {
+			isa = PBXGroup;
+			children = (
+				C01DDC742A289ACA00E30383 /* HorizontalBar.swift */,
+				C01DDC702A27C9FD00E30383 /* TemperatureTableView.swift */,
+			);
+			path = TemperatureTableView;
 			sourceTree = "<group>";
 		};
 		C03C21092A26B607009A7C8E /* StatusBarMenu */ = {
@@ -219,11 +230,11 @@
 			isa = PBXGroup;
 			children = (
 				C03C21092A26B607009A7C8E /* StatusBarMenu */,
+				C01DDC782A28BAA200E30383 /* TemperatureTableView */,
 				C065ACC62A25114C00A82183 /* TemperatureTextField.swift */,
 				C00269D82A25714C000BA655 /* TemperatureStatusRow.swift */,
 				C00269DA2A2571DC000BA655 /* MainView.swift */,
 				C065AC972A23D1B400A82183 /* MainViewController.swift */,
-				C01DDC702A27C9FD00E30383 /* TemperatureTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -369,11 +380,12 @@
 				C065ACCD2A252D4200A82183 /* MainModuleAssembly.swift in Sources */,
 				C03C210F2A275165009A7C8E /* TemperaturesMenuView.swift in Sources */,
 				C065AC962A23D1B400A82183 /* AppDelegate.swift in Sources */,
+				C01DDC752A289ACA00E30383 /* HorizontalBar.swift in Sources */,
 				C065ACC92A25161200A82183 /* SensorsManager.swift in Sources */,
 				C065ACC72A25114C00A82183 /* TemperatureTextField.swift in Sources */,
 				C03C210B2A26B621009A7C8E /* EnableIconMenuView.swift in Sources */,
 				C00269DE2A25741D000BA655 /* MainPresenter.swift in Sources */,
-				C00269E82A2668BB000BA655 /* TemperatureLevel+NSColor.swift in Sources */,
+				C00269E82A2668BB000BA655 /* TemperatureLevel+Color.swift in Sources */,
 				C00269DB2A2571DC000BA655 /* MainView.swift in Sources */,
 				C065ACC22A24F24300A82183 /* AppleSMC.swift in Sources */,
 				C065ACCB2A2517BC00A82183 /* TemperatureManager.swift in Sources */,
@@ -548,7 +560,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 586JQB45F3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -559,7 +571,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.3.0;
+				MARKETING_VERSION = 0.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ighiba.MacTemperature;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -576,7 +588,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 586JQB45F3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -587,7 +599,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.3.0;
+				MARKETING_VERSION = 0.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ighiba.MacTemperature;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

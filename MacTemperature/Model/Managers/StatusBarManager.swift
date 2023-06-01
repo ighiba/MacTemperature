@@ -68,7 +68,7 @@ class StatusBarManager {
         self.currentLevel = TemperatureLevel.getLevel(floatValue)
 
         let attributedTitle = NSMutableAttributedString(string: newTitle)
-        let attributesValue: [NSAttributedString.Key: Any] = [.foregroundColor: currentLevel.getColor()]
+        let attributesValue: [NSAttributedString.Key: Any] = [.foregroundColor: currentLevel.getStatusBarColor()]
         let attributesC: [NSAttributedString.Key: Any] = [.foregroundColor: NSColor.labelColor]
         let rangeToPaintValue = NSRange(location: 0, length: newTitle.count - 1)
         let rangeToPaintC = NSRange(location: newTitle.count - 2, length: abs(2 - newTitle.count))
