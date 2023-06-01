@@ -14,16 +14,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     var window: NSWindow?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let mainController = MainModuleAssembly.configureMoule()
-        
-        StatusBarModuleAssembly.configureModule()
-        TemperatureMonitorModuleAssembly.configureModule()
-        
+
         do {
             try SMAppService.mainApp.register() 
         } catch {
             print("SMAppService failed to register")
         }
+        
+        StatusBarModuleAssembly.configureModule()
+        TemperatureMonitorModuleAssembly.configureModule()
+        
+        let mainController = MainModuleAssembly.configureMoule()
 
         self.window = configureWindow(mainController)
         self.window?.makeKeyAndOrderFront(nil)

@@ -30,6 +30,8 @@ class MainViewController: NSViewController, MainViewInput, ObservableObject {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        output.loadAndUpdateInitalData()
     }
     
     func updateRows(data: [TemperatureData]) {

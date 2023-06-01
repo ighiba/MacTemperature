@@ -9,6 +9,7 @@ import Foundation
 
 protocol MainViewOutput: AnyObject {
     func getSampleData() -> [TemperatureData]
+    func loadAndUpdateInitalData()
 }
 
 protocol MainViewInput: AnyObject {
@@ -45,6 +46,18 @@ class MainPresenter: MainViewOutput {
             TemperatureData(smcValue: $0)
         }
         return tempStatusData
+    }
+    
+    func loadInitalData() -> [TemperatureData] {
+        var tempStatusData = TemperatureMonitor.lastValues.map {
+            TemperatureData(smcValue: $0)
+        }
+        return !tempStatusData.isEmpty ? tempStatusData : self.getSampleData()
+    }
+    
+    func loadAndUpdateInitalData() {
+        var data = loadInitalData()
+        self.input.updateRows(data: data)
     }
     
 }

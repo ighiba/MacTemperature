@@ -47,7 +47,6 @@ class TemperaturesMenuView: NSView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-
             stackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.85),
             stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),

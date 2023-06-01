@@ -9,6 +9,7 @@ import Foundation
 
 class TemperatureMonitor {
     
+    static var lastValues: [SMCVal_t] = []
     static let temperatureUpdateNotifaction = Notification.Name("ru.ighiba.TemperatureUpdateNotifaction")
     static let shared = TemperatureMonitor()
     
@@ -22,6 +23,7 @@ class TemperatureMonitor {
     
     private var values: [SMCVal_t]! {
         didSet {
+            Self.lastValues = values
             NotificationCenter.default.post(name: Self.temperatureUpdateNotifaction, object: values)
         }
     }
