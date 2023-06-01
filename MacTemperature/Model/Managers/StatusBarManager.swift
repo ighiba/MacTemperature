@@ -38,6 +38,8 @@ class StatusBarManager {
         let cpuTempItem = NSMenuItem(title: "CPU Temp", action: nil, keyEquivalent: "")
         let closeItem = NSMenuItem(title: "Close", action: #selector(closeButtonClicked), keyEquivalent: "q")
         closeItem.target = self
+        let showWindowItem = NSMenuItem(title: "Show main window", action: #selector(showMainWindowClicked), keyEquivalent: "")
+        showWindowItem.target = self
         
         enableIconItem.view = EnableIconMenuItem(self)
         let cpuTempView = TemperaturesMenuView(title: "CPU Temperatures", self)
@@ -46,6 +48,8 @@ class StatusBarManager {
         menu.addItem(enableIconItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(cpuTempItem)
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(showWindowItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(closeItem)
         
@@ -119,6 +123,11 @@ extension StatusBarManager: StatusBarDelegate {
     
     @objc func closeButtonClicked(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(nil)
+    }
+    
+    @objc func showMainWindowClicked(_ sender: NSMenuItem) {
+        guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.showMainWindow()
     }
 }
 
