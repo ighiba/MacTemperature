@@ -12,6 +12,7 @@ let statusBarMenuWidth: CGFloat = 220
 
 @objc protocol StatusBarDelegate: AnyObject {
     func enableIconSwitched(sender: NSSwitch)
+    func getDefaultTemperatuerAttributedString(_ floatValue: Float) -> NSMutableAttributedString
 }
 
 class StatusBarManager {
@@ -19,7 +20,10 @@ class StatusBarManager {
     
     private let statusItem: NSStatusItem
     private var isIconEnabled = true
-    private var currentLevel: TemperatureLevel = .low
+    private var statusBarFloatValue: Float = 0.0
+    private var currentLevel: TemperatureLevel {
+        return TemperatureLevel.getLevel(statusBarFloatValue)
+    }
     
     var temperatureManager: TemperatureManager!
     
@@ -56,29 +60,47 @@ class StatusBarManager {
                 cpuTempView.updateRows(data: tempStatusData)
                 
                 let avgCPUTemp = self.temperatureManager.getAverageTemperatureFor(values)
-                self.updateTemperature(avgCPUTemp)
+                self.statusBarFloatValue = avgCPUTemp
+                self.updateStatusBarItemTitle(avgCPUTemp)
             }
         }
     }
 
-    func updateTemperature(_ floatValue: Float) {
-        let stringValue = String(format: "%.0f", floatValue)
+    func updateStatusBarItemTitle(_ floatValue: Float? = nil) {
+        let value = floatValue ?? self.statusBarFloatValue
+        let attributedTitle = geTemperatureAttributedString(value, colorHanler: currentLevel.getStatusBarColor)
+        
+        if let button = self.statusItem.button {
+            button.attributedTitle = attributedTitle
+            button.image = isIconEnabled ? currentLevel.getImage() : nil
+        }
+    }
+    
+    func getDefaultTemperatuerAttributedString(_ floatValue: Float) -> NSMutableAttributedString {
+        return geTemperatureAttributedString(floatValue, colorHanler: currentLevel.getStatusBarColor)
+    }
+    
+    func geTemperatureAttributedString(_ floatValue: Float,
+                                       scale: UInt8 = 0,
+                                       colorHanler: (() -> NSColor)? = nil) -> NSMutableAttributedString {
+        let stringValue = String(format: "%.\(scale)f", floatValue)
         let newTitle = "\(stringValue)°C"
         
-        self.currentLevel = TemperatureLevel.getLevel(floatValue)
-
+        let defaultlColorHandler: () -> NSColor = {
+            return NSColor.labelColor
+        }
+        
+        let getColor = colorHanler ?? defaultlColorHandler
+        
         let attributedTitle = NSMutableAttributedString(string: newTitle)
-        let attributesValue: [NSAttributedString.Key: Any] = [.foregroundColor: currentLevel.getStatusBarColor()]
+        let attributesValue: [NSAttributedString.Key: Any] = [.foregroundColor: getColor()]
         let attributesC: [NSAttributedString.Key: Any] = [.foregroundColor: NSColor.labelColor]
         let rangeToPaintValue = NSRange(location: 0, length: newTitle.count - 1)
         let rangeToPaintC = NSRange(location: newTitle.count - 2, length: abs(2 - newTitle.count))
         attributedTitle.addAttributes(attributesValue, range: rangeToPaintValue)
         attributedTitle.addAttributes(attributesC, range: rangeToPaintC)
         
-        if let button = self.statusItem.button {
-            button.attributedTitle = attributedTitle
-            button.image = isIconEnabled ? currentLevel.getImage() : nil
-        }
+        return attributedTitle
     }
 }
 

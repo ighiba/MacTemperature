@@ -47,12 +47,10 @@ class TemperatureStatusRow: NSView {
         ]
         NSLayoutConstraint.activate(constraints)
     }
-
     
     var titleTextField: NSTextField = {
         let textField = NSTextField()
         
-
         textField.isBezeled = false
         textField.isEditable = false
         textField.stringValue = "Unknown"
@@ -63,7 +61,6 @@ class TemperatureStatusRow: NSView {
         
         return textField
     }()
-    
     
     var valueTextField: NSTextField = {
         let textField = NSTextField()
@@ -84,16 +81,14 @@ class TemperatureStatusBarRow: TemperatureStatusRow {
     
     override init(key: String, title: String, value: Float) {
         super.init(key: key, title: title, value: value)
-        valueTextField.alignment = .right
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func setupLayout() {
-        let constraints = [
+        NSLayoutConstraint.activate([
             titleTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             titleTextField.topAnchor.constraint(equalTo: self.topAnchor),
             titleTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -103,12 +98,9 @@ class TemperatureStatusBarRow: TemperatureStatusRow {
             valueTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             valueTextField.topAnchor.constraint(equalTo: self.topAnchor),
             valueTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
+        ])
     }
-    
 }
-
 
 class ColoredNSView: NSView {
     
