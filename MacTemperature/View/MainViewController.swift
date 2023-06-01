@@ -24,6 +24,10 @@ class MainViewController: NSViewController, MainViewInput, ObservableObject {
         }
     }
     
+    deinit {
+        print("MainViewController deinited")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -35,7 +39,6 @@ class MainViewController: NSViewController, MainViewInput, ObservableObject {
             mainView.updateRows(data: data)
         }
     }
-
 }
 
 extension MainViewController: NSTableViewDelegate {

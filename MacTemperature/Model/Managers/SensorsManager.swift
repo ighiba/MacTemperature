@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SensorsManager {
+protocol SensorsManager: AnyObject {
     func getValues(_ sensors: [Sensor]) -> [SMCVal_t]
 }
 
