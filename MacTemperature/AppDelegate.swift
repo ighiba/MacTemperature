@@ -10,16 +10,21 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var window: NSWindow?
+    var window: NSWindow!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let mainController = MainModuleAssembly.configureMoule()
         
-        //StatusBarManager.shared.updateTitle("123")
+        let windowSize = NSSize(width: tableWidth, height: 400)
+        
+        window = NSWindow(contentRect: NSRect(origin: CGPoint(), size: windowSize), styleMask: [.titled, .closable, .miniaturizable], backing: .buffered, defer: false)
+        window.contentViewController = mainController
+        
+        window.contentMinSize = windowSize
+        window.contentMaxSize = windowSize
 
-        window = NSWindow(contentViewController: mainController)
-        window?.makeKeyAndOrderFront(nil)
-        window?.title = "MacTemperature"
+        window.makeKeyAndOrderFront(nil)
+        window.title = "MacTemperature"
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

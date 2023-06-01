@@ -7,22 +7,17 @@
 
 import SwiftUI
 
-extension Float {
-    var cgFloat: CGFloat {
-        return CGFloat(self)
-    }
-}
-
-fileprivate let maxTemperature: Float = 130
-fileprivate let maxWidth: CGFloat = 300
-fileprivate let maxHeight: CGFloat = 20
-fileprivate var pixelsInCelsius: CGFloat {
-    return maxWidth / maxTemperature.cgFloat
-}
-
 struct HorizontalBar: View {
     
-    public var value: Float
+    private let maxTemperature: Float = 130
+    private let maxHeight: CGFloat = 20
+    private var pixelsInCelsius: CGFloat {
+        return maxWidth / maxTemperature.cgFloat
+    }
+    
+    var value: Float
+    var maxWidth: CGFloat
+    
     private var barColor: Color {
         return getColorByCurrentValue(value)
     }
@@ -48,6 +43,12 @@ struct HorizontalBar: View {
 
 struct HorizontalBar_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalBar(value: 40.0)
+        HorizontalBar(value: 40.0, maxWidth: 300)
+    }
+}
+
+extension Float {
+    var cgFloat: CGFloat {
+        return CGFloat(self)
     }
 }

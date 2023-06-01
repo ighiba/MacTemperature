@@ -14,7 +14,7 @@ class MainViewController: NSViewController, MainViewInput, ObservableObject {
         if isSwiftUITable {
             // SwiftUI
             let hostingController = NSHostingController(rootView: tableViewSwiftUI)
-            hostingController.view.frame = NSRect(x: 0, y: 0, width: 600, height: 400)
+            hostingController.view.frame = NSRect(x: 0, y: 0, width: tableWidth, height: 400)
             self.view = hostingController.view
         } else {
             // Cocoa
