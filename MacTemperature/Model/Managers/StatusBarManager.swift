@@ -68,7 +68,7 @@ class StatusBarManager {
 
     func updateStatusBarItemTitle(_ floatValue: Float? = nil) {
         let value = floatValue ?? self.avgTempValue
-        let attributedTitle = geTemperatureAttributedString(value, colorHanler: avgTempCurrentLevel.getStatusBarColor)
+        let attributedTitle = getTemperatureAttributedString(value, colorProvider: avgTempCurrentLevel.getStatusBarColor)
         
         if let button = self.statusItem.button {
             button.attributedTitle = attributedTitle
@@ -78,20 +78,20 @@ class StatusBarManager {
     
     func getDefaultTemperatureAttributedString(_ floatValue: Float) -> NSMutableAttributedString {
         let level = TemperatureLevel.getLevel(floatValue)
-        return geTemperatureAttributedString(floatValue, colorHanler: level.getStatusBarColor)
+        return getTemperatureAttributedString(floatValue, colorProvider: level.getStatusBarColor)
     }
     
-    func geTemperatureAttributedString(_ floatValue: Float,
+    func getTemperatureAttributedString(_ floatValue: Float,
                                        scale: UInt8 = 0,
-                                       colorHanler: (() -> NSColor)? = nil) -> NSMutableAttributedString {
+                                       colorProvider: (() -> NSColor)? = nil) -> NSMutableAttributedString {
         let stringValue = String(format: "%.\(scale)f", floatValue)
         let newTitle = "\(stringValue)°C"
         
-        let defaultlColorHandler: () -> NSColor = {
+        let defaultlColorProvider: () -> NSColor = {
             return NSColor.labelColor
         }
         
-        let getColor = colorHanler ?? defaultlColorHandler
+        let getColor = colorProvider ?? defaultlColorProvider
         
         let attributedTitle = NSMutableAttributedString(string: newTitle)
 
