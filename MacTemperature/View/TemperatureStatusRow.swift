@@ -52,10 +52,10 @@ class TemperatureStatusRow: NSView {
     var titleTextField: NSTextField = {
         let textField = NSTextField()
         
-        textField.stringValue = "CPU 1"
-        
+
         textField.isBezeled = false
         textField.isEditable = false
+        textField.stringValue = "Unknown"
         //textField.font = textField.font?.withSize(20)
         textField.drawsBackground = false
         
@@ -65,11 +65,12 @@ class TemperatureStatusRow: NSView {
     }()
     
     
-    var valueTextField: TemperatureTextField = {
-        let textField = TemperatureTextField()
+    var valueTextField: NSTextField = {
+        let textField = NSTextField()
         
         textField.isBezeled = false
-        textField.setTemperature(45.3)
+        textField.isEditable = false
+        textField.stringValue = "0.0"
         textField.drawsBackground = false
         
         textField.translatesAutoresizingMaskIntoConstraints = false

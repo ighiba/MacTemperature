@@ -80,7 +80,7 @@ class TemperaturesMenuView: NSView {
         for item in data {
             let row = rows.first(where: { $0.key == item.id } )
             guard let row else { continue }
-            row.valueTextField.setTemperature(item.floatValue)
+            row.valueTextField.stringValue = item.getStringValue(scale: 0) + "°C"
         }
     }
 }
