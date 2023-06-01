@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
@@ -17,6 +18,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         
         StatusBarModuleAssembly.configureModule()
         TemperatureMonitorModuleAssembly.configureModule()
+        
+        do {
+            try SMAppService.mainApp.register() 
+        } catch {
+            print("SMAppService failed to register")
+        }
         
         window = configureWindow(mainController)
         window?.makeKeyAndOrderFront(nil)
