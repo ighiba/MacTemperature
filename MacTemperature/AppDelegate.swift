@@ -8,32 +8,59 @@
 import Cocoa
 
 @main
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
-    var window: NSWindow!
-
+    var window: NSWindow?
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let mainController = MainModuleAssembly.configureMoule()
         
+        StatusBarModuleAssembly.configureModule()
+        TemperatureMonitorModuleAssembly.configureModule()
+        
+        window = configureWindow(mainController)
+        window?.makeKeyAndOrderFront(nil)
+    }
+
+    private func configureWindow(_ contentViewcontroller: NSViewController) -> NSWindow {
         let windowSize = NSSize(width: tableWidth, height: 400)
         
-        window = NSWindow(contentRect: NSRect(origin: CGPoint(), size: windowSize), styleMask: [.titled, .closable, .miniaturizable], backing: .buffered, defer: false)
-        window.contentViewController = mainController
+        let newWindow = NSWindow(contentRect: NSRect(origin: CGPoint(), size: windowSize), styleMask: [.titled, .closable, .miniaturizable], backing: .buffered, defer: false)
+        newWindow.contentViewController = contentViewcontroller
         
-        window.contentMinSize = windowSize
-        window.contentMaxSize = windowSize
+        newWindow.contentMinSize = windowSize
+        newWindow.contentMaxSize = windowSize
 
-        window.makeKeyAndOrderFront(nil)
-        window.title = "MacTemperature"
+        newWindow.title = "MacTemperature"
+        newWindow.delegate = self
+        newWindow.isReleasedWhenClosed = false
+        newWindow.center()
+        
+        return newWindow
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        window = nil
+    }
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if !flag {
+            let mainController = MainModuleAssembly.configureMoule()
+
+            window = configureWindow(mainController)
+            window?.makeKeyAndOrderFront(nil)
+        }
+        return true
+    }
+
+    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
+        return true
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
-    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
-        return true
-    }
 
 
 }

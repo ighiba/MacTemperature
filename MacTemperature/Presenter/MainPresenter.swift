@@ -19,7 +19,7 @@ class MainPresenter: MainViewOutput {
     
     weak var input: MainViewInput!
     
-    weak var sensorsManager: SensorsManager!
+    var sensorsManager: SensorsManager!
     
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateMainViewRows), name: TemperatureMonitor.temperatureUpdateNotifaction, object: nil)

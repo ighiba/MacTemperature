@@ -9,7 +9,6 @@ import Foundation
 import Cocoa
 
 class MainModuleAssembly {
-    
     class func configureMoule() -> NSViewController {
         let presenter = MainPresenter()
         let view = MainViewController()
@@ -17,12 +16,6 @@ class MainModuleAssembly {
         view.output = presenter
         presenter.input = view
         presenter.sensorsManager = SensorsManagerImpl()
-        
-        StatusBarManager.shared.temperatureManager = TemperatureManagerImpl()
-        
-        TemperatureMonitor.shared.temperatureManager = TemperatureManagerImpl()
-        TemperatureMonitor.shared.sensorsManager = SensorsManagerImpl()
-        TemperatureMonitor.shared.start()
 
         return view
     }
