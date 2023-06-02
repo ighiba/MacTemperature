@@ -12,6 +12,7 @@ import ServiceManagement
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     var window: NSWindow?
+    var settingsWindow: NSWindow?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
@@ -26,13 +27,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         
         let mainController = MainModuleAssembly.configureMoule()
 
-        self.window = configureWindow(mainController)
+        self.window = configureMainWindow(mainController)
         self.window?.makeKeyAndOrderFront(nil)
         NSApplication.shared.activate(ignoringOtherApps: true)
     }
     
     func windowWillClose(_ notification: Notification) {
-        self.hideMainWindow()
+        guard let windowToClose = notification.object as? NSWindow else { return }
+        if windowToClose == window {
+            self.hideMainWindow()
+        } else if windowToClose == settingsWindow {
+            self.hideSettingsWindow()
+        }
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
@@ -53,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
 extension AppDelegate {
     
-    func configureWindow(_ contentViewcontroller: NSViewController) -> NSWindow {
+    func configureMainWindow(_ contentViewcontroller: NSViewController) -> NSWindow {
         let windowSize = NSSize(width: tableWidth, height: 400)
         
         let newWindow = NSWindow(contentRect: NSRect(origin: CGPoint(), size: windowSize), styleMask: [.titled, .closable, .miniaturizable], backing: .buffered, defer: false)
@@ -63,9 +69,24 @@ extension AppDelegate {
         newWindow.contentMaxSize = windowSize
 
         newWindow.title = "MacTemperature"
-        newWindow.delegate = self
         newWindow.isReleasedWhenClosed = false
         newWindow.canHide = false
+        newWindow.center()
+        
+        return newWindow
+    }
+    
+    func configureSettingsWindow(_ contentViewcontroller: NSViewController) -> NSWindow {
+        let windowSize = NSSize(width: 600, height: 200)
+        
+        let newWindow = NSWindow(contentRect: NSRect(origin: CGPoint(), size: windowSize), styleMask: [.titled, .closable, .miniaturizable], backing: .buffered, defer: false)
+        newWindow.contentViewController = contentViewcontroller
+        
+        newWindow.contentMinSize = windowSize
+        newWindow.contentMaxSize = windowSize
+
+        newWindow.delegate = self
+        newWindow.isReleasedWhenClosed = false
         newWindow.center()
         
         return newWindow
@@ -78,11 +99,30 @@ extension AppDelegate {
             return
         }
         let mainController = MainModuleAssembly.configureMoule()
-        self.window = self.configureWindow(mainController)
+        self.window = self.configureMainWindow(mainController)
+        self.window?.delegate = self
         self.window?.makeKeyAndOrderFront(self)
+    }
+    
+    public func showSettingsWindow() {
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        guard self.settingsWindow == nil else {
+            self.settingsWindow?.makeKeyAndOrderFront(self)
+            return
+        }
+        let vc = SettingsViewControler()
+        self.settingsWindow = NSWindow(contentViewController: vc)
+        self.settingsWindow?.delegate = self
+        self.settingsWindow?.makeKeyAndOrderFront(self)
+        let windowVC = NSWindowController(window: self.settingsWindow)
+        windowVC.showWindow(self)
     }
     
     public func hideMainWindow() {
         self.window = nil
+    }
+    
+    public func hideSettingsWindow() {
+        self.settingsWindow = nil
     }
 }
