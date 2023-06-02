@@ -30,6 +30,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         self.window = configureMainWindow(mainController)
         self.window?.makeKeyAndOrderFront(nil)
         NSApplication.shared.activate(ignoringOtherApps: true)
+        
+        showSettingsWindow()
     }
     
     func windowWillClose(_ notification: Notification) {
@@ -69,6 +71,7 @@ extension AppDelegate {
         newWindow.contentMaxSize = windowSize
 
         newWindow.title = "MacTemperature"
+        newWindow.delegate = self
         newWindow.isReleasedWhenClosed = false
         newWindow.canHide = false
         newWindow.center()
@@ -77,19 +80,13 @@ extension AppDelegate {
     }
     
     func configureSettingsWindow(_ contentViewcontroller: NSViewController) -> NSWindow {
-        let windowSize = NSSize(width: 600, height: 200)
+        let settingsWindow = NSWindow(contentViewController: contentViewcontroller)
         
-        let newWindow = NSWindow(contentRect: NSRect(origin: CGPoint(), size: windowSize), styleMask: [.titled, .closable, .miniaturizable], backing: .buffered, defer: false)
-        newWindow.contentViewController = contentViewcontroller
+        settingsWindow.delegate = self
+        settingsWindow.styleMask = [.titled, .closable]
+        settingsWindow.center()
         
-        newWindow.contentMinSize = windowSize
-        newWindow.contentMaxSize = windowSize
-
-        newWindow.delegate = self
-        newWindow.isReleasedWhenClosed = false
-        newWindow.center()
-        
-        return newWindow
+        return settingsWindow
     }
     
     public func showMainWindow() {
@@ -100,7 +97,6 @@ extension AppDelegate {
         }
         let mainController = MainModuleAssembly.configureMoule()
         self.window = self.configureMainWindow(mainController)
-        self.window?.delegate = self
         self.window?.makeKeyAndOrderFront(self)
     }
     
@@ -110,19 +106,18 @@ extension AppDelegate {
             self.settingsWindow?.makeKeyAndOrderFront(self)
             return
         }
-        let vc = SettingsViewControler()
-        self.settingsWindow = NSWindow(contentViewController: vc)
-        self.settingsWindow?.delegate = self
+        let settingsController = SettingsModuleAssembly.configureModule()
+        self.settingsWindow = self.configureSettingsWindow(settingsController)
         self.settingsWindow?.makeKeyAndOrderFront(self)
-        let windowVC = NSWindowController(window: self.settingsWindow)
-        windowVC.showWindow(self)
     }
     
     public func hideMainWindow() {
         self.window = nil
+        print("Main Window closed")
     }
     
     public func hideSettingsWindow() {
         self.settingsWindow = nil
+        print("Settings Window closed")
     }
 }

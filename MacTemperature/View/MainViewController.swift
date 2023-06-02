@@ -73,4 +73,3 @@ extension MainViewController: NSTableViewDataSource {
         return nil
     }
 }
- 

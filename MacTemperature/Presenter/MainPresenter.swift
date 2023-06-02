@@ -49,14 +49,14 @@ class MainPresenter: MainViewOutput {
     }
     
     func loadInitalData() -> [TemperatureData] {
-        var tempStatusData = TemperatureMonitor.lastValues.map {
+        let tempStatusData = TemperatureMonitor.lastValues.map {
             TemperatureData(smcValue: $0)
         }
         return !tempStatusData.isEmpty ? tempStatusData : self.getSampleData()
     }
     
     func loadAndUpdateInitalData() {
-        var data = loadInitalData()
+        let data = loadInitalData()
         self.input.updateRows(data: data)
     }
     
