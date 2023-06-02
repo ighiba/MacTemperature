@@ -7,7 +7,9 @@
 
 import Cocoa
 
-class SettingsViewControler: NSTabViewController {
+class SettingsViewControler: NSTabViewController, SettingsInput {
+    
+    var output: SettingsOutput!
 
     override func loadView() {
         super.loadView()
