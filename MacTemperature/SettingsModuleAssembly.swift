@@ -11,9 +11,11 @@ class SettingsModuleAssembly {
     class func configureModule() -> NSViewController {
         let view = SettingsViewControler()
         let presenter = SettingsPresenter()
+        let storage = SettingsStorage()
         
         view.output = presenter
         presenter.input = view
+        presenter.settingsStorage = storage
         
         return view
     }

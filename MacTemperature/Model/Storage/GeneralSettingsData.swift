@@ -33,4 +33,10 @@ class GeneralSettingsData: SettingsData {
     static func getDefaultSettings() -> GeneralSettingsData {
         return GeneralSettingsData()
     }
+    
+    func setSettings(_ settings: GeneralSettingsData) {
+        self.mainWindowOpenEveryLaunch = settings.mainWindowOpenEveryLaunch
+        self.appShouldLaunchAfterStart = settings.appShouldLaunchAfterStart
+        self.updateFrequencyInSeconds = settings.updateFrequencyInSeconds
+    }
 }

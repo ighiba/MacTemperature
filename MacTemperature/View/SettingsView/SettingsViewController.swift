@@ -7,8 +7,13 @@
 
 import Cocoa
 
-class SettingsViewControler: NSTabViewController, SettingsInput {
-    
+protocol GeneralSettingsDelegate {
+    func getGeneralSettings() -> GeneralSettingsData
+    func setGeneralSettings(_ settings: GeneralSettingsData)
+}
+
+class SettingsViewControler: NSTabViewController, SettingsInput, GeneralSettingsDelegate {
+
     var output: SettingsOutput!
 
     override func loadView() {
@@ -21,7 +26,9 @@ class SettingsViewControler: NSTabViewController, SettingsInput {
         
         self.tabStyle = .toolbar
        
-        let generalSettingsItem = NSTabViewItem(viewController: GeneralSettingsViewController())
+        let generalSettingsVC = GeneralSettingsViewController()
+        generalSettingsVC.delegate = self
+        let generalSettingsItem = NSTabViewItem(viewController: generalSettingsVC)
         let menuSettingsItem = NSTabViewItem(viewController: MenuBarSettingsViewController())
         let statusBarSettingsItem = NSTabViewItem(viewController: StatusBarSettingsViewController())
         
@@ -42,6 +49,16 @@ class SettingsViewControler: NSTabViewController, SettingsInput {
         
         return view
     }()
+    
+    // MARK: - Methods
+    
+    func getGeneralSettings() -> GeneralSettingsData {
+        return output.getGeneralSettings()
+    }
+    
+    func setGeneralSettings(_ settings: GeneralSettingsData) {
+        self.output.setGeneralSettings(settings)
+    }
     
 }
 

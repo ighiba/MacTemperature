@@ -8,18 +8,12 @@
 import Cocoa
 
 class GeneralSettingsViewController: SettingsItemViewController {
-
-    lazy var mainWindowCheckbox = SettingsRowContainer(title: "Main window",
-                                                    views: [NSButton(checkboxWithTitle: "Open at every launch", target: nil, action: nil)],
-                                                    width: settingsWidth)
-    lazy var launchAtLoginCheckbox = SettingsRowContainer(title: "Launch after start",
-                                                       views: [NSButton(checkboxWithTitle: "The App will launch automatically after Mac start", target: self, action: nil)],
-                                                       width: settingsWidth)
-    lazy var updateFrequency = SettingsRowContainer(title: "Update frequency",
-                                                 views: [getTextFieldForEdit("1"),
-                                                         NSTextField(labelWithString: "seconds"),
-                                                         NSButton(title: "Set", target: self, action: nil)],
-                                                 width: settingsWidth)
+ 
+    lazy var settings: GeneralSettingsData = {
+        return delegate.getGeneralSettings()
+    }()
+    
+    var delegate: GeneralSettingsDelegate!
     
     override func loadView() {
         super.loadView()
@@ -29,7 +23,7 @@ class GeneralSettingsViewController: SettingsItemViewController {
         super.viewDidLoad()
 
         settingsStack.addArrangedSubview(mainWindowCheckbox)
-        settingsStack.addArrangedSubview(launchAtLoginCheckbox)
+        settingsStack.addArrangedSubview(launchAfterStartnCheckbox)
         settingsStack.addArrangedSubview(updateFrequency)
     }
     
@@ -38,28 +32,60 @@ class GeneralSettingsViewController: SettingsItemViewController {
         self.view.window?.makeFirstResponder(nil)
     }
     
-    func getTextFieldForEdit(_ string: String) -> NSTextField {
+    lazy var mainWindowCheckbox = SettingsRowContainer(title: "Main window",
+                                                    views: [getMainWindowCheckBoxButton()],
+                                                    width: settingsWidth)
+    lazy var launchAfterStartnCheckbox = SettingsRowContainer(title: "Launch after start",
+                                                          views: [getLaunchAfterStartCheckboxButton()],
+                                                          width: settingsWidth)
+    lazy var updateFrequency = SettingsRowContainer(title: "Update frequency",
+                                                 views: [textFieldForEdit,
+                                                         NSTextField(labelWithString: "seconds"),
+                                                         NSButton(title: "Set", target: self, action: #selector(setNewFrequency))],
+                                                 width: settingsWidth)
+    
+    
+    private func getMainWindowCheckBoxButton() -> NSButton {
+        let button = NSButton(checkboxWithTitle: "Open at every launch",
+                              target: self,
+                              action: #selector(mainWindowCheckboxChanged))
+        button.state = settings.mainWindowOpenEveryLaunch ? .on : .off
+        return button
+    }
+    
+    private func getLaunchAfterStartCheckboxButton() -> NSButton {
+        let button = NSButton(checkboxWithTitle: "The App will launch automatically after Mac start",
+                              target: self,
+                              action: #selector(launchAfterStartnCheckboxChanged))
+        button.state = settings.appShouldLaunchAfterStart ? .on : .off
+        return button
+    }
+    
+    lazy var textFieldForEdit: NSTextField = {
         let textField = NSTextField()
         
-        textField.stringValue = string
+        textField.stringValue = "\(settings.updateFrequencyInSeconds)"
         textField.isEditable = true
         textField.focusRingType = .none
         textField.alignment = .right
         textField.frame = NSRect(x: 0, y: 0, width: 30, height: 30)
         
         return textField
-    }
+    }()
     
-//    @objc func setNewFrequency() {
-//
-//    }
-//
-//    @objc func launchAtLoginCheckboxChanged(_ sender: NSButton) {
-//
-//    }
-//
-//    @objc func setNewFrequency() {
-//
-//    }
+    @objc func mainWindowCheckboxChanged(_ sender: NSButton) {
+        settings.mainWindowOpenEveryLaunch = sender.state == .on ? true : false
+        delegate.setGeneralSettings(settings)
+    }
+
+    @objc func launchAfterStartnCheckboxChanged(_ sender: NSButton) {
+        settings.appShouldLaunchAfterStart = sender.state == .on ? true : false
+        delegate.setGeneralSettings(settings)
+    }
+
+    @objc func setNewFrequency() {
+        settings.updateFrequencyInSeconds = Int(textFieldForEdit.stringValue) ?? 1
+        delegate.setGeneralSettings(settings)
+    }
     
 }

@@ -11,4 +11,5 @@ protocol SettingsData: Codable {
     associatedtype ReturnType: SettingsData
     static var storageKey: String { get }
     static func getDefaultSettings() -> ReturnType
+    func setSettings(_ settings: ReturnType)
 }
