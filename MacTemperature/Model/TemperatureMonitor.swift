@@ -18,7 +18,7 @@ class TemperatureMonitor {
     var temperatureManager: TemperatureManager!
     var sensorsManager: SensorsManager!
     
-    private var secondsBetweenUpdate = 1
+    private var secondsBetweenUpdate = GeneralSettingsData.shared.updateFrequencyInSeconds
     
     private var values: [SMCVal_t]! {
         didSet {
@@ -28,7 +28,13 @@ class TemperatureMonitor {
     }
     
     private init () {
-        
+        NotificationCenter.default.addObserver(forName: NotificationNames.temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
+            guard let newUpdateFrequency = notification.object as? Int, let strongSelf = self else { return }
+            guard strongSelf.secondsBetweenUpdate != newUpdateFrequency else { return }
+            strongSelf.stop()
+            strongSelf.secondsBetweenUpdate = newUpdateFrequency
+            strongSelf.start()
+        }
     }
     
     func start() {

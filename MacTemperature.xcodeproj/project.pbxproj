@@ -169,6 +169,7 @@
 		C00269E42A2665A1000BA655 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C039703B2A2B58DB007078AD /* NotificationNames.swift */,
 				C00269E52A2665B2000BA655 /* TemperatureLevel.swift */,
 				C00269E92A2668DB000BA655 /* TemperatureLevel+NSImage.swift */,
 				C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */,
@@ -295,7 +296,6 @@
 				C00269D62A257118000BA655 /* TemperatureData.swift */,
 				C01DDC722A27F26500E30383 /* TemperatureDataContainer.swift */,
 				C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */,
-				C039703B2A2B58DB007078AD /* NotificationNames.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

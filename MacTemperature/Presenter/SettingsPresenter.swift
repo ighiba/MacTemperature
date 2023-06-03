@@ -41,6 +41,7 @@ class SettingsPresenter: SettingsOutput {
     func setGeneralSettings(_ settings: GeneralSettingsData) {
         GeneralSettingsData.shared.setSettings(settings)
         settingsStorage.saveData(settings)
+        NotificationCenter.default.post(name: NotificationNames.temperatureUpdateNotifaction, object: settings.updateFrequencyInSeconds)
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.setAppToLaunchAtMacStart(state: settings.appShouldLaunchAfterStart)
     }
