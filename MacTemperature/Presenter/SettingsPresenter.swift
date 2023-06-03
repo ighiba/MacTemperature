@@ -63,6 +63,7 @@ class SettingsPresenter: SettingsOutput {
     func setStatusBarSettings(_ settings: StatusBarSettingsData) {
         StatusBarSettingsData.shared.setSettings(settings)
         settingsStorage.saveData(settings)
+        NotificationCenter.default.post(name: NotificationNames.isEnableStatusBarIconNotification, object: settings.statusBarShowIcon)
     }
 
 }

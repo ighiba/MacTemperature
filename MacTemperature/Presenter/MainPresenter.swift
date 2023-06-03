@@ -23,7 +23,7 @@ class MainPresenter: MainViewOutput {
     var sensorsManager: SensorsManager!
     
     init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateMainViewRows), name: TemperatureMonitor.temperatureUpdateNotifaction, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMainViewRows), name: NotificationNames.temperatureUpdateNotifaction, object: nil)
     }
     
     deinit {

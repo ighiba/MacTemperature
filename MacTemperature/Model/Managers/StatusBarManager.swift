@@ -33,6 +33,7 @@ class StatusBarManager {
         self.statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
         self.statusItem.button?.target = self
         self.statusItem.button?.action = #selector(statusBarButtonClicked)
+        self.isStatusBarIconEnabled(state: StatusBarSettingsData.shared.statusBarShowIcon)
         
         let enableIconItem = NSMenuItem(title: "Enable icon", action: nil, keyEquivalent: "")
         let cpuTempItem = NSMenuItem(title: "CPU Temp", action: nil, keyEquivalent: "")
@@ -59,7 +60,7 @@ class StatusBarManager {
         
         statusItem.menu = menu
         
-        NotificationCenter.default.addObserver(forName: TemperatureMonitor.temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
+        NotificationCenter.default.addObserver(forName: NotificationNames.temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
             guard let values = notification.object as? [SMCVal_t], let strongSelf = self else { return }
             DispatchQueue.main.async {
                 let tempStatusData = values.map {
@@ -72,6 +73,11 @@ class StatusBarManager {
                 strongSelf.updateStatusBarItemTitle(avgCPUTemp)
             }
         }
+        
+        NotificationCenter.default.addObserver(forName: NotificationNames.isEnableStatusBarIconNotification, object: nil, queue: nil) { [weak self] notification in
+            guard let statusBarShowIcon = notification.object as? Bool, let strongSelf = self else { return }
+            strongSelf.isStatusBarIconEnabled(state: statusBarShowIcon)
+        }
     }
 
     func updateStatusBarItemTitle(_ floatValue: Float? = nil) {
@@ -80,8 +86,12 @@ class StatusBarManager {
         
         if let button = self.statusItem.button {
             button.attributedTitle = attributedTitle
-            button.image = isIconEnabled ? avgTempCurrentLevel.getImage() : nil
+            //self.isStatusBarIconEnabled(state: StatusBarSettingsData.shared.statusBarShowIcon)
         }
+    }
+    
+    private func isStatusBarIconEnabled( state: Bool) {
+        self.statusItem.button?.image = StatusBarSettingsData.shared.statusBarShowIcon ? avgTempCurrentLevel.getImage() : nil
     }
     
     func getDefaultTemperatureAttributedString(_ floatValue: Float) -> NSMutableAttributedString {
