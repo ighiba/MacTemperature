@@ -39,7 +39,7 @@ class GeneralSettingsViewController: SettingsItemViewController {
                                                           views: [getLaunchAfterStartCheckboxButton()],
                                                           width: settingsWidth)
     lazy var updateFrequency = SettingsRowContainer(title: "Update frequency",
-                                                 views: [textFieldForEdit,
+                                                 views: [editFrequencyTextField,
                                                          NSTextField(labelWithString: "seconds"),
                                                          NSButton(title: "Set", target: self, action: #selector(setNewFrequency))],
                                                  width: settingsWidth)
@@ -61,7 +61,7 @@ class GeneralSettingsViewController: SettingsItemViewController {
         return button
     }
     
-    lazy var textFieldForEdit: NSTextField = {
+    lazy var editFrequencyTextField: NSTextField = {
         let textField = NSTextField()
         
         textField.stringValue = "\(settings.updateFrequencyInSeconds)"
@@ -69,6 +69,9 @@ class GeneralSettingsViewController: SettingsItemViewController {
         textField.focusRingType = .none
         textField.alignment = .right
         textField.frame = NSRect(x: 0, y: 0, width: 30, height: 30)
+        
+        let numberFormatter = IntegerNumberFormatter()
+        textField.formatter = numberFormatter
         
         return textField
     }()
@@ -84,8 +87,23 @@ class GeneralSettingsViewController: SettingsItemViewController {
     }
 
     @objc func setNewFrequency() {
-        settings.updateFrequencyInSeconds = Int(textFieldForEdit.stringValue) ?? 1
+        self.view.window?.makeFirstResponder(nil)
+        var newUpdateFrequency = Int(editFrequencyTextField.stringValue) ?? 1
+        settings.updateFrequencyInSeconds = newUpdateFrequency
         delegate.setGeneralSettings(settings)
     }
-    
+}
+
+class IntegerNumberFormatter: NumberFormatter {
+    override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+        if partialString.isEmpty {
+            return true
+        }
+        
+        if let value = Int(partialString) {
+            return (value >= 1 && value <= 60)
+        }
+        
+        return false
+    }
 }
