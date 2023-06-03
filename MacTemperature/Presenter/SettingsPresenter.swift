@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 protocol SettingsInput: AnyObject {
 
@@ -42,6 +43,8 @@ class SettingsPresenter: SettingsOutput {
     func setGeneralSettings(_ settings: GeneralSettingsData) {
         GeneralSettingsData.shared.setSettings(settings)
         settingsStorage.saveData(settings)
+        guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.setAppToLaunchAtMacStart(state: settings.appShouldLaunchAfterStart)
     }
     
     func getMenuBarSettings() -> MenuBarSettingsData {

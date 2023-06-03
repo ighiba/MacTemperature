@@ -20,11 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         StatusBarModuleAssembly.configureModule()
         TemperatureMonitorModuleAssembly.configureModule()
         
-        if GeneralSettingsData.shared.appShouldLaunchAfterStart {
-            self.setAppToLaunchAtMacStart()
-        } else {
-            self.resetAppToLaunchAtMacStart()
-        }
+        self.setAppToLaunchAtMacStart(state: GeneralSettingsData.shared.appShouldLaunchAfterStart)
 
         if GeneralSettingsData.shared.mainWindowOpenEveryLaunch {
             self.showMainWindow()
@@ -60,19 +56,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
 extension AppDelegate {
     
-    public func setAppToLaunchAtMacStart() {
+    public func setAppToLaunchAtMacStart(state: Bool) {
         do {
-            try SMAppService.mainApp.register()
+            if state {
+                try SMAppService.mainApp.register()
+            } else {
+                try SMAppService.mainApp.unregister()
+            }
+            
         } catch {
-            print("SMAppService failed to register")
-        }
-    }
-    
-    public func resetAppToLaunchAtMacStart() {
-        do {
-            try SMAppService.mainApp.unregister()
-        } catch {
-            print("SMAppService failed to unregister")
+            print("SMAppService failed \(error.localizedDescription)")
         }
     }
     
