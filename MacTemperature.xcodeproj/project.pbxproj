@@ -31,6 +31,9 @@
 		C039702E2A2A86C3007078AD /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039702D2A2A86C3007078AD /* SettingsStorage.swift */; };
 		C03970302A2AA719007078AD /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039702F2A2AA719007078AD /* SettingsData.swift */; };
 		C03970322A2AA79F007078AD /* GeneralSettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970312A2AA79F007078AD /* GeneralSettingsData.swift */; };
+		C03970342A2AC7F5007078AD /* TemperatureSensorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970332A2AC7F5007078AD /* TemperatureSensorType.swift */; };
+		C03970362A2AC85D007078AD /* MenuBarSettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970352A2AC85D007078AD /* MenuBarSettingsData.swift */; };
+		C03970382A2AC876007078AD /* StatusBarSettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970372A2AC876007078AD /* StatusBarSettingsData.swift */; };
 		C03C210B2A26B621009A7C8E /* EnableIconMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210A2A26B621009A7C8E /* EnableIconMenuView.swift */; };
 		C03C210D2A26BD6B009A7C8E /* TemperatureMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */; };
 		C03C210F2A275165009A7C8E /* TemperaturesMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210E2A275165009A7C8E /* TemperaturesMenuView.swift */; };
@@ -92,6 +95,9 @@
 		C039702D2A2A86C3007078AD /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
 		C039702F2A2AA719007078AD /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
 		C03970312A2AA79F007078AD /* GeneralSettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsData.swift; sourceTree = "<group>"; };
+		C03970332A2AC7F5007078AD /* TemperatureSensorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureSensorType.swift; sourceTree = "<group>"; };
+		C03970352A2AC85D007078AD /* MenuBarSettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarSettingsData.swift; sourceTree = "<group>"; };
+		C03970372A2AC876007078AD /* StatusBarSettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarSettingsData.swift; sourceTree = "<group>"; };
 		C03C210A2A26B621009A7C8E /* EnableIconMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableIconMenuView.swift; sourceTree = "<group>"; };
 		C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureMonitor.swift; sourceTree = "<group>"; };
 		C03C210E2A275165009A7C8E /* TemperaturesMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperaturesMenuView.swift; sourceTree = "<group>"; };
@@ -204,6 +210,8 @@
 				C039702D2A2A86C3007078AD /* SettingsStorage.swift */,
 				C039702F2A2AA719007078AD /* SettingsData.swift */,
 				C03970312A2AA79F007078AD /* GeneralSettingsData.swift */,
+				C03970352A2AC85D007078AD /* MenuBarSettingsData.swift */,
+				C03970372A2AC876007078AD /* StatusBarSettingsData.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -281,6 +289,7 @@
 				C00269E12A264AEA000BA655 /* Managers */,
 				C065ACC12A24F24300A82183 /* AppleSMC.swift */,
 				C065ACC32A24F37D00A82183 /* Sensor.swift */,
+				C03970332A2AC7F5007078AD /* TemperatureSensorType.swift */,
 				C00269D62A257118000BA655 /* TemperatureData.swift */,
 				C01DDC722A27F26500E30383 /* TemperatureDataContainer.swift */,
 				C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */,
@@ -432,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C03970342A2AC7F5007078AD /* TemperatureSensorType.swift in Sources */,
 				C065AC982A23D1B400A82183 /* MainViewController.swift in Sources */,
 				C065ACC42A24F37D00A82183 /* Sensor.swift in Sources */,
 				C01DDC712A27C9FD00E30383 /* TemperatureTableView.swift in Sources */,
@@ -459,12 +469,14 @@
 				C01DDC7E2A2904CC00E30383 /* StatusBarModuleAssembly.swift in Sources */,
 				C03970272A2A74DD007078AD /* StatusBarSettingsViewController.swift in Sources */,
 				C00269E82A2668BB000BA655 /* TemperatureLevel+Color.swift in Sources */,
+				C03970382A2AC876007078AD /* StatusBarSettingsData.swift in Sources */,
 				C00269DB2A2571DC000BA655 /* MainView.swift in Sources */,
 				C03970292A2A8447007078AD /* SettingsPresenter.swift in Sources */,
 				C065ACC22A24F24300A82183 /* AppleSMC.swift in Sources */,
 				C03970232A2A748A007078AD /* GeneralSettingsViewController.swift in Sources */,
 				C065ACCB2A2517BC00A82183 /* TemperatureManager.swift in Sources */,
 				C00269EA2A2668DB000BA655 /* TemperatureLevel+NSImage.swift in Sources */,
+				C03970362A2AC85D007078AD /* MenuBarSettingsData.swift in Sources */,
 				C03970252A2A74B9007078AD /* MenuBarSettingsViewController.swift in Sources */,
 				C00269D72A257118000BA655 /* TemperatureData.swift in Sources */,
 			);
