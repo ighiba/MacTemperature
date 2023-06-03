@@ -15,6 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     var settingsWindow: NSWindow?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        StorageLoader.loadAllSharedSettings()
 
         do {
             try SMAppService.mainApp.register() 
