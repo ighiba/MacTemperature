@@ -8,10 +8,10 @@
 import Foundation
 
 
-//enum TemperatureSensorsTypes: Int, Codable {
-//    case cpu = 0
-//    case gpu = 1
-//}
+enum TemperatureSensorsTypes: Int, Codable {
+    case cpu = 0
+    case gpu = 1
+}
 //
 //class Settings: Codable {
 //    
@@ -26,13 +26,7 @@ import Foundation
 //    var statusBarAverageTemperatureFor = TemperatureSensorsTypes.cpu
 //    
 //    init(mainWindowOpenEveryLaunch: Bool = true, appShouldLaunchAfterStart: Bool = true, updateFrequenceInSeconds: Int = 1, cpuShowTemperatures: Bool = true, gpuShowTemperatures: Bool = true, statusBarShowIcon: Bool = true, statusBarAverageTemperatureFor: TemperatureSensorsTypes = TemperatureSensorsTypes.cpu) {
-//        self.mainWindowOpenEveryLaunch = mainWindowOpenEveryLaunch
-//        self.appShouldLaunchAfterStart = appShouldLaunchAfterStart
-//        self.updateFrequenceInSeconds = updateFrequenceInSeconds
-//        self.cpuShowTemperatures = cpuShowTemperatures
-//        self.gpuShowTemperatures = gpuShowTemperatures
-//        self.statusBarShowIcon = statusBarShowIcon
-//        self.statusBarAverageTemperatureFor = statusBarAverageTemperatureFor
+
 //    }
 //    
 //    
@@ -48,6 +42,38 @@ import Foundation
 //    }
 //    
 //}
+
+
+
+class MenuBarSettingsData: SettingsData {
+    static var storageKey: String {
+        return "menuBarSettings"
+    }
+
+    static let shared = MenuBarSettingsData()
+    
+    var cpuShowTemperatures: Bool
+    var gpuShowTemperatures: Bool
+    
+    init(cpuShowTemperatures: Bool, gpuShowTemperatures: Bool) {
+        self.cpuShowTemperatures = cpuShowTemperatures
+        self.gpuShowTemperatures = gpuShowTemperatures
+    }
+    
+    init() {
+        self.cpuShowTemperatures = true
+        self.gpuShowTemperatures = false
+    }
+    
+    static func getDefaultSettings() -> MenuBarSettingsData {
+        return MenuBarSettingsData()
+    }
+    
+    func setSettings(_ settings: MenuBarSettingsData) {
+        self.cpuShowTemperatures = settings.cpuShowTemperatures
+        self.gpuShowTemperatures = settings.gpuShowTemperatures
+    }
+}
 
 
 

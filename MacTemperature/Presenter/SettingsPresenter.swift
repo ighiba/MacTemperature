@@ -17,6 +17,8 @@ protocol SettingsInput: AnyObject {
 protocol SettingsOutput: AnyObject {
     func getGeneralSettings() -> GeneralSettingsData
     func setGeneralSettings(_ settings: GeneralSettingsData)
+    func getMenuBarSettings() -> MenuBarSettingsData
+    func setMenuBarSettings(_ settings: MenuBarSettingsData)
 
 }
 
@@ -38,6 +40,15 @@ class SettingsPresenter: SettingsOutput {
     
     func setGeneralSettings(_ settings: GeneralSettingsData) {
         GeneralSettingsData.shared.setSettings(settings)
+        settingsStorage.saveData(settings)
+    }
+    
+    func getMenuBarSettings() -> MenuBarSettingsData {
+        return MenuBarSettingsData.shared
+    }
+    
+    func setMenuBarSettings(_ settings: MenuBarSettingsData) {
+        MenuBarSettingsData.shared.setSettings(settings)
         settingsStorage.saveData(settings)
     }
 

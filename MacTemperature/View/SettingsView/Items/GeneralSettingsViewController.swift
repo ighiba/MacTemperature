@@ -33,7 +33,7 @@ class GeneralSettingsViewController: SettingsItemViewController {
     }
     
     lazy var mainWindowCheckbox = SettingsRowContainer(title: "Main window",
-                                                    views: [getMainWindowCheckBoxButton()],
+                                                    views: [getMainWindowCheckboxButton()],
                                                     width: settingsWidth)
     lazy var launchAfterStartnCheckbox = SettingsRowContainer(title: "Launch after start",
                                                           views: [getLaunchAfterStartCheckboxButton()],
@@ -45,7 +45,7 @@ class GeneralSettingsViewController: SettingsItemViewController {
                                                  width: settingsWidth)
     
     
-    private func getMainWindowCheckBoxButton() -> NSButton {
+    private func getMainWindowCheckboxButton() -> NSButton {
         let button = NSButton(checkboxWithTitle: "Open at every launch",
                               target: self,
                               action: #selector(mainWindowCheckboxChanged))
