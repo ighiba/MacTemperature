@@ -17,7 +17,16 @@ protocol MenuBarSettingsDelegate {
     func setMenuBarSettings(_ settings: MenuBarSettingsData)
 }
 
-class SettingsViewControler: NSTabViewController, SettingsInput, GeneralSettingsDelegate, MenuBarSettingsDelegate {
+protocol StatusBarSettingsDelegate {
+    func getStatusBarSettings() -> StatusBarSettingsData
+    func setStatusBarSettings(_ settings: StatusBarSettingsData)
+}
+
+class SettingsViewControler: NSTabViewController,
+                           SettingsInput,
+                           GeneralSettingsDelegate,
+                           MenuBarSettingsDelegate,
+                           StatusBarSettingsDelegate {
 
     var output: SettingsOutput!
 
@@ -37,7 +46,9 @@ class SettingsViewControler: NSTabViewController, SettingsInput, GeneralSettings
         let menuBarSettingsVC = MenuBarSettingsViewController()
         menuBarSettingsVC.delegate = self
         let menuSettingsItem = NSTabViewItem(viewController: menuBarSettingsVC)
-        let statusBarSettingsItem = NSTabViewItem(viewController: StatusBarSettingsViewController())
+        let statusBarSettingsVC = StatusBarSettingsViewController()
+        statusBarSettingsVC.delegate = self
+        let statusBarSettingsItem = NSTabViewItem(viewController: statusBarSettingsVC)
         
         generalSettingsItem.configureItem(label: "General",
                                          image: NSImage(systemSymbolName: "gearshape", accessibilityDescription: nil)!)
@@ -73,6 +84,14 @@ class SettingsViewControler: NSTabViewController, SettingsInput, GeneralSettings
     
     func setMenuBarSettings(_ settings: MenuBarSettingsData) {
         self.output.setMenuBarSettings(settings)
+    }
+    
+    func getStatusBarSettings() -> StatusBarSettingsData {
+        return output.getStatusBarSettings()
+    }
+    
+    func setStatusBarSettings(_ settings: StatusBarSettingsData) {
+        self.output.setStatusBarSettings(settings)
     }
     
 }
