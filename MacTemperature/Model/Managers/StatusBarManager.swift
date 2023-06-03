@@ -11,7 +11,6 @@ import AppKit
 let statusBarMenuWidth: CGFloat = 220
 
 @objc protocol StatusBarDelegate: AnyObject {
-    func enableIconSwitched(sender: NSSwitch)
     func getDefaultTemperatureAttributedString(_ floatValue: Float) -> NSMutableAttributedString
 }
 
@@ -35,7 +34,6 @@ class StatusBarManager {
         self.statusItem.button?.action = #selector(statusBarButtonClicked)
         self.isStatusBarIconEnabled(state: StatusBarSettingsData.shared.statusBarShowIcon)
         
-        let enableIconItem = NSMenuItem(title: "Enable icon", action: nil, keyEquivalent: "")
         let cpuTempItem = NSMenuItem(title: "CPU Temp", action: nil, keyEquivalent: "")
         let closeItem = NSMenuItem(title: "Close", action: #selector(closeButtonClicked), keyEquivalent: "q")
         let showWindowItem = NSMenuItem(title: "Show main window", action: #selector(showMainWindowClicked), keyEquivalent: "")
@@ -44,12 +42,9 @@ class StatusBarManager {
         showWindowItem.target = self
         settingsItem.target = self
         
-        enableIconItem.view = EnableIconMenuItem(self)
         let cpuTempView = TemperaturesMenuView(title: "CPU Temperatures", self)
         cpuTempItem.view = cpuTempView
         
-        menu.addItem(enableIconItem)
-        menu.addItem(NSMenuItem.separator())
         menu.addItem(cpuTempItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(showWindowItem)
@@ -86,7 +81,6 @@ class StatusBarManager {
         
         if let button = self.statusItem.button {
             button.attributedTitle = attributedTitle
-            //self.isStatusBarIconEnabled(state: StatusBarSettingsData.shared.statusBarShowIcon)
         }
     }
     
@@ -126,13 +120,6 @@ extension StatusBarManager: StatusBarDelegate {
     
     @objc func statusBarButtonClicked(_ sender: NSStatusBarButton) {
         self.statusItem.menu?.popUp(positioning: nil, at: NSPoint(), in: statusItem.button)
-    }
-    
-    @objc func enableIconSwitched(sender: NSSwitch) {
-        isIconEnabled = sender.state == .on
-        if let button = statusItem.button {
-            button.image = isIconEnabled ? avgTempCurrentLevel.getImage() : nil
-        }
     }
     
     @objc func closeButtonClicked(_ sender: NSMenuItem) {
