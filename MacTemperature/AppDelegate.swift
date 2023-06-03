@@ -15,25 +15,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     var settingsWindow: NSWindow?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
         StorageLoader.loadAllSharedSettings()
-
-        do {
-            try SMAppService.mainApp.register() 
-        } catch {
-            print("SMAppService failed to register")
-        }
         
         StatusBarModuleAssembly.configureModule()
         TemperatureMonitorModuleAssembly.configureModule()
         
-        let mainController = MainModuleAssembly.configureMoule()
+        if GeneralSettingsData.shared.appShouldLaunchAfterStart {
+            self.setAppToLaunchAtMacStart()
+        } else {
+            self.resetAppToLaunchAtMacStart()
+        }
 
-        self.window = configureMainWindow(mainController)
-        self.window?.makeKeyAndOrderFront(nil)
-        NSApplication.shared.activate(ignoringOtherApps: true)
+        if GeneralSettingsData.shared.mainWindowOpenEveryLaunch {
+            self.showMainWindow()
+        }
         
-        showSettingsWindow()
+        self.showSettingsWindow()
     }
     
     func windowWillClose(_ notification: Notification) {
@@ -62,6 +59,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 }
 
 extension AppDelegate {
+    
+    public func setAppToLaunchAtMacStart() {
+        do {
+            try SMAppService.mainApp.register()
+        } catch {
+            print("SMAppService failed to register")
+        }
+    }
+    
+    public func resetAppToLaunchAtMacStart() {
+        do {
+            try SMAppService.mainApp.unregister()
+        } catch {
+            print("SMAppService failed to unregister")
+        }
+    }
     
     func configureMainWindow(_ contentViewcontroller: NSViewController) -> NSWindow {
         let windowSize = NSSize(width: tableWidth, height: 400)
