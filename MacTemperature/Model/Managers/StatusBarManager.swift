@@ -73,6 +73,22 @@ class StatusBarManager {
             guard let statusBarShowIcon = notification.object as? Bool, let strongSelf = self else { return }
             strongSelf.isStatusBarIconEnabled(state: statusBarShowIcon)
         }
+        
+        NotificationCenter.default.addObserver(forName: NotificationNames.menuUpdateNotification, object: nil, queue: nil) { [weak self] notification in
+            guard let menuBarSettingsData = notification.object as? MenuBarSettingsData, let strongSelf = self else { return }
+            
+            if menuBarSettingsData.cpuShowTemperatures {
+                strongSelf.menu.insertItem(cpuTempItem, at: 0)
+            } else {
+                strongSelf.menu.removeItem(cpuTempItem)
+            }
+            
+//            if menuBarSettingsData.gpuShowTemperatures {
+//                strongSelf.menu.insertItem(gpuTempItem, at: 1)
+//            } else {
+//                strongSelf.menu.removeItem(gpuTempItem)
+//            }
+        }
     }
 
     func updateStatusBarItemTitle(_ floatValue: Float? = nil) {

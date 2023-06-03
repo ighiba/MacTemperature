@@ -10,4 +10,5 @@ import Foundation
 class NotificationNames {
     static let temperatureUpdateNotifaction = Notification.Name("ru.ighiba.TemperatureUpdateNotifaction")
     static let isEnableStatusBarIconNotification = Notification.Name("ru.ighiba.isEnableStatusBarIconNotification")
+    static let menuUpdateNotification = Notification.Name("ru.ighiba.menuUpdateNotification")
 }

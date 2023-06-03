@@ -25,13 +25,11 @@ protocol SettingsOutput: AnyObject {
 }
 
 class SettingsPresenter: SettingsOutput {
-
     
     weak var input: SettingsInput!
     
     var settingsStorage: SettingsStorage!
-    
-    
+
     init() {
         
     }
@@ -54,6 +52,7 @@ class SettingsPresenter: SettingsOutput {
     func setMenuBarSettings(_ settings: MenuBarSettingsData) {
         MenuBarSettingsData.shared.setSettings(settings)
         settingsStorage.saveData(settings)
+        NotificationCenter.default.post(name: NotificationNames.menuUpdateNotification, object: settings)
     }
     
     func getStatusBarSettings() -> StatusBarSettingsData {
