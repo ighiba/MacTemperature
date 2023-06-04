@@ -14,14 +14,14 @@ class TemperaturesMenuView: NSView {
     private var stackView: NSStackView!
     private var rows: [TemperatureStatusBarRow] = []
     
-    init(title: String, _ delegate: StatusBarDelegate) {
+    init(title: String, type: TemperatureSensorType,  _ delegate: StatusBarDelegate) {
         super.init(frame: NSRect(x: 0, y: 0, width: statusBarMenuWidth, height: 300))
         
         self.delegate = delegate
         
         self.titleLabel = NSTextField(labelWithString: title)
         self.titleLabel.font = .boldSystemFont(ofSize: 13)
-        self.loadDummyData()
+        self.loadDummyData(for: type)
 
         self.stackView = NSStackView(views: rows)
         self.stackView.orientation = .vertical
@@ -64,11 +64,11 @@ class TemperaturesMenuView: NSView {
         }
     }
     
-    private func loadDummyData() {
+    private func loadDummyData(for type: TemperatureSensorType) {
         let sensorsManager = SensorsManagerImpl()
-        let values = sensorsManager.getValues(Sensor.allCases)
-        let tempStatusData = values.map {
-            TemperatureData(smcValue: $0)
+        let sensors = sensorsManager.getSensorsForCurrentDevice(where: [type])
+        let tempStatusData = sensors.map {
+            TemperatureData(id: $0.key, title: $0.title, floatValue: 0.0)
         }
         rows = tempStatusData.map {
             TemperatureStatusBarRow(data: $0)

@@ -8,8 +8,8 @@
 import Foundation
 
 protocol TemperatureManager: AnyObject {
-    func updateTemperatureValue(_ value: UnsafeMutablePointer<SMCVal_t>)
-    func getAverageTemperatureFor(_ values: [SMCVal_t]) -> Float
+    func getTemperature(for sensor: Sensor) -> Float?
+    func getAverageTemperatureFor(_ data: [TemperatureData]) -> Float
 }
 
 class TemperatureManagerImpl: TemperatureManager {
@@ -17,61 +17,37 @@ class TemperatureManagerImpl: TemperatureManager {
     init() {
         
     }
+//    
+//    func updateTemperatureValue(_ value: UnsafeMutablePointer<SMCVal_t>) {
+//        let result = AppleSMC.shared.read(value)
+//        if result != kIOReturnSuccess {
+//            fatalError("Error")
+//        }
+//    }
     
-    func updateTemperatureValue(_ value: UnsafeMutablePointer<SMCVal_t>) {
-        let result = AppleSMC.shared.read(value)
-        if result != kIOReturnSuccess {
-            fatalError("Error")
-        }
-    }
-    
-    func getAverageTemperatureFor(_ values: [SMCVal_t]) -> Float {
-        let temps = values.map { Float($0.bytes) ?? 0.0 }
+    func getAverageTemperatureFor(_ data: [TemperatureData]) -> Float {
+        let temps = data.map({ $0.floatValue })
         let sum = temps.reduce(0, +)
         
         return sum / Float(temps.count)
     }
     
     
-//    func getTemperature(for sensor: Sensor) -> Float {
-//        
-//        let kernelIndex: UInt32 = 2
-//        let readBytes: UInt32 = 5
-//        let readKeyInfo: UInt8 = 9
-//                
-//        var input = SMCKeyData_t()
-//        var output = SMCKeyData_t()
-//        
-//        input.key = FourCharCode(fromString: sensor.key)
-//        input.data8 = readKeyInfo
-//
-//        var value = SMCVal_t(sensor.key)
-//        var result: kern_return_t
-//        
-//        result = AppleSMC.shared.call(kernelIndex, input: &input, output: &output)
-//        if result != kIOReturnSuccess {
-//            fatalError("Error")
-//        }
-//        
-//        value.dataSize = UInt32(output.keyInfo.dataSize)
-//        value.dataType = output.keyInfo.dataType.toString()
-//        input.keyInfo.dataSize = output.keyInfo.dataSize
-//        input.data8 = UInt8(readBytes)
-//        
-//        result = AppleSMC.shared.call(kernelIndex, input: &input, output: &output)
-//        if result != kIOReturnSuccess {
-//            fatalError("Error")
-//        }
-//
-//        memcpy(&value.bytes, &output.bytes, Int(value.dataSize))
-// 
-//        
-//        if let temperature = Float(value.bytes) {
-//            return temperature
-//        }
-//        
-//        return 0.0
-//    }
+    func getTemperature(for sensor: Sensor) -> Float? {
+        var value = SMCVal_t(sensor.key)
+        var result: kern_return_t
+        
+        result = AppleSMC.shared.read(&value)
+        if result != kIOReturnSuccess {
+            return nil
+        }
+        
+        if value.dataType == "flt " {
+            return Float(value.bytes)
+        }
+
+        return nil
+    }
     
     
 }

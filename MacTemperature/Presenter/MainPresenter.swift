@@ -31,27 +31,22 @@ class MainPresenter: MainViewOutput {
     }
     
     @objc func updateMainViewRows(_ notification: NSNotification) {
-        guard let values = notification.object as? [SMCVal_t] else { return }
+        guard let tempData = notification.object as? [TemperatureData] else { return }
         DispatchQueue.main.async { [weak self] in
-            let tempData = values.map {
-                TemperatureData(smcValue: $0)
-            }
             self?.input.updateRows(data: tempData)
         }
     }
 
     func getSampleData() -> [TemperatureData] {
-        let values = sensorsManager.getValues(Sensor.allCases)
-        let tempStatusData = values.map {
-            TemperatureData(smcValue: $0)
+        let sensors = sensorsManager.getSensorsForCurrentDevice(where: [.cpu, .gpu])
+        let tempStatusData = sensors.map {
+            TemperatureData(id: $0.key, title: $0.title, floatValue: 0.0)
         }
         return tempStatusData
     }
     
     func loadInitalData() -> [TemperatureData] {
-        let tempStatusData = TemperatureMonitor.lastValues.map {
-            TemperatureData(smcValue: $0)
-        }
+        let tempStatusData = TemperatureMonitor.lastData
         return !tempStatusData.isEmpty ? tempStatusData : self.getSampleData()
     }
     

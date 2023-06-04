@@ -46,7 +46,7 @@
 		C065ACB22A23D1B500A82183 /* MacTemperatureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACB12A23D1B500A82183 /* MacTemperatureUITests.swift */; };
 		C065ACB42A23D1B500A82183 /* MacTemperatureUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACB32A23D1B500A82183 /* MacTemperatureUITestsLaunchTests.swift */; };
 		C065ACC22A24F24300A82183 /* AppleSMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACC12A24F24300A82183 /* AppleSMC.swift */; };
-		C065ACC42A24F37D00A82183 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACC32A24F37D00A82183 /* Sensor.swift */; };
+		C065ACC42A24F37D00A82183 /* Sensors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACC32A24F37D00A82183 /* Sensors.swift */; };
 		C065ACC72A25114C00A82183 /* TemperatureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACC62A25114C00A82183 /* TemperatureTextField.swift */; };
 		C065ACC92A25161200A82183 /* SensorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACC82A25161200A82183 /* SensorsManager.swift */; };
 		C065ACCB2A2517BC00A82183 /* TemperatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACCA2A2517BC00A82183 /* TemperatureManager.swift */; };
@@ -117,7 +117,7 @@
 		C065ACB12A23D1B500A82183 /* MacTemperatureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTemperatureUITests.swift; sourceTree = "<group>"; };
 		C065ACB32A23D1B500A82183 /* MacTemperatureUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTemperatureUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C065ACC12A24F24300A82183 /* AppleSMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSMC.swift; sourceTree = "<group>"; };
-		C065ACC32A24F37D00A82183 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
+		C065ACC32A24F37D00A82183 /* Sensors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensors.swift; sourceTree = "<group>"; };
 		C065ACC62A25114C00A82183 /* TemperatureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureTextField.swift; sourceTree = "<group>"; };
 		C065ACC82A25161200A82183 /* SensorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsManager.swift; sourceTree = "<group>"; };
 		C065ACCA2A2517BC00A82183 /* TemperatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureManager.swift; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 				C00269E12A264AEA000BA655 /* Managers */,
 				C039702C2A2A85E8007078AD /* Storage */,
 				C065ACC12A24F24300A82183 /* AppleSMC.swift */,
-				C065ACC32A24F37D00A82183 /* Sensor.swift */,
+				C065ACC32A24F37D00A82183 /* Sensors.swift */,
 				C03970332A2AC7F5007078AD /* TemperatureSensorType.swift */,
 				C00269D62A257118000BA655 /* TemperatureData.swift */,
 				C01DDC722A27F26500E30383 /* TemperatureDataContainer.swift */,
@@ -460,7 +460,7 @@
 			files = (
 				C03970342A2AC7F5007078AD /* TemperatureSensorType.swift in Sources */,
 				C065AC982A23D1B400A82183 /* MainViewController.swift in Sources */,
-				C065ACC42A24F37D00A82183 /* Sensor.swift in Sources */,
+				C065ACC42A24F37D00A82183 /* Sensors.swift in Sources */,
 				C01DDC712A27C9FD00E30383 /* TemperatureTableView.swift in Sources */,
 				C01DDC732A27F26500E30383 /* TemperatureDataContainer.swift in Sources */,
 				C00269D92A25714C000BA655 /* TemperatureStatusRow.swift in Sources */,

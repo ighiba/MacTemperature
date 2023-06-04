@@ -52,9 +52,9 @@ class MainView: NSView {
     
     private func loadDummyData() {
         let sensorsManager = SensorsManagerImpl()
-        let values = sensorsManager.getValues(Sensor.allCases)
-        let tempStatusData = values.map {
-            TemperatureData(smcValue: $0)
+        let sensors = sensorsManager.getSensorsForCurrentDevice(where: [.cpu, .gpu])
+        let tempStatusData = sensors.map {
+            TemperatureData(id: $0.key, title: $0.title, floatValue: 0.0)
         }
         rows = tempStatusData.map {
             TemperatureStatusRow(data: $0)

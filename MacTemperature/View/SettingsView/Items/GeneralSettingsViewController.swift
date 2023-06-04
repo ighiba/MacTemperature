@@ -88,7 +88,7 @@ class GeneralSettingsViewController: SettingsItemViewController {
 
     @objc func setNewFrequency() {
         self.view.window?.makeFirstResponder(nil)
-        var newUpdateFrequency = Int(editFrequencyTextField.stringValue) ?? 1
+        let newUpdateFrequency = Int(editFrequencyTextField.stringValue) ?? 1
         settings.updateFrequencyInSeconds = newUpdateFrequency
         delegate.setGeneralSettings(settings)
     }

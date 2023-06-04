@@ -9,7 +9,7 @@ import Foundation
 
 class TemperatureMonitor {
     
-    static var lastValues: [SMCVal_t] = []
+    static var lastData: [TemperatureData] = []
     static let shared = TemperatureMonitor()
     
     private var timer: DispatchSourceTimer?
@@ -20,10 +20,10 @@ class TemperatureMonitor {
     
     private var secondsBetweenUpdate = GeneralSettingsData.shared.updateFrequencyInSeconds
     
-    private var values: [SMCVal_t]! {
+    private var data: [TemperatureData]! {
         didSet {
-            Self.lastValues = values
-            NotificationCenter.default.post(name: NotificationNames.temperatureUpdateNotifaction, object: values)
+            Self.lastData = data
+            NotificationCenter.default.post(name: NotificationNames.temperatureUpdateNotifaction, object: data)
         }
     }
     
@@ -38,21 +38,25 @@ class TemperatureMonitor {
     }
     
     func start() {
-        self.values = sensorsManager.getValues(Sensor.allCases)
+        let cpuSensors = sensorsManager.getSensorsForCurrentDevice(where: [.cpu])
+        let gpuSensors = sensorsManager.getSensorsForCurrentDevice(where: [.gpu])
+        let sensors = cpuSensors + gpuSensors
         
         self.timer = DispatchSource.makeTimerSource(queue: queue)
         self.timer?.schedule(deadline: .now(), repeating: .seconds(secondsBetweenUpdate))
         
         self.timer?.setEventHandler { [weak self] in
             guard let strongSelf = self else { return }
+            var newData: [TemperatureData] = []
             
-            var valuesCopy = strongSelf.values
-            for i in 0..<valuesCopy!.count {
-                strongSelf.temperatureManager.updateTemperatureValue(&valuesCopy![i])
+            for sensor in sensors {
+                guard let floatValue = strongSelf.temperatureManager.getTemperature(for: sensor) else { continue }
+                newData.append(TemperatureData(id: sensor.key, title: sensor.title, floatValue: floatValue))
             }
-            
-            strongSelf.values = valuesCopy
+
+            strongSelf.data = newData
         }
+        
         timer?.resume()
     }
     

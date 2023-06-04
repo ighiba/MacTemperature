@@ -42,7 +42,7 @@ class StatusBarManager {
         showWindowItem.target = self
         settingsItem.target = self
         
-        let cpuTempView = TemperaturesMenuView(title: "CPU Temperatures", self)
+        let cpuTempView = TemperaturesMenuView(title: "CPU Temperatures", type: .cpu, self)
         cpuTempItem.view = cpuTempView
         
         menu.addItem(cpuTempItem)
@@ -56,14 +56,11 @@ class StatusBarManager {
         statusItem.menu = menu
         
         NotificationCenter.default.addObserver(forName: NotificationNames.temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
-            guard let values = notification.object as? [SMCVal_t], let strongSelf = self else { return }
+            guard let tempData = notification.object as? [TemperatureData], let strongSelf = self else { return }
             DispatchQueue.main.async {
-                let tempStatusData = values.map {
-                    TemperatureData(smcValue: $0)
-                }
-                cpuTempView.updateRows(data: tempStatusData)
+                cpuTempView.updateRows(data: tempData)
                 
-                let avgCPUTemp = strongSelf.temperatureManager.getAverageTemperatureFor(values)
+                let avgCPUTemp = strongSelf.temperatureManager.getAverageTemperatureFor(tempData)
                 strongSelf.avgTempValue = avgCPUTemp
                 strongSelf.updateStatusBarItemTitle(avgCPUTemp)
             }
