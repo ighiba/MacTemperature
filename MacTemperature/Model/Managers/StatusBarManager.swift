@@ -20,6 +20,7 @@ class StatusBarManager {
     
     private let statusItem: NSStatusItem
     private var isIconEnabled = true
+    private var avgTempType: TemperatureSensorType = .cpu
     private var avgTempValue: Float = 0.0
     private var avgTempCurrentLevel: TemperatureLevel {
         return TemperatureLevel.getLevel(avgTempValue)
@@ -28,6 +29,8 @@ class StatusBarManager {
     var temperatureManager: TemperatureManager!
     
     var menu = NSMenu()
+    
+    
     
     private init() {
         self.statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
@@ -59,13 +62,22 @@ class StatusBarManager {
         NotificationCenter.default.addObserver(forName: NotificationNames.temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
             guard let tempMonitorData = notification.object as? TemperatureMonitorData, let strongSelf = self else { return }
             DispatchQueue.main.async {
-                guard let cpuData = tempMonitorData[.cpu] else { return }
+                
+                let cpuData = tempMonitorData[.cpu] ?? []
                 cpuTempView.updateRows(data: cpuData)
                 
-                let avgCPUTemp = strongSelf.temperatureManager.getAverageTemperatureFor(cpuData)
-                strongSelf.avgTempValue = avgCPUTemp
-                strongSelf.updateStatusBarItemTitle(avgCPUTemp)
+                let gpuData = tempMonitorData[.gpu] ?? []
+                
+                strongSelf.setAvgAndUpdateStatusBar(tempMonitorData, for: strongSelf.avgTempType)
             }
+        }
+        
+        NotificationCenter.default.addObserver(forName: NotificationNames.avgTemperatureTypeChangedNotification, object: nil, queue: nil) { [weak self] notification in
+            guard let newAvgTempType = notification.object as? TemperatureSensorType, let strongSelf = self else { return }
+            guard newAvgTempType != strongSelf.avgTempType else { return }
+            
+            strongSelf.avgTempType = newAvgTempType
+            strongSelf.setAvgAndUpdateStatusBar(for: newAvgTempType)
         }
         
         NotificationCenter.default.addObserver(forName: NotificationNames.isEnableStatusBarIconNotification, object: nil, queue: nil) { [weak self] notification in
@@ -88,6 +100,14 @@ class StatusBarManager {
 //                strongSelf.menu.removeItem(gpuTempItem)
 //            }
         }
+    }
+    
+    func setAvgAndUpdateStatusBar(_ data: TemperatureMonitorData? = nil, for type: TemperatureSensorType) {
+        let tempMonitorData = data ?? TemperatureMonitor.lastData
+        let tempDataForAvg = tempMonitorData[type] ?? []
+        let avgTemp = self.temperatureManager.getAverageTemperatureFor(tempDataForAvg)
+        self.avgTempValue = avgTemp
+        self.updateStatusBarItemTitle(avgTemp)
     }
 
     func updateStatusBarItemTitle(_ floatValue: Float? = nil) {

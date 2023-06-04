@@ -64,6 +64,7 @@ class SettingsPresenter: SettingsOutput {
         StatusBarSettingsData.shared.setSettings(settings)
         settingsStorage.saveData(settings)
         NotificationCenter.default.post(name: NotificationNames.isEnableStatusBarIconNotification, object: settings.statusBarShowIcon)
+        NotificationCenter.default.post(name: NotificationNames.avgTemperatureTypeChangedNotification, object: settings.statusBarAverageTemperatureFor)
     }
 
 }

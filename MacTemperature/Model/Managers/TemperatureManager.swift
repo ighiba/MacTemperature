@@ -26,6 +26,7 @@ class TemperatureManagerImpl: TemperatureManager {
 //    }
     
     func getAverageTemperatureFor(_ data: [TemperatureData]) -> Float {
+        guard !data.isEmpty else { return 0 }
         let temps = data.map({ $0.floatValue })
         let sum = temps.reduce(0, +)
         
