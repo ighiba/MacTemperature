@@ -51,7 +51,7 @@
 		C065ACC92A25161200A82183 /* SensorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACC82A25161200A82183 /* SensorsManager.swift */; };
 		C065ACCB2A2517BC00A82183 /* TemperatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACCA2A2517BC00A82183 /* TemperatureManager.swift */; };
 		C065ACCD2A252D4200A82183 /* MainModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACCC2A252D4200A82183 /* MainModuleAssembly.swift */; };
-		C0E5F93C2A2CA5BC0098727E /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5F93B2A2CA5BC0098727E /* CPU.swift */; };
+		C0E5F93C2A2CA5BC0098727E /* ARM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5F93B2A2CA5BC0098727E /* ARM.swift */; };
 		C0E5F93E2A2CA6120098727E /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5F93D2A2CA6120098727E /* Device.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +112,7 @@
 		C065AC9C2A23D1B500A82183 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C065AC9E2A23D1B500A82183 /* MacTemperature.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacTemperature.entitlements; sourceTree = "<group>"; };
 		C065ACA32A23D1B500A82183 /* MacTemperatureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacTemperatureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C065ACA72A23D1B500A82183 /* MacTemperatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTemperatureTests.swift; sourceTree = "<group>"; };
+		C065ACA72A23D1B500A82183 /* CurrentDeviceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDeviceTests.swift; sourceTree = "<group>"; };
 		C065ACAD2A23D1B500A82183 /* MacTemperatureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacTemperatureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C065ACB12A23D1B500A82183 /* MacTemperatureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTemperatureUITests.swift; sourceTree = "<group>"; };
 		C065ACB32A23D1B500A82183 /* MacTemperatureUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTemperatureUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		C065ACC82A25161200A82183 /* SensorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsManager.swift; sourceTree = "<group>"; };
 		C065ACCA2A2517BC00A82183 /* TemperatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureManager.swift; sourceTree = "<group>"; };
 		C065ACCC2A252D4200A82183 /* MainModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleAssembly.swift; sourceTree = "<group>"; };
-		C0E5F93B2A2CA5BC0098727E /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
+		C0E5F93B2A2CA5BC0098727E /* ARM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARM.swift; sourceTree = "<group>"; };
 		C0E5F93D2A2CA6120098727E /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,7 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				C01DDC6F2A27898D00E30383 /* MacTemperature.xctestplan */,
-				C065ACA72A23D1B500A82183 /* MacTemperatureTests.swift */,
+				C065ACA72A23D1B500A82183 /* CurrentDeviceTests.swift */,
 			);
 			path = MacTemperatureTests;
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 		C0E5F93A2A2CA5B00098727E /* Device */ = {
 			isa = PBXGroup;
 			children = (
-				C0E5F93B2A2CA5BC0098727E /* CPU.swift */,
+				C0E5F93B2A2CA5BC0098727E /* ARM.swift */,
 				C0E5F93D2A2CA6120098727E /* Device.swift */,
 			);
 			path = Device;
@@ -470,7 +470,7 @@
 				C03970302A2AA719007078AD /* SettingsData.swift in Sources */,
 				C03970202A2A743A007078AD /* SettingsRowContainer.swift in Sources */,
 				C03970172A2A4167007078AD /* SettingsViewController.swift in Sources */,
-				C0E5F93C2A2CA5BC0098727E /* CPU.swift in Sources */,
+				C0E5F93C2A2CA5BC0098727E /* ARM.swift in Sources */,
 				C00269E32A264AFD000BA655 /* StatusBarManager.swift in Sources */,
 				C065ACCD2A252D4200A82183 /* MainModuleAssembly.swift in Sources */,
 				C03C210F2A275165009A7C8E /* TemperaturesMenuView.swift in Sources */,
@@ -506,7 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C065ACA82A23D1B500A82183 /* MacTemperatureTests.swift in Sources */,
+				C065ACA82A23D1B500A82183 /* CurrentDeviceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

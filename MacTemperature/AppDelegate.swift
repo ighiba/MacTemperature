@@ -25,8 +25,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         if GeneralSettingsData.shared.mainWindowOpenEveryLaunch {
             self.showMainWindow()
         }
-        
-        self.showSettingsWindow()
     }
     
     func windowWillClose(_ notification: Notification) {

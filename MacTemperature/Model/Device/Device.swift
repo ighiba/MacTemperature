@@ -9,14 +9,14 @@ import Foundation
 
 protocol MacDevice {
     var modelID: String { get }
-    var cpu: CPU { get }
+    var cpu: ARM { get }
 }
 
 struct Mac: MacDevice {
     var modelID: String
-    var cpu: CPU
+    var cpu: ARM
     
-    private init(modelID: String, cpu: CPU) {
+    private init(modelID: String, cpu: ARM) {
         self.modelID = modelID
         self.cpu = cpu
     }
@@ -48,22 +48,13 @@ struct Mac: MacDevice {
     ]
 }
 
-struct UserDevice: MacDevice {
-    var modelID: String
-    var cpu: CPU = .unknown
-    
-    init(modelID: String, processorCount: Int) {
-        self.modelID = modelID
-        self.cpu = getCPU(by: UInt8(processorCount))
-    }
-    
-    private func getCPU(by processorCount: UInt8) -> CPU {
-        return Mac.listAll.first(where: { $0.modelID == self.modelID && $0.cpu.totalCores == processorCount })?.cpu ?? .unknown
-    }
-}
-
 class CurrentDevice {
-    class func getModelIdentifier() -> String? {
+    
+    class var processorCount: Int {
+        return ProcessInfo.processInfo.processorCount
+    }
+    
+    @objc class func getModelIdentifier() -> String? {
         var modelIdentifier: String?
         var size = 0
         
@@ -74,6 +65,11 @@ class CurrentDevice {
         buffer.deallocate()
         
         return modelIdentifier
+    }
+
+    class func getCpu() -> ARM {
+        guard let modelID = CurrentDevice.getModelIdentifier() else { return .unknown }
+        return ARM.get(modelId: modelID, by: CurrentDevice.processorCount)
     }
 }
 
