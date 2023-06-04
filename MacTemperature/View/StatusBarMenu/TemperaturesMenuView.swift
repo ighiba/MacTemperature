@@ -7,6 +7,9 @@
 
 import Cocoa
 
+private let titleTopSpacing: CGFloat = 5
+private let stackViewTopSpacing: CGFloat = 10
+
 class TemperaturesMenuView: NSView {
     private var delegate: StatusBarDelegate!
     
@@ -39,10 +42,11 @@ class TemperaturesMenuView: NSView {
     
     override func layout() {
         super.layout()
-        self.frame = NSRect(origin: self.frame.origin, size: NSSize(width: statusBarMenuWidth,
-                                                                height: stackView.frame.height * 1.21))
+        self.frame = NSRect(origin: self.frame.origin,
+                            size: NSSize(width: statusBarMenuWidth,
+                                        height: stackView.frame.height + stackView.frame.origin.x - titleTopSpacing))
     }
-    
+
     private func setupLayout() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -50,11 +54,11 @@ class TemperaturesMenuView: NSView {
         NSLayoutConstraint.activate([
             stackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.85),
             stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: stackViewTopSpacing),
             
             titleLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             titleLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.7),
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: titleTopSpacing),
         ])
         
         for row in rows {

@@ -102,7 +102,7 @@ class StatusBarManager {
         }
     }
     
-    func setAvgAndUpdateStatusBar(_ data: TemperatureMonitorData? = nil, for type: TemperatureSensorType) {
+    private func setAvgAndUpdateStatusBar(_ data: TemperatureMonitorData? = nil, for type: TemperatureSensorType) {
         let tempMonitorData = data ?? TemperatureMonitor.lastData
         let tempDataForAvg = tempMonitorData[type] ?? []
         let avgTemp = self.temperatureManager.getAverageTemperatureFor(tempDataForAvg)
@@ -110,7 +110,7 @@ class StatusBarManager {
         self.updateStatusBarItemTitle(avgTemp)
     }
 
-    func updateStatusBarItemTitle(_ floatValue: Float? = nil) {
+    private func updateStatusBarItemTitle(_ floatValue: Float? = nil) {
         let value = floatValue ?? self.avgTempValue
         let attributedTitle = getTemperatureAttributedString(value, colorProvider: avgTempCurrentLevel.getStatusBarColor)
         
@@ -128,7 +128,7 @@ class StatusBarManager {
         return getTemperatureAttributedString(floatValue, colorProvider: level.getStatusBarColor)
     }
     
-    func getTemperatureAttributedString(_ floatValue: Float,
+    private func getTemperatureAttributedString(_ floatValue: Float,
                                        scale: UInt8 = 0,
                                        colorProvider: (() -> NSColor)? = nil) -> NSMutableAttributedString {
         let stringValue = String(format: "%.\(scale)f", floatValue)
