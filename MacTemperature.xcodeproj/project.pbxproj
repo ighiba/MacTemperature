@@ -51,6 +51,8 @@
 		C065ACC92A25161200A82183 /* SensorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACC82A25161200A82183 /* SensorsManager.swift */; };
 		C065ACCB2A2517BC00A82183 /* TemperatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACCA2A2517BC00A82183 /* TemperatureManager.swift */; };
 		C065ACCD2A252D4200A82183 /* MainModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACCC2A252D4200A82183 /* MainModuleAssembly.swift */; };
+		C0E5F93C2A2CA5BC0098727E /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5F93B2A2CA5BC0098727E /* CPU.swift */; };
+		C0E5F93E2A2CA6120098727E /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5F93D2A2CA6120098727E /* Device.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,8 @@
 		C065ACC82A25161200A82183 /* SensorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsManager.swift; sourceTree = "<group>"; };
 		C065ACCA2A2517BC00A82183 /* TemperatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureManager.swift; sourceTree = "<group>"; };
 		C065ACCC2A252D4200A82183 /* MainModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleAssembly.swift; sourceTree = "<group>"; };
+		C0E5F93B2A2CA5BC0098727E /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
+		C0E5F93D2A2CA6120098727E /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,8 +292,9 @@
 		C065ACC02A24F23400A82183 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C039702C2A2A85E8007078AD /* Storage */,
+				C0E5F93A2A2CA5B00098727E /* Device */,
 				C00269E12A264AEA000BA655 /* Managers */,
+				C039702C2A2A85E8007078AD /* Storage */,
 				C065ACC12A24F24300A82183 /* AppleSMC.swift */,
 				C065ACC32A24F37D00A82183 /* Sensor.swift */,
 				C03970332A2AC7F5007078AD /* TemperatureSensorType.swift */,
@@ -312,6 +317,15 @@
 				C065AC972A23D1B400A82183 /* MainViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C0E5F93A2A2CA5B00098727E /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				C0E5F93B2A2CA5BC0098727E /* CPU.swift */,
+				C0E5F93D2A2CA6120098727E /* Device.swift */,
+			);
+			path = Device;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,6 +470,7 @@
 				C03970302A2AA719007078AD /* SettingsData.swift in Sources */,
 				C03970202A2A743A007078AD /* SettingsRowContainer.swift in Sources */,
 				C03970172A2A4167007078AD /* SettingsViewController.swift in Sources */,
+				C0E5F93C2A2CA5BC0098727E /* CPU.swift in Sources */,
 				C00269E32A264AFD000BA655 /* StatusBarManager.swift in Sources */,
 				C065ACCD2A252D4200A82183 /* MainModuleAssembly.swift in Sources */,
 				C03C210F2A275165009A7C8E /* TemperaturesMenuView.swift in Sources */,
@@ -471,6 +486,7 @@
 				C03970322A2AA79F007078AD /* GeneralSettingsData.swift in Sources */,
 				C01DDC7E2A2904CC00E30383 /* StatusBarModuleAssembly.swift in Sources */,
 				C03970272A2A74DD007078AD /* StatusBarSettingsViewController.swift in Sources */,
+				C0E5F93E2A2CA6120098727E /* Device.swift in Sources */,
 				C00269E82A2668BB000BA655 /* TemperatureLevel+Color.swift in Sources */,
 				C03970382A2AC876007078AD /* StatusBarSettingsData.swift in Sources */,
 				C00269DB2A2571DC000BA655 /* MainView.swift in Sources */,
