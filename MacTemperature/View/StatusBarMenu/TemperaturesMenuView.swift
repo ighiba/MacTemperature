@@ -21,7 +21,8 @@ class TemperaturesMenuView: NSView {
         
         self.titleLabel = NSTextField(labelWithString: title)
         self.titleLabel.font = .boldSystemFont(ofSize: 13)
-        self.loadDummyData(for: type)
+        let data = self.delegate.loadInitialData(for: type)
+        rows = data.map { TemperatureStatusBarRow(data: $0) }
 
         self.stackView = NSStackView(views: rows)
         self.stackView.orientation = .vertical
@@ -64,22 +65,11 @@ class TemperaturesMenuView: NSView {
         }
     }
     
-    private func loadDummyData(for type: TemperatureSensorType) {
-        let sensorsManager = SensorsManagerImpl()
-        let sensors = sensorsManager.getSensorsForCurrentDevice(where: [type])
-        let tempStatusData = sensors.map {
-            TemperatureData(id: $0.key, title: $0.title, floatValue: 0.0)
-        }
-        rows = tempStatusData.map {
-            TemperatureStatusBarRow(data: $0)
-        }
-    }
-    
     public func updateRows(data: [TemperatureData]) {
         for item in data {
             let row = rows.first(where: { $0.key == item.id } )
             guard let row else { continue }
-            let newAttributedString = delegate.getDefaultTemperatureAttributedString(item.floatValue)
+            let newAttributedString = self.delegate.getDefaultTemperatureAttributedString(item.floatValue)
             newAttributedString.setAlignment(.right, range: NSRange(location: 0, length: newAttributedString.length))
             row.valueTextField.attributedStringValue = newAttributedString
         }

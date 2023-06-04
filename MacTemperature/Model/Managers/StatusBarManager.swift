@@ -10,8 +10,9 @@ import AppKit
 
 let statusBarMenuWidth: CGFloat = 220
 
-@objc protocol StatusBarDelegate: AnyObject {
+protocol StatusBarDelegate: AnyObject {
     func getDefaultTemperatureAttributedString(_ floatValue: Float) -> NSMutableAttributedString
+    func loadInitialData(for type: TemperatureSensorType) -> [TemperatureData]
 }
 
 class StatusBarManager {
@@ -56,11 +57,12 @@ class StatusBarManager {
         statusItem.menu = menu
         
         NotificationCenter.default.addObserver(forName: NotificationNames.temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
-            guard let tempData = notification.object as? [TemperatureData], let strongSelf = self else { return }
+            guard let tempMonitorData = notification.object as? TemperatureMonitorData, let strongSelf = self else { return }
             DispatchQueue.main.async {
-                cpuTempView.updateRows(data: tempData)
+                guard let cpuData = tempMonitorData[.cpu] else { return }
+                cpuTempView.updateRows(data: cpuData)
                 
-                let avgCPUTemp = strongSelf.temperatureManager.getAverageTemperatureFor(tempData)
+                let avgCPUTemp = strongSelf.temperatureManager.getAverageTemperatureFor(cpuData)
                 strongSelf.avgTempValue = avgCPUTemp
                 strongSelf.updateStatusBarItemTitle(avgCPUTemp)
             }
@@ -147,6 +149,20 @@ extension StatusBarManager: StatusBarDelegate {
     @objc func settingsClicked(_ sender: NSMenuItem) {
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.showSettingsWindow()
+    }
+    
+    func loadInitialData(for type: TemperatureSensorType) -> [TemperatureData] {
+        let tempStatusData = TemperatureMonitor.lastData[type] ?? []
+        return !tempStatusData.isEmpty ? tempStatusData : self.getSampleData(for: type)
+    }
+    
+    private func getSampleData(for type: TemperatureSensorType) -> [TemperatureData] {
+        let sensorsManager = SensorsManagerImpl()
+        let sensors = sensorsManager.getSensorsForCurrentDevice(where: [type])
+        let tempStatusData = sensors.map {
+            TemperatureData(id: $0.key, title: $0.title, floatValue: 0.0)
+        }
+        return tempStatusData
     }
 }
 

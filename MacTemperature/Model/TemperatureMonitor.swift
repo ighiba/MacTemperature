@@ -7,9 +7,22 @@
 
 import Foundation
 
+typealias TemperatureMonitorData = [TemperatureSensorType : [TemperatureData]]
+
+extension TemperatureMonitorData {
+    func transformIntoTemperatureData() -> [TemperatureData] {
+        var tempData: [TemperatureData] = []
+        for type in TemperatureSensorType.allCases {
+            guard let data = self[type] else { continue }
+            tempData.append(contentsOf: data)
+        }
+        return tempData
+    }
+}
+
 class TemperatureMonitor {
     
-    static var lastData: [TemperatureData] = []
+    static var lastData: TemperatureMonitorData = [:]
     static let shared = TemperatureMonitor()
     
     private var timer: DispatchSourceTimer?
@@ -20,7 +33,7 @@ class TemperatureMonitor {
     
     private var secondsBetweenUpdate = GeneralSettingsData.shared.updateFrequencyInSeconds
     
-    private var data: [TemperatureData]! {
+    private var data: TemperatureMonitorData! {
         didSet {
             Self.lastData = data
             NotificationCenter.default.post(name: NotificationNames.temperatureUpdateNotifaction, object: data)
@@ -38,20 +51,25 @@ class TemperatureMonitor {
     }
     
     func start() {
-        let cpuSensors = sensorsManager.getSensorsForCurrentDevice(where: [.cpu])
-        let gpuSensors = sensorsManager.getSensorsForCurrentDevice(where: [.gpu])
-        let sensors = cpuSensors + gpuSensors
+//        let cpuSensors = sensorsManager.getSensorsForCurrentDevice(where: [.cpu])
+//        let gpuSensors = sensorsManager.getSensorsForCurrentDevice(where: [.gpu])
+//        let sensors = cpuSensors + gpuSensors
         
         self.timer = DispatchSource.makeTimerSource(queue: queue)
         self.timer?.schedule(deadline: .now(), repeating: .seconds(secondsBetweenUpdate))
         
         self.timer?.setEventHandler { [weak self] in
             guard let strongSelf = self else { return }
-            var newData: [TemperatureData] = []
-            
-            for sensor in sensors {
-                guard let floatValue = strongSelf.temperatureManager.getTemperature(for: sensor) else { continue }
-                newData.append(TemperatureData(id: sensor.key, title: sensor.title, floatValue: floatValue))
+            var newData: TemperatureMonitorData = [:]
+            for type in TemperatureSensorType.allCases {
+                let sensors = strongSelf.sensorsManager.getSensorsForCurrentDevice(where: [type])
+                var tempData: [TemperatureData] = []
+                for sensor in sensors {
+                    guard let floatValue = strongSelf.temperatureManager.getTemperature(for: sensor) else { continue }
+                    tempData.append(TemperatureData(id: sensor.key, title: sensor.title, floatValue: floatValue))
+                }
+                newData.updateValue(tempData, forKey: type)
+
             }
 
             strongSelf.data = newData
