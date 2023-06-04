@@ -44,7 +44,7 @@ class TemperaturesMenuView: NSView {
         super.layout()
         self.frame = NSRect(origin: self.frame.origin,
                             size: NSSize(width: statusBarMenuWidth,
-                                        height: stackView.frame.height + stackView.frame.origin.x - titleTopSpacing))
+                                         height: stackView.frame.height + stackView.frame.origin.x + 25))
     }
 
     private func setupLayout() {

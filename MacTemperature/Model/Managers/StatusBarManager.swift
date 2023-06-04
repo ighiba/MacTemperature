@@ -28,9 +28,8 @@ class StatusBarManager {
     
     var temperatureManager: TemperatureManager!
     
-    var menu = NSMenu()
-    
-    
+    var cpuTempView: TemperaturesMenuView!
+    var gpuTempView: TemperaturesMenuView!
     
     private init() {
         self.statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
@@ -38,35 +37,20 @@ class StatusBarManager {
         self.statusItem.button?.action = #selector(statusBarButtonClicked)
         self.isStatusBarIconEnabled(state: StatusBarSettingsData.shared.statusBarShowIcon)
         
-        let cpuTempItem = NSMenuItem(title: "CPU Temp", action: nil, keyEquivalent: "")
-        let closeItem = NSMenuItem(title: "Close", action: #selector(closeButtonClicked), keyEquivalent: "q")
-        let showWindowItem = NSMenuItem(title: "Show main window", action: #selector(showMainWindowClicked), keyEquivalent: "")
-        let settingsItem = NSMenuItem(title: "Settings", action: #selector(settingsClicked), keyEquivalent: ",")
-        closeItem.target = self
-        showWindowItem.target = self
-        settingsItem.target = self
+        self.cpuTempView = TemperaturesMenuView(title: "CPU Temperatures", type: .cpu, self)
+        self.gpuTempView = TemperaturesMenuView(title: "GPU Temperatures", type: .gpu, self)
         
-        let cpuTempView = TemperaturesMenuView(title: "CPU Temperatures", type: .cpu, self)
-        cpuTempItem.view = cpuTempView
-        
-        menu.addItem(cpuTempItem)
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(showWindowItem)
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(settingsItem)
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(closeItem)
-        
-        statusItem.menu = menu
+        statusItem.menu = configureMenu(MenuBarSettingsData.shared)
         
         NotificationCenter.default.addObserver(forName: NotificationNames.temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
             guard let tempMonitorData = notification.object as? TemperatureMonitorData, let strongSelf = self else { return }
             DispatchQueue.main.async {
                 
                 let cpuData = tempMonitorData[.cpu] ?? []
-                cpuTempView.updateRows(data: cpuData)
+                strongSelf.cpuTempView?.updateRows(data: cpuData)
                 
                 let gpuData = tempMonitorData[.gpu] ?? []
+                strongSelf.gpuTempView?.updateRows(data: gpuData)
                 
                 strongSelf.setAvgAndUpdateStatusBar(tempMonitorData, for: strongSelf.avgTempType)
             }
@@ -87,18 +71,8 @@ class StatusBarManager {
         
         NotificationCenter.default.addObserver(forName: NotificationNames.menuUpdateNotification, object: nil, queue: nil) { [weak self] notification in
             guard let menuBarSettingsData = notification.object as? MenuBarSettingsData, let strongSelf = self else { return }
-            
-            if menuBarSettingsData.cpuShowTemperatures {
-                strongSelf.menu.insertItem(cpuTempItem, at: 0)
-            } else {
-                strongSelf.menu.removeItem(cpuTempItem)
-            }
-            
-//            if menuBarSettingsData.gpuShowTemperatures {
-//                strongSelf.menu.insertItem(gpuTempItem, at: 1)
-//            } else {
-//                strongSelf.menu.removeItem(gpuTempItem)
-//            }
+            strongSelf.statusItem.menu = nil
+            strongSelf.statusItem.menu = strongSelf.configureMenu(menuBarSettingsData)
         }
     }
     
@@ -117,6 +91,40 @@ class StatusBarManager {
         if let button = self.statusItem.button {
             button.attributedTitle = attributedTitle
         }
+    }
+    
+    func configureMenu(_ menuBarSettings: MenuBarSettingsData) -> NSMenu {
+        let cpuTempItem = NSMenuItem(title: "CPU Temp", action: nil, keyEquivalent: "")
+        let gpuTempItem = NSMenuItem(title: "GPU Temp", action: nil, keyEquivalent: "")
+        let closeItem = NSMenuItem(title: "Close", action: #selector(closeButtonClicked), keyEquivalent: "q")
+        let showWindowItem = NSMenuItem(title: "Show main window", action: #selector(showMainWindowClicked), keyEquivalent: "")
+        let settingsItem = NSMenuItem(title: "Settings", action: #selector(settingsClicked), keyEquivalent: ",")
+        closeItem.target = self
+        showWindowItem.target = self
+        settingsItem.target = self
+        
+        cpuTempItem.view = self.cpuTempView
+        gpuTempItem.view = self.gpuTempView
+        
+        let menu = NSMenu()
+        
+        if menuBarSettings.cpuShowTemperatures {
+            menu.addItem(cpuTempItem)
+            menu.addItem(NSMenuItem.separator())
+        }
+        
+        if menuBarSettings.gpuShowTemperatures {
+            menu.addItem(gpuTempItem)
+            menu.addItem(NSMenuItem.separator())
+        }
+        
+        menu.addItem(showWindowItem)
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(settingsItem)
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(closeItem)
+        
+        return menu
     }
     
     private func isStatusBarIconEnabled( state: Bool) {
@@ -173,7 +181,7 @@ extension StatusBarManager: StatusBarDelegate {
     
     func loadInitialData(for type: TemperatureSensorType) -> [TemperatureData] {
         let tempStatusData = TemperatureMonitor.lastData[type] ?? []
-        return !tempStatusData.isEmpty ? tempStatusData : self.getSampleData(for: type)
+        return !tempStatusData.isEmpty ? tempStatusData : getSampleData(for: type)
     }
     
     private func getSampleData(for type: TemperatureSensorType) -> [TemperatureData] {
