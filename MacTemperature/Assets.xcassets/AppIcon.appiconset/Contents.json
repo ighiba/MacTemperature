@@ -1,61 +1,61 @@
 {
   "images" : [
     {
-      "filename" : "mac-temperature-appicon-16px.png",
+      "filename" : "Size=16x16.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"
     },
     {
-      "filename" : "mac-temperature-appicon-32px 1.png",
+      "filename" : "Size=16x16@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
     },
     {
-      "filename" : "mac-temperature-appicon-32px.png",
+      "filename" : "Size=32x32.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "32x32"
     },
     {
-      "filename" : "mac-temperature-appicon-64px.png",
+      "filename" : "Size=32x32@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "32x32"
     },
     {
-      "filename" : "mac-temperature-appicon-128px.png",
+      "filename" : "Size=128x128.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "128x128"
     },
     {
-      "filename" : "mac-temperature-appicon-256px 1.png",
+      "filename" : "Size=128x128@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
     },
     {
-      "filename" : "mac-temperature-appicon-256px.png",
+      "filename" : "Size=256x256.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
     },
     {
-      "filename" : "mac-temperature-appicon-512px 1.png",
+      "filename" : "Size=256x256@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
-      "filename" : "mac-temperature-appicon-512px.png",
+      "filename" : "Size=512x512.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "mac-temperature-appicon-1024px.png",
+      "filename" : "Size=512x512@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"
