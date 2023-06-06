@@ -42,7 +42,7 @@
 		C065AC982A23D1B400A82183 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065AC972A23D1B400A82183 /* MainViewController.swift */; };
 		C065AC9A2A23D1B500A82183 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065AC992A23D1B500A82183 /* Assets.xcassets */; };
 		C065AC9D2A23D1B500A82183 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C065AC9B2A23D1B500A82183 /* Main.storyboard */; };
-		C065ACA82A23D1B500A82183 /* MacTemperatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACA72A23D1B500A82183 /* MacTemperatureTests.swift */; };
+		C065ACA82A23D1B500A82183 /* CurrentDeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACA72A23D1B500A82183 /* CurrentDeviceTests.swift */; };
 		C065ACB22A23D1B500A82183 /* MacTemperatureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACB12A23D1B500A82183 /* MacTemperatureUITests.swift */; };
 		C065ACB42A23D1B500A82183 /* MacTemperatureUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACB32A23D1B500A82183 /* MacTemperatureUITestsLaunchTests.swift */; };
 		C065ACC22A24F24300A82183 /* AppleSMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACC12A24F24300A82183 /* AppleSMC.swift */; };
@@ -675,7 +675,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -683,6 +683,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ighiba.MacTemperature;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -705,7 +706,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -713,6 +714,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ighiba.MacTemperature;
 				PRODUCT_NAME = "$(TARGET_NAME)";

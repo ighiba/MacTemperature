@@ -151,7 +151,7 @@ class StatusBarManager {
         let attributedTitle = NSMutableAttributedString(string: newTitle)
 
         let rangeToPaintValue = NSRange(location: 0, length: newTitle.count - 1)
-        let rangeToPaintC = NSRange(location: newTitle.count - 2, length: abs(2 - newTitle.count))
+        let rangeToPaintC = NSRange(location: newTitle.count - 2, length: 2)
         attributedTitle.addColorAttribute(getColor(), range: rangeToPaintValue)
         attributedTitle.addColorAttribute(NSColor.labelColor, range: rangeToPaintC)
         
