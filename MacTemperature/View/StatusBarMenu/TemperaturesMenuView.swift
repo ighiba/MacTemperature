@@ -11,13 +11,13 @@ private let titleTopSpacing: CGFloat = 5
 private let stackViewTopSpacing: CGFloat = 10
 
 class TemperaturesMenuView: NSView {
-    private var delegate: StatusBarDelegate!
+    weak var delegate: MenuViewDelegate!
     
     private var titleLabel: NSTextField!
     private var stackView: NSStackView!
     private var rows: [TemperatureStatusBarRow] = []
     
-    init(title: String, type: TemperatureSensorType,  _ delegate: StatusBarDelegate) {
+    init(title: String, type: TemperatureSensorType,  _ delegate: MenuViewDelegate) {
         super.init(frame: NSRect(x: 0, y: 0, width: statusBarMenuWidth, height: 300))
         
         self.delegate = delegate
