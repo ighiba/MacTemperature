@@ -51,10 +51,6 @@ class TemperatureMonitor {
     }
     
     func start() {
-//        let cpuSensors = sensorsManager.getSensorsForCurrentDevice(where: [.cpu])
-//        let gpuSensors = sensorsManager.getSensorsForCurrentDevice(where: [.gpu])
-//        let sensors = cpuSensors + gpuSensors
-        
         self.timer = DispatchSource.makeTimerSource(queue: queue)
         self.timer?.schedule(deadline: .now(), repeating: .seconds(secondsBetweenUpdate))
         
