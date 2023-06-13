@@ -14,9 +14,9 @@ class StorageLoader {
         let menuBarSettings: MenuBarSettingsData = settingsStorage.loadData()
         let statusBarSettings: StatusBarSettingsData = settingsStorage.loadData()
         
-        GeneralSettingsData.shared.setSettings(generalSettings)
-        MenuBarSettingsData.shared.setSettings(menuBarSettings)
-        StatusBarSettingsData.shared.setSettings(statusBarSettings)
+        GeneralSettingsData.shared.setData(generalSettings)
+        MenuBarSettingsData.shared.setData(menuBarSettings)
+        StatusBarSettingsData.shared.setData(statusBarSettings)
     }
     
     class func saveAllSharedSettings() {

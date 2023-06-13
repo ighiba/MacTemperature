@@ -20,6 +20,7 @@
 		C01DDC752A289ACA00E30383 /* HorizontalBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DDC742A289ACA00E30383 /* HorizontalBar.swift */; };
 		C01DDC7E2A2904CC00E30383 /* StatusBarModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DDC7D2A2904CC00E30383 /* StatusBarModuleAssembly.swift */; };
 		C01DDC802A2904E700E30383 /* TemperatureMonitorModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DDC7F2A2904E700E30383 /* TemperatureMonitorModuleAssembly.swift */; };
+		C033A53F2A36923D002998B4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C033A53E2A36923D002998B4 /* README.md */; };
 		C03970172A2A4167007078AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970162A2A4167007078AD /* SettingsViewController.swift */; };
 		C039701E2A2A72F9007078AD /* SettingsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039701D2A2A72F9007078AD /* SettingsItemViewController.swift */; };
 		C03970202A2A743A007078AD /* SettingsRowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039701F2A2A743A007078AD /* SettingsRowContainer.swift */; };
@@ -29,7 +30,7 @@
 		C03970292A2A8447007078AD /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970282A2A8447007078AD /* SettingsPresenter.swift */; };
 		C039702B2A2A84DA007078AD /* SettingsModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039702A2A2A84DA007078AD /* SettingsModuleAssembly.swift */; };
 		C039702E2A2A86C3007078AD /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039702D2A2A86C3007078AD /* SettingsStorage.swift */; };
-		C03970302A2AA719007078AD /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039702F2A2AA719007078AD /* SettingsData.swift */; };
+		C03970302A2AA719007078AD /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039702F2A2AA719007078AD /* Storable.swift */; };
 		C03970322A2AA79F007078AD /* GeneralSettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970312A2AA79F007078AD /* GeneralSettingsData.swift */; };
 		C03970342A2AC7F5007078AD /* TemperatureSensorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970332A2AC7F5007078AD /* TemperatureSensorType.swift */; };
 		C03970362A2AC85D007078AD /* MenuBarSettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970352A2AC85D007078AD /* MenuBarSettingsData.swift */; };
@@ -91,6 +92,7 @@
 		C01DDC742A289ACA00E30383 /* HorizontalBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBar.swift; sourceTree = "<group>"; };
 		C01DDC7D2A2904CC00E30383 /* StatusBarModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarModuleAssembly.swift; sourceTree = "<group>"; };
 		C01DDC7F2A2904E700E30383 /* TemperatureMonitorModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureMonitorModuleAssembly.swift; sourceTree = "<group>"; };
+		C033A53E2A36923D002998B4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C03970162A2A4167007078AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C039701D2A2A72F9007078AD /* SettingsItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemViewController.swift; sourceTree = "<group>"; };
 		C039701F2A2A743A007078AD /* SettingsRowContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowContainer.swift; sourceTree = "<group>"; };
@@ -100,7 +102,7 @@
 		C03970282A2A8447007078AD /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		C039702A2A2A84DA007078AD /* SettingsModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModuleAssembly.swift; sourceTree = "<group>"; };
 		C039702D2A2A86C3007078AD /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
-		C039702F2A2AA719007078AD /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
+		C039702F2A2AA719007078AD /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		C03970312A2AA79F007078AD /* GeneralSettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsData.swift; sourceTree = "<group>"; };
 		C03970332A2AC7F5007078AD /* TemperatureSensorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureSensorType.swift; sourceTree = "<group>"; };
 		C03970352A2AC85D007078AD /* MenuBarSettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarSettingsData.swift; sourceTree = "<group>"; };
@@ -226,7 +228,7 @@
 			children = (
 				C03970392A2B4FF7007078AD /* StorageLoader.swift */,
 				C039702D2A2A86C3007078AD /* SettingsStorage.swift */,
-				C039702F2A2AA719007078AD /* SettingsData.swift */,
+				C039702F2A2AA719007078AD /* Storable.swift */,
 				C03970312A2AA79F007078AD /* GeneralSettingsData.swift */,
 				C03970352A2AC85D007078AD /* MenuBarSettingsData.swift */,
 				C03970372A2AC876007078AD /* StatusBarSettingsData.swift */,
@@ -246,6 +248,7 @@
 		C065AC892A23D1B400A82183 = {
 			isa = PBXGroup;
 			children = (
+				C033A53E2A36923D002998B4 /* README.md */,
 				C065AC942A23D1B400A82183 /* MacTemperature */,
 				C065ACA62A23D1B500A82183 /* MacTemperatureTests */,
 				C065ACB02A23D1B500A82183 /* MacTemperatureUITests */,
@@ -444,6 +447,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C033A53F2A36923D002998B4 /* README.md in Resources */,
 				C065AC9A2A23D1B500A82183 /* Assets.xcassets in Resources */,
 				C065AC9D2A23D1B500A82183 /* Main.storyboard in Resources */,
 			);
@@ -481,7 +485,7 @@
 				C00269E62A2665B2000BA655 /* TemperatureLevel.swift in Sources */,
 				C08332A82A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				C08332A22A30DC0100C1ECF0 /* MenuView.swift in Sources */,
-				C03970302A2AA719007078AD /* SettingsData.swift in Sources */,
+				C03970302A2AA719007078AD /* Storable.swift in Sources */,
 				C03970202A2A743A007078AD /* SettingsRowContainer.swift in Sources */,
 				C03970172A2A4167007078AD /* SettingsViewController.swift in Sources */,
 				C0E5F93C2A2CA5BC0098727E /* ARM.swift in Sources */,
@@ -566,6 +570,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -627,6 +632,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -680,6 +686,7 @@
 		C065ACB82A23D1B500A82183 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MacTemperature/MacTemperature.entitlements;
@@ -691,7 +698,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -711,6 +718,7 @@
 		C065ACB92A23D1B500A82183 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MacTemperature/MacTemperature.entitlements;
@@ -722,7 +730,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

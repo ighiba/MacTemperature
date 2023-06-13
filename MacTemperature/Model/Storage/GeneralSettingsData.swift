@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GeneralSettingsData: SettingsData {
+class GeneralSettingsData: Storable {
     static var storageKey: String {
         return "generalSettings"
     }
@@ -30,11 +30,11 @@ class GeneralSettingsData: SettingsData {
         self.updateFrequencyInSeconds = 1
     }
     
-    static func getDefaultSettings() -> GeneralSettingsData {
+    static func getDefaultData() -> GeneralSettingsData {
         return GeneralSettingsData()
     }
     
-    func setSettings(_ settings: GeneralSettingsData) {
+    func setData(_ settings: GeneralSettingsData) {
         self.mainWindowOpenEveryLaunch = settings.mainWindowOpenEveryLaunch
         self.appShouldLaunchAfterStart = settings.appShouldLaunchAfterStart
         self.updateFrequencyInSeconds = settings.updateFrequencyInSeconds

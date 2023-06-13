@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MenuBarSettingsData: SettingsData {
+class MenuBarSettingsData: Storable {
     static var storageKey: String {
         return "menuBarSettings"
     }
@@ -27,11 +27,11 @@ class MenuBarSettingsData: SettingsData {
         self.gpuShowTemperatures = false
     }
     
-    static func getDefaultSettings() -> MenuBarSettingsData {
+    static func getDefaultData() -> MenuBarSettingsData {
         return MenuBarSettingsData()
     }
     
-    func setSettings(_ settings: MenuBarSettingsData) {
+    func setData(_ settings: MenuBarSettingsData) {
         self.cpuShowTemperatures = settings.cpuShowTemperatures
         self.gpuShowTemperatures = settings.gpuShowTemperatures
     }
