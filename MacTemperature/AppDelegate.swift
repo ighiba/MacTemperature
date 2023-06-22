@@ -18,7 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         StorageLoader.loadAllSharedSettings()
         
         StatusBarModuleAssembly.configureModule()
-        TemperatureMonitorModuleAssembly.configureModule()
+        TemperatureMonitor.shared.temperatureManager = TemperatureManagerImpl()
+        TemperatureMonitor.shared.sensorsManager = SensorsManagerImpl()
+        TemperatureMonitor.shared.start()
         
         self.setAppToLaunchAtMacStart(state: GeneralSettingsData.shared.appShouldLaunchAfterStart)
 
