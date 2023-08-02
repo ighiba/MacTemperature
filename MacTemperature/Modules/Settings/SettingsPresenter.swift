@@ -10,9 +10,6 @@ import AppKit
 
 protocol SettingsInput: AnyObject {
 
-//    func getMenuBarSettings() -> MenuBarSettingsData
-//    func getStatusBarSettings() -> StatusBarSettingsData
-    //func setGeneralSettings(_ settings: GeneralSettingsData)
 }
 
 protocol SettingsOutput: AnyObject {
@@ -66,5 +63,4 @@ class SettingsPresenter: SettingsOutput {
         NotificationCenter.default.post(name: NotificationNames.isEnableStatusBarIconNotification, object: settings.statusBarShowIcon)
         NotificationCenter.default.post(name: NotificationNames.avgTemperatureTypeChangedNotification, object: settings.statusBarAverageTemperatureFor)
     }
-
 }

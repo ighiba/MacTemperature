@@ -93,7 +93,6 @@ class SettingsViewControler: NSTabViewController,
     func setStatusBarSettings(_ settings: StatusBarSettingsData) {
         self.output.setStatusBarSettings(settings)
     }
-    
 }
 
 extension NSTabViewItem {
@@ -103,4 +102,3 @@ extension NSTabViewItem {
         self.viewController?.title = label
     }
 }
-

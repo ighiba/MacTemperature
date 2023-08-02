@@ -165,5 +165,3 @@ extension Float {
         withUnsafeBytes(of: self, Array.init)
     }
 }
-
-    

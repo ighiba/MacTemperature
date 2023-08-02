@@ -49,5 +49,4 @@ struct Sensors {
     static func getSensors(_ types: [TemperatureSensorType], for cpu: ARM) -> [Sensor] {
         return Sensors.listAll.filter { $0.supports.contains(cpu) && types.contains($0.type) }
     }
-    
 }

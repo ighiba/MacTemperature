@@ -31,4 +31,3 @@ enum TemperatureLevel {
         }
     }
 }
-

@@ -72,4 +72,3 @@ class CurrentDevice {
         return ARM.get(modelId: modelID, by: CurrentDevice.processorCount)
     }
 }
-

@@ -78,5 +78,4 @@ class TemperatureMonitor {
         self.timer?.cancel()
         self.timer = nil
     }
-    
 }

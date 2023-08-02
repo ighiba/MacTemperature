@@ -61,5 +61,4 @@ class StatusBarSettingsViewController: SettingsItemViewController {
         settings.statusBarAverageTemperatureFor = TemperatureSensorType(rawValue: sender.indexOfSelectedItem) ?? .cpu
         delegate.setStatusBarSettings(settings)
     }
-    
 }

@@ -58,6 +58,4 @@ class MenuBarSettingsViewController: SettingsItemViewController {
         settings.gpuShowTemperatures = sender.state == .on ? true : false
         delegate.setMenuBarSettings(settings)
     }
-
-    
 }

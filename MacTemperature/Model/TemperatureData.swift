@@ -26,5 +26,3 @@ struct TemperatureData: Identifiable {
         return String(format: "%.\(scale)f", floatValue)
     }
 }
-
-

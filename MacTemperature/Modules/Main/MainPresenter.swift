@@ -58,6 +58,4 @@ class MainPresenter: MainViewOutput {
         let data = loadInitalData()
         self.input.updateRows(data: data)
     }
-    
 }
-
