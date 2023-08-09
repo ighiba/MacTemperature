@@ -21,25 +21,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         TemperatureMonitor.shared.sensorsManager = SensorsManagerImpl()
         TemperatureMonitor.shared.start()
         
-        self.setAppToLaunchAtMacStart(state: GeneralSettingsData.shared.appShouldLaunchAfterStart)
+        setAppToLaunchAtMacStart(state: GeneralSettingsData.shared.appShouldLaunchAfterStart)
 
         if GeneralSettingsData.shared.mainWindowOpenEveryLaunch {
-            self.showMainWindow()
+            showMainWindow()
         }
     }
     
     func windowWillClose(_ notification: Notification) {
         guard let windowToClose = notification.object as? NSWindow else { return }
         if windowToClose == window {
-            self.hideMainWindow()
+            hideMainWindow()
         } else if windowToClose == settingsWindow {
-            self.hideSettingsWindow()
+            hideSettingsWindow()
         }
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if !flag {
-            self.showMainWindow()
+            showMainWindow()
         }
         return true
     }
@@ -99,32 +99,32 @@ extension AppDelegate {
     public func showMainWindow() {
         NSApplication.shared.activate(ignoringOtherApps: true)
         guard self.window == nil else {
-            self.window?.makeKeyAndOrderFront(self)
+            window?.makeKeyAndOrderFront(self)
             return
         }
         let mainController = MainModuleAssembly.configureModule()
-        self.window = self.configureMainWindow(mainController)
-        self.window?.makeKeyAndOrderFront(self)
+        window = configureMainWindow(mainController)
+        window?.makeKeyAndOrderFront(self)
     }
     
     public func showSettingsWindow() {
         NSApplication.shared.activate(ignoringOtherApps: true)
         guard self.settingsWindow == nil else {
-            self.settingsWindow?.makeKeyAndOrderFront(self)
+            settingsWindow?.makeKeyAndOrderFront(self)
             return
         }
         let settingsController = SettingsModuleAssembly.configureModule()
-        self.settingsWindow = self.configureSettingsWindow(settingsController)
-        self.settingsWindow?.makeKeyAndOrderFront(self)
+        settingsWindow = configureSettingsWindow(settingsController)
+        settingsWindow?.makeKeyAndOrderFront(self)
     }
     
     public func hideMainWindow() {
-        self.window = nil
+        window = nil
         print("Main Window closed")
     }
     
     public func hideSettingsWindow() {
-        self.settingsWindow = nil
+        settingsWindow = nil
         print("Settings Window closed")
     }
 }
