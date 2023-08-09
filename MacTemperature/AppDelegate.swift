@@ -8,7 +8,6 @@
 import Cocoa
 import ServiceManagement
 
-@main
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     var window: NSWindow?
