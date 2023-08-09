@@ -98,7 +98,7 @@ extension AppDelegate {
     
     public func showMainWindow() {
         NSApplication.shared.activate(ignoringOtherApps: true)
-        guard self.window == nil else {
+        guard window == nil else {
             window?.makeKeyAndOrderFront(self)
             return
         }
@@ -109,7 +109,7 @@ extension AppDelegate {
     
     public func showSettingsWindow() {
         NSApplication.shared.activate(ignoringOtherApps: true)
-        guard self.settingsWindow == nil else {
+        guard settingsWindow == nil else {
             settingsWindow?.makeKeyAndOrderFront(self)
             return
         }

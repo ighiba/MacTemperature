@@ -53,7 +53,6 @@ class MainPresenter: MainViewOutput {
         return tempStatusData
     }
     
-    
     func loadAndUpdateInitalData() {
         let data = loadInitalData()
         self.input.updateRows(data: data)
