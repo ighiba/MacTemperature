@@ -14,11 +14,12 @@ public var tableWidth: CGFloat {
     return titleColumnWidth + temperatureColumWidth + barColumnWidth + 70
 }
 
-struct TemperatureTableView: View {
-    @ObservedObject private var temperatureDataContainer: TemperatureDataContainer = TemperatureDataContainer()
+struct TemperatureTableView<T: TemperatureDataSource>: View {
+    
+    @ObservedObject var dataSource: T
     
     var body: some View {
-        Table(temperatureDataContainer.data) {
+        Table(dataSource.temperatureData) {
             TableColumn("Name") { data in
                 Text(data.title)
             }
@@ -31,20 +32,17 @@ struct TemperatureTableView: View {
             TableColumn("") { data in
                 HorizontalBar(value: data.floatValue, maxWidth: barColumnWidth)
                     .frame(width: barColumnWidth, alignment: .center)
-                
             }
             .width(barColumnWidth)
         }
     }
-    
-    public func updateData(_ data: [TemperatureData]) {
-        self.temperatureDataContainer.updateData(data)
-    }
 }
 
 struct TemperatureTableView_Previews: PreviewProvider {
+    
+    static let sampleDataSource = TemperatureDataContainer()
 
     static var previews: some View {
-        TemperatureTableView()
+        TemperatureTableView(dataSource: sampleDataSource)
     }
 }

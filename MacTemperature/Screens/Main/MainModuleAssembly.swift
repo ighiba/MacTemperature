@@ -10,12 +10,12 @@ import Cocoa
 
 class MainModuleAssembly {
     class func configureModule() -> NSViewController {
-        let presenter = MainPresenter()
         let view = MainViewController()
+        let viewModel = MainViewModel()
         
-        view.output = presenter
-        presenter.input = view
-        presenter.sensorsManager = SensorsManagerImpl()
+        view.viewModel = viewModel
+        
+        viewModel.sensorsManager = SensorsManagerImpl()
 
         return view
     }

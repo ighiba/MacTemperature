@@ -7,11 +7,11 @@
 
 import Foundation
 
-class TemperatureDataContainer: ObservableObject {
-    @Published var data: [TemperatureData] = TemperatureDataContainer.getSampleData()
+class TemperatureDataContainer: TemperatureDataSource {
+    @Published var temperatureData: [TemperatureData] = TemperatureDataContainer.getSampleData()
     
     public func updateData(_ data: [TemperatureData]) {
-        self.data = data
+        self.temperatureData = data
     }
     
     class func getSampleData() -> [TemperatureData] {
