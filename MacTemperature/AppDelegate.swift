@@ -102,7 +102,7 @@ extension AppDelegate {
             self.window?.makeKeyAndOrderFront(self)
             return
         }
-        let mainController = MainModuleAssembly.configureMoule()
+        let mainController = MainModuleAssembly.configureModule()
         self.window = self.configureMainWindow(mainController)
         self.window?.makeKeyAndOrderFront(self)
     }

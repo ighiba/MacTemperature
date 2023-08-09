@@ -9,7 +9,7 @@ import Foundation
 import Cocoa
 
 class MainModuleAssembly {
-    class func configureMoule() -> NSViewController {
+    class func configureModule() -> NSViewController {
         let presenter = MainPresenter()
         let view = MainViewController()
         
