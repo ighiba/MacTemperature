@@ -54,7 +54,6 @@ class TemperatureStatusRow: NSView {
         textField.isBezeled = false
         textField.isEditable = false
         textField.stringValue = "Unknown"
-        //textField.font = textField.font?.withSize(20)
         textField.drawsBackground = false
         
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +73,6 @@ class TemperatureStatusRow: NSView {
         
         return textField
     }()
-    
 }
 
 class TemperatureStatusBarRow: TemperatureStatusRow {
@@ -99,22 +97,5 @@ class TemperatureStatusBarRow: TemperatureStatusRow {
             valueTextField.topAnchor.constraint(equalTo: self.topAnchor),
             valueTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
-    }
-}
-
-class ColoredNSView: NSView {
-    
-    var backgroundColor = NSColor.clear {
-        didSet {
-            self.needsDisplay = true
-        }
-    }
-    
-    override func draw(_ dirtyRect: NSRect) {
-        if backgroundColor != NSColor.clear {
-            backgroundColor.setFill()
-            dirtyRect.fill()
-        }
-        super.draw(dirtyRect)
     }
 }

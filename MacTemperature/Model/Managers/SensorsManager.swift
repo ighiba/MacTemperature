@@ -14,10 +14,6 @@ protocol SensorsManager: AnyObject {
 
 class SensorsManagerImpl: SensorsManager {
     
-    init() {
-        
-    }
-    
     func getValues(_ sensors: [Sensor]) -> [SMCVal_t] {
         guard !sensors.isEmpty else { return [] }
         return sensors.map({ SMCVal_t($0.key) })
@@ -27,6 +23,4 @@ class SensorsManagerImpl: SensorsManager {
         let currentCpu = CurrentDevice.getCpu()
         return Sensors.getSensors(sensorTypes, for: currentCpu)
     }
-    
-
 }

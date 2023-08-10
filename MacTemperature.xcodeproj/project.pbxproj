@@ -272,8 +272,8 @@
 		C0110B1F2A853B0500281D35 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C0110B202A853B8C00281D35 /* NSTabViewItem.swift */,
 				C0110B222A853BCD00281D35 /* Float+CGFloat.swift */,
+				C0110B202A853B8C00281D35 /* NSTabViewItem.swift */,
 				C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */,
 				C00269E92A2668DB000BA655 /* TemperatureLevel+NSImage.swift */,
 				C08332A72A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift */,
