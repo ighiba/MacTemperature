@@ -45,17 +45,12 @@ class StatusBarManager {
         }
         
         NotificationCenter.default.addObserver(forName: NotificationNames.isEnableStatusBarIconNotification, object: nil, queue: nil) { [weak self] notification in
-            guard let statusBarShowIcon = notification.object as? Bool, let strongSelf = self else { return }
-            strongSelf.isStatusBarIconEnabled(state: statusBarShowIcon)
+            guard let statusBarShowIcon = notification.object as? Bool else { return }
+            self?.isStatusBarIconEnabled(state: statusBarShowIcon)
         }
         
         NotificationCenter.default.addObserver(forName: NotificationNames.menuUpdateNotification, object: nil, queue: nil) { [weak self] notification in
-            guard let strongSelf = self else { return }
-            if let menu = strongSelf.statusItem.menu as? MenuView {
-                menu.output = nil
-                strongSelf.statusItem.menu = nil
-                strongSelf.statusItem.menu = MenuModuleAssembly.configureModule()
-            }
+            self?.statusItem.menu = MenuModuleAssembly.configureModule()
         }
     }
     

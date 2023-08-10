@@ -11,7 +11,7 @@ enum TemperatureSensorType: Int, Codable, CaseIterable {
     case cpu = 0
     case gpu = 1
     
-    func getString() -> String {
+    var stringValue: String {
         switch self {
         case .cpu:
             return "CPU"

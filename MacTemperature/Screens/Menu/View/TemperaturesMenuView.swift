@@ -11,21 +11,17 @@ private let titleTopSpacing: CGFloat = 5
 private let stackViewTopSpacing: CGFloat = 10
 
 class TemperaturesMenuView: NSView {
-    weak var delegate: MenuViewDelegate!
     
     private var titleLabel: NSTextField!
     private var stackView: NSStackView!
     private var rows: [TemperatureStatusBarRow] = []
     
-    init(title: String, type: TemperatureSensorType,  _ delegate: MenuViewDelegate) {
+    init(title: String, type: TemperatureSensorType, initalData: [TemperatureData]) {
         super.init(frame: NSRect(x: 0, y: 0, width: statusBarMenuWidth, height: 300))
-        
-        self.delegate = delegate
-        
+
         self.titleLabel = NSTextField(labelWithString: title)
         self.titleLabel.font = .boldSystemFont(ofSize: 13)
-        let data = self.delegate.loadInitialData(for: type)
-        rows = data.map { TemperatureStatusBarRow(data: $0) }
+        self.rows = initalData.map { TemperatureStatusBarRow(data: $0) }
 
         self.stackView = NSStackView(views: rows)
         self.stackView.orientation = .vertical
@@ -77,9 +73,14 @@ class TemperaturesMenuView: NSView {
         for item in data {
             let row = rows.first(where: { $0.key == item.id } )
             guard let row else { continue }
-            let newAttributedString = self.delegate.getDefaultTemperatureAttributedString(item.floatValue)
+            let newAttributedString = getDefaultTemperatureAttributedString(item.floatValue)
             newAttributedString.setAlignment(.right, range: NSRange(location: 0, length: newAttributedString.length))
             row.valueTextField.attributedStringValue = newAttributedString
         }
+    }
+    
+    private func getDefaultTemperatureAttributedString(_ floatValue: Float) -> NSMutableAttributedString {
+        let level = TemperatureLevel.getLevel(floatValue)
+        return NSMutableAttributedString.formatTemperatureValue(floatValue, colorProvider: level.getStatusBarColor)
     }
 }

@@ -44,7 +44,7 @@ class StatusBarSettingsViewController: SettingsItemViewController {
     func getPopUpButton() -> NSPopUpButton {
         let popUpButton = NSPopUpButton(frame: NSRect(x: 0, y: 0, width: 60, height: 30))
         
-        popUpButton.addItems(withTitles: TemperatureSensorType.allCases.map({ $0.getString() }))
+        popUpButton.addItems(withTitles: TemperatureSensorType.allCases.map({ $0.stringValue }))
         popUpButton.selectItem(at: settings.statusBarAverageTemperatureFor.rawValue)
         popUpButton.action = #selector(popUpButtonDidChanged)
         popUpButton.target = self
