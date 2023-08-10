@@ -21,7 +21,6 @@ class StorageLoader {
     
     class func saveAllSharedSettings() {
         let settingsStorage = SettingsStorage()
-        
         settingsStorage.saveData(GeneralSettingsData.shared)
         settingsStorage.saveData(MenuBarSettingsData.shared)
         settingsStorage.saveData(StatusBarSettingsData.shared)

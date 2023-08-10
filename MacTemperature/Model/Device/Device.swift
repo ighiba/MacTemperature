@@ -49,12 +49,11 @@ struct Mac: MacDevice {
 }
 
 class CurrentDevice {
-    
     class var processorCount: Int {
         return ProcessInfo.processInfo.processorCount
     }
     
-    @objc class func getModelIdentifier() -> String? {
+    class func getModelIdentifier() -> String? {
         var modelIdentifier: String?
         var size = 0
         

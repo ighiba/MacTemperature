@@ -15,7 +15,6 @@ struct Sensor {
 }
 
 struct Sensors {
-    
     static let listAll = [
         Sensor(key: "Tp09", title: "CPU Efficiency core 1", type: .cpu, supports: [.M1, .M1Pro8c, .M1Pro10c, .M1Max, .M1Ultra]),
         Sensor(key: "Tp0T", title: "CPU Efficiency core 2", type: .cpu, supports: [.M1, .M1Pro8c, .M1Pro10c, .M1Max, .M1Ultra]),

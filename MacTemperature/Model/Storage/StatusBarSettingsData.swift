@@ -8,9 +8,7 @@
 import Foundation
 
 class StatusBarSettingsData: Storable {
-    static var storageKey: String {
-        return "statusBarSettings"
-    }
+    static var storageKey: String { "statusBarSettings" }
 
     static let shared = StatusBarSettingsData()
 
@@ -23,8 +21,8 @@ class StatusBarSettingsData: Storable {
     }
     
     init() {
-        self.statusBarShowIcon = true
-        self.statusBarAverageTemperatureFor = .cpu
+        statusBarShowIcon = true
+        statusBarAverageTemperatureFor = .cpu
     }
     
     static func getDefaultData() -> StatusBarSettingsData {
@@ -32,7 +30,7 @@ class StatusBarSettingsData: Storable {
     }
     
     func setData(_ settings: StatusBarSettingsData) {
-        self.statusBarShowIcon = settings.statusBarShowIcon
-        self.statusBarAverageTemperatureFor = settings.statusBarAverageTemperatureFor
+        statusBarShowIcon = settings.statusBarShowIcon
+        statusBarAverageTemperatureFor = settings.statusBarAverageTemperatureFor
     }
 }

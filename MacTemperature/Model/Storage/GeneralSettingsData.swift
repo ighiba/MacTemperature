@@ -8,9 +8,7 @@
 import Foundation
 
 class GeneralSettingsData: Storable {
-    static var storageKey: String {
-        return "generalSettings"
-    }
+    static var storageKey: String { "generalSettings" }
 
     static let shared = GeneralSettingsData()
     
@@ -25,9 +23,9 @@ class GeneralSettingsData: Storable {
     }
     
     init() {
-        self.mainWindowOpenEveryLaunch = true
-        self.appShouldLaunchAfterStart = true
-        self.updateFrequencyInSeconds = 1
+        mainWindowOpenEveryLaunch = true
+        appShouldLaunchAfterStart = true
+        updateFrequencyInSeconds = 1
     }
     
     static func getDefaultData() -> GeneralSettingsData {
@@ -35,8 +33,8 @@ class GeneralSettingsData: Storable {
     }
     
     func setData(_ settings: GeneralSettingsData) {
-        self.mainWindowOpenEveryLaunch = settings.mainWindowOpenEveryLaunch
-        self.appShouldLaunchAfterStart = settings.appShouldLaunchAfterStart
-        self.updateFrequencyInSeconds = settings.updateFrequencyInSeconds
+        mainWindowOpenEveryLaunch = settings.mainWindowOpenEveryLaunch
+        appShouldLaunchAfterStart = settings.appShouldLaunchAfterStart
+        updateFrequencyInSeconds = settings.updateFrequencyInSeconds
     }
 }

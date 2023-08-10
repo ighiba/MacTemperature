@@ -48,7 +48,6 @@
 		C065AC962A23D1B400A82183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065AC952A23D1B400A82183 /* AppDelegate.swift */; };
 		C065AC982A23D1B400A82183 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065AC972A23D1B400A82183 /* MainViewController.swift */; };
 		C065AC9A2A23D1B500A82183 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065AC992A23D1B500A82183 /* Assets.xcassets */; };
-		C065ACA82A23D1B500A82183 /* CurrentDeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACA72A23D1B500A82183 /* CurrentDeviceTests.swift */; };
 		C065ACB22A23D1B500A82183 /* MacTemperatureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACB12A23D1B500A82183 /* MacTemperatureUITests.swift */; };
 		C065ACB42A23D1B500A82183 /* MacTemperatureUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACB32A23D1B500A82183 /* MacTemperatureUITestsLaunchTests.swift */; };
 		C065ACC22A24F24300A82183 /* AppleSMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065ACC12A24F24300A82183 /* AppleSMC.swift */; };
@@ -126,7 +125,6 @@
 		C065AC992A23D1B500A82183 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C065AC9E2A23D1B500A82183 /* MacTemperature.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacTemperature.entitlements; sourceTree = "<group>"; };
 		C065ACA32A23D1B500A82183 /* MacTemperatureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacTemperatureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C065ACA72A23D1B500A82183 /* CurrentDeviceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDeviceTests.swift; sourceTree = "<group>"; };
 		C065ACAD2A23D1B500A82183 /* MacTemperatureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacTemperatureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C065ACB12A23D1B500A82183 /* MacTemperatureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTemperatureUITests.swift; sourceTree = "<group>"; };
 		C065ACB32A23D1B500A82183 /* MacTemperatureUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTemperatureUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -358,7 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				C01DDC6F2A27898D00E30383 /* MacTemperature.xctestplan */,
-				C065ACA72A23D1B500A82183 /* CurrentDeviceTests.swift */,
 			);
 			path = MacTemperatureTests;
 			sourceTree = "<group>";
@@ -634,7 +631,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C065ACA82A23D1B500A82183 /* CurrentDeviceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

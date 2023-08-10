@@ -14,17 +14,6 @@ protocol TemperatureManager: AnyObject {
 
 class TemperatureManagerImpl: TemperatureManager {
     
-    init() {
-        
-    }
-//    
-//    func updateTemperatureValue(_ value: UnsafeMutablePointer<SMCVal_t>) {
-//        let result = AppleSMC.shared.read(value)
-//        if result != kIOReturnSuccess {
-//            fatalError("Error")
-//        }
-//    }
-    
     func getAverageTemperatureFor(_ data: [TemperatureData]) -> Float {
         guard !data.isEmpty else { return 0 }
         let temps = data.map({ $0.floatValue })
@@ -32,7 +21,6 @@ class TemperatureManagerImpl: TemperatureManager {
         
         return sum / Float(temps.count)
     }
-    
     
     func getTemperature(for sensor: Sensor) -> Float? {
         var value = SMCVal_t(sensor.key)
@@ -49,6 +37,4 @@ class TemperatureManagerImpl: TemperatureManager {
 
         return nil
     }
-    
-    
 }

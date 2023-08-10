@@ -13,15 +13,6 @@ enum TemperatureLevel {
     case high
     
     static func getLevel(_ floatValue: Float) -> Self {
-//        #if DEBUG
-//        if floatValue >= 51.0 {
-//            return .high
-//        } else if floatValue >= 50.0 {
-//            return .medium
-//        } else {
-//            return .low
-//        }
-//        #endif
         if floatValue >= 99.9 {
             return .high
         } else if floatValue >= 64.9 {

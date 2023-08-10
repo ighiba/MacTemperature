@@ -10,8 +10,8 @@ import Foundation
 class TemperatureDataContainer: TemperatureDataSource {
     @Published var temperatureData: [TemperatureData] = TemperatureDataContainer.getSampleData()
     
-    public func updateData(_ data: [TemperatureData]) {
-        self.temperatureData = data
+    public func updateData(_ temperatureData: [TemperatureData]) {
+        self.temperatureData = temperatureData
     }
     
     class func getSampleData() -> [TemperatureData] {

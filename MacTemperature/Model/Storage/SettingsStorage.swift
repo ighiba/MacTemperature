@@ -32,5 +32,4 @@ class SettingsStorage {
         }
         storage.synchronize()
     }
-
 }

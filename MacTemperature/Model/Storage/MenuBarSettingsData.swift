@@ -8,9 +8,7 @@
 import Foundation
 
 class MenuBarSettingsData: Storable {
-    static var storageKey: String {
-        return "menuBarSettings"
-    }
+    static var storageKey: String { "menuBarSettings" }
 
     static let shared = MenuBarSettingsData()
     
@@ -23,8 +21,8 @@ class MenuBarSettingsData: Storable {
     }
     
     init() {
-        self.cpuShowTemperatures = true
-        self.gpuShowTemperatures = false
+        cpuShowTemperatures = true
+        gpuShowTemperatures = false
     }
     
     static func getDefaultData() -> MenuBarSettingsData {
@@ -32,7 +30,7 @@ class MenuBarSettingsData: Storable {
     }
     
     func setData(_ settings: MenuBarSettingsData) {
-        self.cpuShowTemperatures = settings.cpuShowTemperatures
-        self.gpuShowTemperatures = settings.gpuShowTemperatures
+        cpuShowTemperatures = settings.cpuShowTemperatures
+        gpuShowTemperatures = settings.gpuShowTemperatures
     }
 }

@@ -21,7 +21,6 @@ extension TemperatureMonitorData {
 }
 
 class TemperatureMonitor {
-    
     static var lastData: TemperatureMonitorData = [:]
     static let shared = TemperatureMonitor()
     
@@ -42,19 +41,18 @@ class TemperatureMonitor {
     
     private init () {
         NotificationCenter.default.addObserver(forName: .temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
-            guard let newUpdateFrequency = notification.object as? Int, let strongSelf = self else { return }
-            guard strongSelf.secondsBetweenUpdate != newUpdateFrequency else { return }
-            strongSelf.stop()
-            strongSelf.secondsBetweenUpdate = newUpdateFrequency
-            strongSelf.start()
+            guard let newUpdateFrequency = notification.object as? Int, newUpdateFrequency != self?.secondsBetweenUpdate else { return }
+            self?.stop()
+            self?.secondsBetweenUpdate = newUpdateFrequency
+            self?.start()
         }
     }
     
     func start() {
-        self.timer = DispatchSource.makeTimerSource(queue: queue)
-        self.timer?.schedule(deadline: .now(), repeating: .seconds(secondsBetweenUpdate))
+        timer = DispatchSource.makeTimerSource(queue: queue)
+        timer?.schedule(deadline: .now(), repeating: .seconds(secondsBetweenUpdate))
         
-        self.timer?.setEventHandler { [weak self] in
+        timer?.setEventHandler { [weak self] in
             guard let strongSelf = self else { return }
             var newData: TemperatureMonitorData = [:]
             for type in TemperatureSensorType.allCases {
@@ -65,9 +63,7 @@ class TemperatureMonitor {
                     tempData.append(TemperatureData(id: sensor.key, title: sensor.title, floatValue: floatValue))
                 }
                 newData.updateValue(tempData, forKey: type)
-
             }
-
             strongSelf.data = newData
         }
         
@@ -75,7 +71,7 @@ class TemperatureMonitor {
     }
     
     func stop() {
-        self.timer?.cancel()
-        self.timer = nil
+        timer?.cancel()
+        timer = nil
     }
 }

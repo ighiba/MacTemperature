@@ -8,13 +8,10 @@
 import Foundation
 
 struct TemperatureData: Identifiable {
-    
     let id: String
     var title: String
     var floatValue: Float
-    var stringValue: String {
-        return getStringValue()
-    }
+    var stringValue: String { getStringValue() }
     
     init(id: String, title: String, floatValue: Float) {
         self.id = id
