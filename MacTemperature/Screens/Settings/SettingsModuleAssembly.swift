@@ -10,12 +10,11 @@ import Cocoa
 class SettingsModuleAssembly {
     class func configureModule() -> NSViewController {
         let view = SettingsViewControler()
-        let presenter = SettingsPresenter()
-        let storage = SettingsStorage()
+        let viewModel = SettingsViewModel()
         
-        view.output = presenter
-        presenter.input = view
-        presenter.settingsStorage = storage
+        viewModel.settingsStorage = SettingsStorage()
+        
+        view.viewModel = viewModel
         
         return view
     }

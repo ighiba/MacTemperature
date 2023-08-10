@@ -7,11 +7,9 @@
 
 import Cocoa
 
-class StatusBarSettingsViewController: SettingsItemViewController {
-    
-    lazy var settings: StatusBarSettingsData = {
-        return delegate.getStatusBarSettings()
-    }()
+class StatusBarSettingsViewController: SettingsItemViewController, SettingsItemView {
+        
+    var settings: StatusBarSettingsData  { delegate.statusBarSettings }
     
     var delegate: StatusBarSettingsDelegate!
 
@@ -21,22 +19,30 @@ class StatusBarSettingsViewController: SettingsItemViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         settingsStack.addArrangedSubview(showIcon)
         settingsStack.addArrangedSubview(avgTemperature)
     }
     
-    lazy var showIcon = SettingsRowContainer(title: "Icon",
-                                          views: [getShowIconCheckboxButton()],
-                                          width: settingsWidth)
-    lazy var avgTemperature = SettingsRowContainer(title: "Average temperature for",
-                                                views: [getPopUpButton()],
-                                                width: settingsWidth)
+    // MARK: - Views
+    
+    lazy var showIcon = SettingsRowContainer(
+        title: "Icon",
+        views: [getShowIconCheckboxButton()],
+        width: settingsWidth
+    )
+    
+    lazy var avgTemperature = SettingsRowContainer(
+        title: "Average temperature for",
+        views: [getPopUpButton()],
+        width: settingsWidth
+    )
     
     private func getShowIconCheckboxButton() -> NSButton {
-        let button = NSButton(checkboxWithTitle: "Show thermometer icon",
-                              target: self,
-                              action: #selector(showIconCheckboxChanged))
+        let button = NSButton(
+            checkboxWithTitle: "Show thermometer icon",
+            target: self,
+            action: #selector(showIconCheckboxChanged)
+        )
         button.state = settings.statusBarShowIcon ? .on : .off
         return button
     }
@@ -51,7 +57,11 @@ class StatusBarSettingsViewController: SettingsItemViewController {
         
         return popUpButton
     }
+}
 
+// MARK: - Actions
+
+extension StatusBarSettingsViewController {
     @objc func showIconCheckboxChanged(_ sender: NSButton) {
         settings.statusBarShowIcon = sender.state == .on ? true : false
         delegate.setStatusBarSettings(settings)

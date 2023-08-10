@@ -1,64 +1,46 @@
 //
-//  SettingsPresenter.swift
+//  SettingsViewModel.swift
 //  MacTemperature
 //
-//  Created by Ivan Ghiba on 02.06.2023.
+//  Created by Ivan Ghiba on 10.08.2023.
 //
 
 import Foundation
 import AppKit
 
-protocol SettingsInput: AnyObject {
-
-}
-
-protocol SettingsOutput: AnyObject {
-    func getGeneralSettings() -> GeneralSettingsData
+protocol SettingsViewModelDelegate: AnyObject {
+    var generalSettings: GeneralSettingsData { get }
+    var menuBarSettings: MenuBarSettingsData { get }
+    var statusBarSettings: StatusBarSettingsData { get }
     func setGeneralSettings(_ settings: GeneralSettingsData)
-    func getMenuBarSettings() -> MenuBarSettingsData
     func setMenuBarSettings(_ settings: MenuBarSettingsData)
-    func getStatusBarSettings() -> StatusBarSettingsData
     func setStatusBarSettings(_ settings: StatusBarSettingsData)
 }
 
-class SettingsPresenter: SettingsOutput {
+class SettingsViewModel: SettingsViewModelDelegate {
     
-    weak var input: SettingsInput!
+    var generalSettings: GeneralSettingsData { GeneralSettingsData.shared }
+    var menuBarSettings: MenuBarSettingsData { MenuBarSettingsData.shared }
+    var statusBarSettings: StatusBarSettingsData { StatusBarSettingsData.shared }
     
     var settingsStorage: SettingsStorage!
-
-    init() {
-        
-    }
-    
-    func getGeneralSettings() -> GeneralSettingsData {
-        return GeneralSettingsData.shared
-    }
     
     func setGeneralSettings(_ settings: GeneralSettingsData) {
-        GeneralSettingsData.shared.setData(settings)
+        generalSettings.setData(settings)
         settingsStorage.saveData(settings)
         NotificationCenter.default.post(name: NotificationNames.temperatureUpdateNotifaction, object: settings.updateFrequencyInSeconds)
-        guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else { return }
-        appDelegate.setAppToLaunchAtMacStart(state: settings.appShouldLaunchAfterStart)
+        let appDelegate = NSApplication.shared.delegate as? AppDelegate
+        appDelegate?.setAppToLaunchAtMacStart(state: settings.appShouldLaunchAfterStart)
     }
-    
-    func getMenuBarSettings() -> MenuBarSettingsData {
-        return MenuBarSettingsData.shared
-    }
-    
+
     func setMenuBarSettings(_ settings: MenuBarSettingsData) {
-        MenuBarSettingsData.shared.setData(settings)
+        menuBarSettings.setData(settings)
         settingsStorage.saveData(settings)
         NotificationCenter.default.post(name: NotificationNames.menuUpdateNotification, object: settings)
     }
     
-    func getStatusBarSettings() -> StatusBarSettingsData {
-        return StatusBarSettingsData.shared
-    }
-    
     func setStatusBarSettings(_ settings: StatusBarSettingsData) {
-        StatusBarSettingsData.shared.setData(settings)
+        statusBarSettings.setData(settings)
         settingsStorage.saveData(settings)
         NotificationCenter.default.post(name: NotificationNames.isEnableStatusBarIconNotification, object: settings.statusBarShowIcon)
         NotificationCenter.default.post(name: NotificationNames.avgTemperatureTypeChangedNotification, object: settings.statusBarAverageTemperatureFor)

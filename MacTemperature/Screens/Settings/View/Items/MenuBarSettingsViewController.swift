@@ -7,11 +7,9 @@
 
 import Cocoa
 
-class MenuBarSettingsViewController: SettingsItemViewController {
+class MenuBarSettingsViewController: SettingsItemViewController, SettingsItemView {
     
-    lazy var settings: MenuBarSettingsData = {
-        return delegate.getMenuBarSettings()
-    }()
+    var settings: MenuBarSettingsData { delegate.menuBarSettings }
     
     var delegate: MenuBarSettingsDelegate!
     
@@ -21,34 +19,48 @@ class MenuBarSettingsViewController: SettingsItemViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         settingsStack.addArrangedSubview(cpuShowTemperatures)
         settingsStack.addArrangedSubview(gpuShowTemperatures)
     }
     
-    lazy var cpuShowTemperatures = SettingsRowContainer(title: "CPU",
-                                                    views: [getCpuShowTemperaturesCheckboxButton()],
-                                                    width: settingsWidth)
-    lazy var gpuShowTemperatures = SettingsRowContainer(title: "GPU",
-                                                    views: [getGpuShowTemperaturesCheckboxButton()],
-                                                    width: settingsWidth)
+    // MARK: - Views
+    
+    lazy var cpuShowTemperatures = SettingsRowContainer(
+        title: "CPU",
+        views: [getCpuShowTemperaturesCheckboxButton()],
+        width: settingsWidth
+    )
+    
+    lazy var gpuShowTemperatures = SettingsRowContainer(
+        title: "GPU",
+        views: [getGpuShowTemperaturesCheckboxButton()],
+        width: settingsWidth
+    )
     
     private func getCpuShowTemperaturesCheckboxButton() -> NSButton {
-        let button = NSButton(checkboxWithTitle: "Show temperatures",
-                              target: self,
-                              action: #selector(cpuShowTemperaturesCheckboxChanged))
+        let button = NSButton(
+            checkboxWithTitle: "Show temperatures",
+            target: self,
+            action: #selector(cpuShowTemperaturesCheckboxChanged)
+        )
         button.state = settings.cpuShowTemperatures ? .on : .off
         return button
     }
     
     private func getGpuShowTemperaturesCheckboxButton() -> NSButton {
-        let button = NSButton(checkboxWithTitle: "Show temperatures",
-                              target: self,
-                              action: #selector(gpuShowTemperaturesCheckboxChanged))
+        let button = NSButton(
+            checkboxWithTitle: "Show temperatures",
+            target: self,
+            action: #selector(gpuShowTemperaturesCheckboxChanged)
+        )
         button.state = settings.gpuShowTemperatures ? .on : .off
         return button
     }
-    
+}
+
+// MARK: - Actions
+
+extension MenuBarSettingsViewController {
     @objc func cpuShowTemperaturesCheckboxChanged(_ sender: NSButton) {
         settings.cpuShowTemperatures = sender.state == .on ? true : false
         delegate.setMenuBarSettings(settings)

@@ -7,11 +7,9 @@
 
 import Cocoa
 
-class GeneralSettingsViewController: SettingsItemViewController {
+class GeneralSettingsViewController: SettingsItemViewController, SettingsItemView {
  
-    lazy var settings: GeneralSettingsData = {
-        return delegate.getGeneralSettings()
-    }()
+    var settings: GeneralSettingsData { delegate.generalSettings }
     
     var delegate: GeneralSettingsDelegate!
     
@@ -21,7 +19,6 @@ class GeneralSettingsViewController: SettingsItemViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         settingsStack.addArrangedSubview(mainWindowCheckbox)
         settingsStack.addArrangedSubview(launchAfterStartnCheckbox)
         settingsStack.addArrangedSubview(updateFrequency)
@@ -32,31 +29,46 @@ class GeneralSettingsViewController: SettingsItemViewController {
         self.view.window?.makeFirstResponder(nil)
     }
     
-    lazy var mainWindowCheckbox = SettingsRowContainer(title: "Main window",
-                                                    views: [getMainWindowCheckboxButton()],
-                                                    width: settingsWidth)
-    lazy var launchAfterStartnCheckbox = SettingsRowContainer(title: "Launch after start",
-                                                          views: [getLaunchAfterStartCheckboxButton()],
-                                                          width: settingsWidth)
-    lazy var updateFrequency = SettingsRowContainer(title: "Update frequency",
-                                                 views: [editFrequencyTextField,
-                                                         NSTextField(labelWithString: "seconds"),
-                                                         NSButton(title: "Set", target: self, action: #selector(setNewFrequency))],
-                                                 width: settingsWidth)
+    // MARK: - Views
     
+    lazy var mainWindowCheckbox = SettingsRowContainer(
+        title: "Main window",
+        views: [getMainWindowCheckboxButton()],
+        width: settingsWidth
+    )
+    
+    lazy var launchAfterStartnCheckbox = SettingsRowContainer(
+        title: "Launch after start",
+        views: [getLaunchAfterStartCheckboxButton()],
+        width: settingsWidth
+    )
+    
+    lazy var updateFrequency = SettingsRowContainer(
+        title: "Update frequency",
+        views: [
+            editFrequencyTextField,
+            NSTextField(labelWithString: "seconds"),
+            NSButton(title: "Set", target: self, action: #selector(setNewFrequency))
+        ],
+        width: settingsWidth
+    )
     
     private func getMainWindowCheckboxButton() -> NSButton {
-        let button = NSButton(checkboxWithTitle: "Open at every launch",
-                              target: self,
-                              action: #selector(mainWindowCheckboxChanged))
+        let button = NSButton(
+            checkboxWithTitle: "Open at every launch",
+            target: self,
+            action: #selector(mainWindowCheckboxChanged)
+        )
         button.state = settings.mainWindowOpenEveryLaunch ? .on : .off
         return button
     }
     
     private func getLaunchAfterStartCheckboxButton() -> NSButton {
-        let button = NSButton(checkboxWithTitle: "The App will launch automatically after Mac start",
-                              target: self,
-                              action: #selector(launchAfterStartnCheckboxChanged))
+        let button = NSButton(
+            checkboxWithTitle: "The App will launch automatically after Mac start",
+            target: self,
+            action: #selector(launchAfterStartnCheckboxChanged)
+        )
         button.state = settings.appShouldLaunchAfterStart ? .on : .off
         return button
     }
@@ -75,7 +87,11 @@ class GeneralSettingsViewController: SettingsItemViewController {
         
         return textField
     }()
-    
+}
+
+// MARK: - Actions
+
+extension GeneralSettingsViewController {
     @objc func mainWindowCheckboxChanged(_ sender: NSButton) {
         settings.mainWindowOpenEveryLaunch = sender.state == .on ? true : false
         delegate.setGeneralSettings(settings)
