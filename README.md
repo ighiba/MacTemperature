@@ -15,16 +15,20 @@
     <span>MacTemperature is a lightweight alternative to popular temperature monitoring software for your Apple Silicon Mac. This app includes only the essentials: CPU, GPU temperatures, and an average temperature displayed in the status bar.</span>
 </d>
 
-#
+## Currently supported chips
 
-**Currently supported chips**
 | **Chip** | **Is supported** |
 |:---:|:---:| 
-| **M1**       | ![not-tested](https://img.shields.io/badge/-Not%20supported-red) |
-| **M1 Pro**   | ![not-tested](https://img.shields.io/badge/-Supported-green)     |
-| **M1 Max**   | ![not-tested](https://img.shields.io/badge/-Not%20tested-yellow) |
-| **M1 Ultra** | ![not-tested](https://img.shields.io/badge/-Not%20tested-yellow) |
-| **M2**       | ![not-tested](https://img.shields.io/badge/-Not%20tested-yellow) |
-| **M2 Pro**   | ![not-tested](https://img.shields.io/badge/-Not%20tested-yellow) |
-| **M2 Max**   | ![not-tested](https://img.shields.io/badge/-Not%20tested-yellow) |
-| **M2 Ultra** | ![not-tested](https://img.shields.io/badge/-Not%20tested-yellow) |
+| **M1 Pro**   | ![supported](https://img.shields.io/badge/-Supported-green) |
+
+## Disclaimer
+
+**MacTemperature is currently optimized to work with Mac computers featuring the M1 Pro chip only. Support for other Mac models will be added in future updates. Thank you for your understanding.**
+
+## Contributing
+
+Contributions to the project are welcome! If you have ideas for improvements or want to help extend the app's compatibility to other Mac models, feel free to submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](/LICENSE) file for details.
