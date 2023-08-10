@@ -34,7 +34,7 @@ class TemperatureStatusRow: NSView {
     }
     
     func setupLayout() {
-        let constraints = [
+        NSLayoutConstraint.activate([
             titleTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             titleTextField.topAnchor.constraint(equalTo: self.topAnchor),
             titleTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -44,8 +44,7 @@ class TemperatureStatusRow: NSView {
             valueTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             valueTextField.topAnchor.constraint(equalTo: self.topAnchor),
             valueTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
+        ])
     }
     
     var titleTextField: NSTextField = {

@@ -18,7 +18,7 @@ class MainViewModel: TemperatureDataSource {
     var sensorsManager: SensorsManager!
     
     init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTemperatureData), name: NotificationNames.temperatureUpdateNotifaction, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTemperatureData), name: .temperatureUpdateNotifaction, object: nil)
         loadAndUpdateInitalData()
     }
     

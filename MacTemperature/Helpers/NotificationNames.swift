@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NotificationNames {
+extension Notification.Name {
     static let temperatureUpdateNotifaction = Notification.Name("ru.ighiba.TemperatureUpdateNotifaction")
     static let isEnableStatusBarIconNotification = Notification.Name("ru.ighiba.isEnableStatusBarIconNotification")
     static let avgTemperatureTypeChangedNotification = Notification.Name("ru.ighiba.avgTemperatureTypeChangedNotification")

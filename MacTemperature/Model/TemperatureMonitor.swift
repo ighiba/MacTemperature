@@ -36,12 +36,12 @@ class TemperatureMonitor {
     private var data: TemperatureMonitorData! {
         didSet {
             Self.lastData = data
-            NotificationCenter.default.post(name: NotificationNames.temperatureUpdateNotifaction, object: data)
+            NotificationCenter.default.post(name: .temperatureUpdateNotifaction, object: data)
         }
     }
     
     private init () {
-        NotificationCenter.default.addObserver(forName: NotificationNames.temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
+        NotificationCenter.default.addObserver(forName: .temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
             guard let newUpdateFrequency = notification.object as? Int, let strongSelf = self else { return }
             guard strongSelf.secondsBetweenUpdate != newUpdateFrequency else { return }
             strongSelf.stop()

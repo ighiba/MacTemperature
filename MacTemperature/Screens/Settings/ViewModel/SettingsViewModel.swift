@@ -28,7 +28,7 @@ class SettingsViewModel: SettingsViewModelDelegate {
     func setGeneralSettings(_ settings: GeneralSettingsData) {
         generalSettings.setData(settings)
         settingsStorage.saveData(settings)
-        NotificationCenter.default.post(name: NotificationNames.temperatureUpdateNotifaction, object: settings.updateFrequencyInSeconds)
+        NotificationCenter.default.post(name: .temperatureUpdateNotifaction, object: settings.updateFrequencyInSeconds)
         let appDelegate = NSApplication.shared.delegate as? AppDelegate
         appDelegate?.setAppToLaunchAtMacStart(state: settings.appShouldLaunchAfterStart)
     }
@@ -36,13 +36,13 @@ class SettingsViewModel: SettingsViewModelDelegate {
     func setMenuBarSettings(_ settings: MenuBarSettingsData) {
         menuBarSettings.setData(settings)
         settingsStorage.saveData(settings)
-        NotificationCenter.default.post(name: NotificationNames.menuUpdateNotification, object: settings)
+        NotificationCenter.default.post(name: .menuUpdateNotification, object: settings)
     }
     
     func setStatusBarSettings(_ settings: StatusBarSettingsData) {
         statusBarSettings.setData(settings)
         settingsStorage.saveData(settings)
-        NotificationCenter.default.post(name: NotificationNames.isEnableStatusBarIconNotification, object: settings.statusBarShowIcon)
-        NotificationCenter.default.post(name: NotificationNames.avgTemperatureTypeChangedNotification, object: settings.statusBarAverageTemperatureFor)
+        NotificationCenter.default.post(name: .isEnableStatusBarIconNotification, object: settings.statusBarShowIcon)
+        NotificationCenter.default.post(name: .avgTemperatureTypeChangedNotification, object: settings.statusBarAverageTemperatureFor)
     }
 }

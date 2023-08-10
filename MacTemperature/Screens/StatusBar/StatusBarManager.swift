@@ -29,14 +29,14 @@ class StatusBarManager {
 
         statusItem.menu = MenuModuleAssembly.configureModule()
         
-        NotificationCenter.default.addObserver(forName: NotificationNames.temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
+        NotificationCenter.default.addObserver(forName: .temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
             guard let tempMonitorData = notification.object as? TemperatureMonitorData, let strongSelf = self else { return }
             DispatchQueue.main.async {
                 strongSelf.setAvgAndUpdateStatusBar(tempMonitorData, for: strongSelf.avgTempType)
             }
         }
         
-        NotificationCenter.default.addObserver(forName: NotificationNames.avgTemperatureTypeChangedNotification, object: nil, queue: nil) { [weak self] notification in
+        NotificationCenter.default.addObserver(forName: .avgTemperatureTypeChangedNotification, object: nil, queue: nil) { [weak self] notification in
             guard let newAvgTempType = notification.object as? TemperatureSensorType, let strongSelf = self else { return }
             guard newAvgTempType != strongSelf.avgTempType else { return }
             
@@ -44,12 +44,12 @@ class StatusBarManager {
             strongSelf.setAvgAndUpdateStatusBar(for: newAvgTempType)
         }
         
-        NotificationCenter.default.addObserver(forName: NotificationNames.isEnableStatusBarIconNotification, object: nil, queue: nil) { [weak self] notification in
+        NotificationCenter.default.addObserver(forName: .isEnableStatusBarIconNotification, object: nil, queue: nil) { [weak self] notification in
             guard let statusBarShowIcon = notification.object as? Bool else { return }
             self?.isStatusBarIconEnabled(state: statusBarShowIcon)
         }
         
-        NotificationCenter.default.addObserver(forName: NotificationNames.menuUpdateNotification, object: nil, queue: nil) { [weak self] notification in
+        NotificationCenter.default.addObserver(forName: .menuUpdateNotification, object: nil, queue: nil) { [weak self] notification in
             self?.statusItem.menu = MenuModuleAssembly.configureModule()
         }
     }
