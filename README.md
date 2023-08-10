@@ -10,7 +10,7 @@
 # About
 
 <d>
-    <img width="128" alt="Size=128x128@2x" src="https://github.com/ighiba/MacTemperature/assets/9763289/2ddc5de7-0336-4feb-acb3-a595dc4f4c9b">
+    <img width="128" alt="244978277-2ddc5de7-0336-4feb-acb3-a595dc4f4c9b" src="https://github.com/ighiba/mac-temperature/assets/9763289/faf511b8-0acf-4de0-a7a3-a77f63e3c5d4">
     <br>
     <span>MacTemperature is a lightweight alternative to popular temperature monitoring software for your Apple Silicon Mac. This app includes only the essentials: CPU, GPU temperatures, and an average temperature displayed in the status bar.</span>
 </d>
