@@ -22,6 +22,7 @@
 		C0110B1E2A8539E200281D35 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0110B1D2A8539E200281D35 /* SettingsDelegate.swift */; };
 		C0110B212A853B8C00281D35 /* NSTabViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0110B202A853B8C00281D35 /* NSTabViewItem.swift */; };
 		C0110B232A853BCD00281D35 /* Float+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0110B222A853BCD00281D35 /* Float+CGFloat.swift */; };
+		C0110B252A853C9100281D35 /* TemperatureStatusBarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0110B242A853C9100281D35 /* TemperatureStatusBarRow.swift */; };
 		C01DDC712A27C9FD00E30383 /* TemperatureTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DDC702A27C9FD00E30383 /* TemperatureTableView.swift */; };
 		C01DDC732A27F26500E30383 /* TemperatureDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DDC722A27F26500E30383 /* TemperatureDataContainer.swift */; };
 		C01DDC752A289ACA00E30383 /* HorizontalBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DDC742A289ACA00E30383 /* HorizontalBar.swift */; };
@@ -95,6 +96,7 @@
 		C0110B1D2A8539E200281D35 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
 		C0110B202A853B8C00281D35 /* NSTabViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTabViewItem.swift; sourceTree = "<group>"; };
 		C0110B222A853BCD00281D35 /* Float+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+CGFloat.swift"; sourceTree = "<group>"; };
+		C0110B242A853C9100281D35 /* TemperatureStatusBarRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureStatusBarRow.swift; sourceTree = "<group>"; };
 		C01DDC6F2A27898D00E30383 /* MacTemperature.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MacTemperature.xctestplan; sourceTree = "<group>"; };
 		C01DDC702A27C9FD00E30383 /* TemperatureTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureTableView.swift; sourceTree = "<group>"; };
 		C01DDC722A27F26500E30383 /* TemperatureDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureDataContainer.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		C0110B1A2A85399300281D35 /* Rows */ = {
 			isa = PBXGroup;
 			children = (
+				C00269D82A25714C000BA655 /* TemperatureStatusRow.swift */,
 				C039701F2A2A743A007078AD /* SettingsRowContainer.swift */,
 			);
 			path = Rows;
@@ -429,7 +432,7 @@
 		C0E0FF372A44A25100E38DF9 /* StatusBar */ = {
 			isa = PBXGroup;
 			children = (
-				C00269D82A25714C000BA655 /* TemperatureStatusRow.swift */,
+				C0110B242A853C9100281D35 /* TemperatureStatusBarRow.swift */,
 				C00269E22A264AFD000BA655 /* StatusBarManager.swift */,
 				C01DDC7D2A2904CC00E30383 /* StatusBarModuleAssembly.swift */,
 			);
@@ -583,6 +586,7 @@
 				C01DDC732A27F26500E30383 /* TemperatureDataContainer.swift in Sources */,
 				C00269D92A25714C000BA655 /* TemperatureStatusRow.swift in Sources */,
 				C0110B182A85396C00281D35 /* SettingsItemView.swift in Sources */,
+				C0110B252A853C9100281D35 /* TemperatureStatusBarRow.swift in Sources */,
 				C03C210D2A26BD6B009A7C8E /* TemperatureMonitor.swift in Sources */,
 				C00269E62A2665B2000BA655 /* TemperatureLevel.swift in Sources */,
 				C0110B232A853BCD00281D35 /* Float+CGFloat.swift in Sources */,
