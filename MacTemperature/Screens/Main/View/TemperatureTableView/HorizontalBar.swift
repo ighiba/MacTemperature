@@ -46,9 +46,3 @@ struct HorizontalBar_Previews: PreviewProvider {
         HorizontalBar(value: 40.0, maxWidth: 300)
     }
 }
-
-extension Float {
-    var cgFloat: CGFloat {
-        return CGFloat(self)
-    }
-}
