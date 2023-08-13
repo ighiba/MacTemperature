@@ -10,9 +10,7 @@ import SwiftUI
 private let titleColumnWidth: CGFloat = 180
 private let temperatureColumWidth: CGFloat = 40
 private let barColumnWidth: CGFloat = 400
-public var tableWidth: CGFloat {
-    return titleColumnWidth + temperatureColumWidth + barColumnWidth + 70
-}
+public var tableWidth: CGFloat { titleColumnWidth + temperatureColumWidth + barColumnWidth + 70 }
 
 struct TemperatureTableView<T: TemperatureDataSource>: View {
     

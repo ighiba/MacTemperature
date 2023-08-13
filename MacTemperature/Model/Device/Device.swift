@@ -49,9 +49,7 @@ struct Mac: MacDevice {
 }
 
 class CurrentDevice {
-    class var processorCount: Int {
-        return ProcessInfo.processInfo.processorCount
-    }
+    class var processorCount: Int { ProcessInfo.processInfo.processorCount }
     
     class func getModelIdentifier() -> String? {
         var modelIdentifier: String?
@@ -67,7 +65,7 @@ class CurrentDevice {
     }
 
     class func getCpu() -> ARM {
-        guard let modelID = CurrentDevice.getModelIdentifier() else { return .unknown }
-        return ARM.get(modelId: modelID, by: CurrentDevice.processorCount)
+        guard let modelID = Self.getModelIdentifier() else { return .unknown }
+        return ARM.get(modelId: modelID, by: Self.processorCount)
     }
 }
