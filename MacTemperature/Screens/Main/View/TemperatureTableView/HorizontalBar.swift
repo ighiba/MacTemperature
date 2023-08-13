@@ -8,19 +8,14 @@
 import SwiftUI
 
 struct HorizontalBar: View {
-    
     private let maxTemperature: Float = 130
     private let maxHeight: CGFloat = 20
-    private var pixelsInCelsius: CGFloat {
-        return maxWidth / maxTemperature.cgFloat
-    }
+    private var widthInCelsius: CGFloat { maxWidth / maxTemperature.cgFloat }
     
     var value: Float
     var maxWidth: CGFloat
     
-    private var barColor: Color {
-        return getColorByCurrentValue(value)
-    }
+    private var barColor: Color { getColorByCurrentValue(value) }
     
     var body: some View {
         ZStack {
@@ -31,7 +26,7 @@ struct HorizontalBar: View {
         .overlay(alignment: .leading) {
             Rectangle()
                 .fill(barColor)
-                .frame(width: value.cgFloat * pixelsInCelsius, height: maxHeight)
+                .frame(width: value.cgFloat * widthInCelsius, height: maxHeight)
         }
         .cornerRadius(maxHeight / 4.5)
     }
