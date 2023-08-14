@@ -26,6 +26,7 @@ enum ARM {
     case M2Pro10c
     case M2Pro12c
     case M2Max
+    case M2Ultra
 
     static func get(modelId: String, by processorCount: Int) -> ARM {
         let cpu = Mac.listAll.first { modelId == $0.modelID && processorCount == $0.cpu.getCoresCount().cores }?.cpu
@@ -45,8 +46,9 @@ enum ARM {
         case .M2Pro10c:     return CPUCores(e: 4, p: 6)
         case .M2Pro12c:     return CPUCores(e: 4, p: 8)
         case .M2Max:        return CPUCores(e: 4, p: 8)
+        case .M2Ultra:       return CPUCores(e: 8, p: 16)
         
-        default:            return CPUCores(e: 0, p: 0)
+        case .unknown:            return CPUCores(e: 0, p: 0)
             
         }
     }

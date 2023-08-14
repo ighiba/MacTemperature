@@ -13,8 +13,9 @@ protocol MacDevice {
 }
 
 struct Mac: MacDevice {
-    var modelID: String
-    var cpu: ARM
+    
+    let modelID: String
+    let cpu: ARM
     
     private init(modelID: String, cpu: ARM) {
         self.modelID = modelID
@@ -40,15 +41,19 @@ struct Mac: MacDevice {
         Mac(modelID: "Mac14,3", cpu: .M2),
         Mac(modelID: "Mac14,2", cpu: .M2),
         Mac(modelID: "Mac14,7", cpu: .M2),
+        Mac(modelID: "Mac14,15", cpu: .M2),
         Mac(modelID: "Mac14,9", cpu: .M2Pro10c),
         Mac(modelID: "Mac14,9", cpu: .M2Pro12c),
-        Mac(modelID: "Mac14,5", cpu: .M2Max),
         Mac(modelID: "Mac14,10", cpu: .M2Pro12c),
+        Mac(modelID: "Mac14,5", cpu: .M2Max),
+        Mac(modelID: "Mac14,13", cpu: .M2Max),
         Mac(modelID: "Mac14,6", cpu: .M2Max),
+        Mac(modelID: "Mac14,14", cpu: .M2Ultra),
     ]
 }
 
 class CurrentDevice {
+    
     class var processorCount: Int { ProcessInfo.processInfo.processorCount }
     
     class func getModelIdentifier() -> String? {
