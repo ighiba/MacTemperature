@@ -77,7 +77,7 @@ extension AppDelegate {
         newWindow.contentMinSize = windowSize
         newWindow.contentMaxSize = windowSize
 
-        newWindow.title = "MacTemperature"
+        newWindow.setVersionedTitle("MacTemperature")
         newWindow.delegate = self
         newWindow.isReleasedWhenClosed = false
         newWindow.canHide = false

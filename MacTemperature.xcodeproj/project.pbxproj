@@ -47,6 +47,8 @@
 		C039703C2A2B58DB007078AD /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039703B2A2B58DB007078AD /* NotificationNames.swift */; };
 		C03C210D2A26BD6B009A7C8E /* TemperatureMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */; };
 		C03C210F2A275165009A7C8E /* TemperaturesMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210E2A275165009A7C8E /* TemperaturesMenuView.swift */; };
+		C0545EFD2A8A4D80002CD969 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0545EFC2A8A4D80002CD969 /* Bundle.swift */; };
+		C0545EFF2A8A4D8E002CD969 /* VersionedTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0545EFE2A8A4D8E002CD969 /* VersionedTitle.swift */; };
 		C065AC962A23D1B400A82183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065AC952A23D1B400A82183 /* AppDelegate.swift */; };
 		C065AC982A23D1B400A82183 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065AC972A23D1B400A82183 /* MainViewController.swift */; };
 		C065AC9A2A23D1B500A82183 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065AC992A23D1B500A82183 /* Assets.xcassets */; };
@@ -123,6 +125,8 @@
 		C039703B2A2B58DB007078AD /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureMonitor.swift; sourceTree = "<group>"; };
 		C03C210E2A275165009A7C8E /* TemperaturesMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperaturesMenuView.swift; sourceTree = "<group>"; };
+		C0545EFC2A8A4D80002CD969 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		C0545EFE2A8A4D8E002CD969 /* VersionedTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionedTitle.swift; sourceTree = "<group>"; };
 		C065AC922A23D1B400A82183 /* MacTemperature.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacTemperature.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C065AC952A23D1B400A82183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C065AC972A23D1B400A82183 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -277,8 +281,10 @@
 		C0110B1F2A853B0500281D35 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C0110B222A853BCD00281D35 /* Float+CGFloat.swift */,
+				C0545EFC2A8A4D80002CD969 /* Bundle.swift */,
+				C0545EFE2A8A4D8E002CD969 /* VersionedTitle.swift */,
 				C0110B202A853B8C00281D35 /* NSTabViewItem.swift */,
+				C0110B222A853BCD00281D35 /* Float+CGFloat.swift */,
 				C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */,
 				C00269E92A2668DB000BA655 /* TemperatureLevel+NSImage.swift */,
 				C08332A72A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift */,
@@ -592,6 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C03970342A2AC7F5007078AD /* TemperatureSensorType.swift in Sources */,
+				C0545EFD2A8A4D80002CD969 /* Bundle.swift in Sources */,
 				C065AC982A23D1B400A82183 /* MainViewController.swift in Sources */,
 				C065ACC42A24F37D00A82183 /* Sensors.swift in Sources */,
 				C01DDC712A27C9FD00E30383 /* TemperatureTableView.swift in Sources */,
@@ -603,6 +610,7 @@
 				C00269E62A2665B2000BA655 /* TemperatureLevel.swift in Sources */,
 				C0110B232A853BCD00281D35 /* Float+CGFloat.swift in Sources */,
 				C08332A82A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift in Sources */,
+				C0545EFF2A8A4D8E002CD969 /* VersionedTitle.swift in Sources */,
 				C08332A22A30DC0100C1ECF0 /* MenuView.swift in Sources */,
 				C03970302A2AA719007078AD /* Storable.swift in Sources */,
 				C03970202A2A743A007078AD /* SettingsRowContainer.swift in Sources */,

@@ -11,6 +11,6 @@ extension NSTabViewItem {
     func configureItem(label: String, image: NSImage) {
         self.label = label
         self.image = image
-        self.viewController?.title = label
+        self.viewController?.setVersionedTitle(label)
     }
 }
