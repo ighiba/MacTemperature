@@ -14,8 +14,8 @@ protocol MacDevice {
 
 struct Mac: MacDevice {
     
-    let modelID: String
-    let cpu: ARM
+    private(set) var modelID: String
+    private(set) var cpu: ARM
     
     private init(modelID: String, cpu: ARM) {
         self.modelID = modelID
