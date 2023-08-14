@@ -8,6 +8,7 @@
 import Foundation
 
 class GeneralSettingsData: Storable {
+    
     static var storageKey: String { "generalSettings" }
 
     static let shared = GeneralSettingsData()

@@ -19,15 +19,15 @@ class TemperatureStatusBarRow: TemperatureStatusRow {
     
     override func setupLayout() {
         NSLayoutConstraint.activate([
-            titleTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            titleTextField.topAnchor.constraint(equalTo: self.topAnchor),
-            titleTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            titleTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
+            titleTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleTextField.topAnchor.constraint(equalTo: topAnchor),
+            titleTextField.bottomAnchor.constraint(equalTo: bottomAnchor),
+            titleTextField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
             
             valueTextField.leadingAnchor.constraint(equalTo: titleTextField.trailingAnchor),
-            valueTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            valueTextField.topAnchor.constraint(equalTo: self.topAnchor),
-            valueTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            valueTextField.trailingAnchor.constraint(equalTo: trailingAnchor),
+            valueTextField.topAnchor.constraint(equalTo: topAnchor),
+            valueTextField.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

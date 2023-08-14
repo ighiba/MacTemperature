@@ -8,6 +8,7 @@
 import Foundation
 
 class SettingsStorage {
+    
     private let storage = UserDefaults.standard
     
     func loadData<T: Storable>() -> T {

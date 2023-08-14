@@ -21,6 +21,7 @@ extension TemperatureMonitorData {
 }
 
 class TemperatureMonitor {
+    
     static var lastData: TemperatureMonitorData = [:]
     static let shared = TemperatureMonitor()
     

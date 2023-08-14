@@ -8,6 +8,7 @@
 import Foundation
 
 class StatusBarSettingsData: Storable {
+    
     static var storageKey: String { "statusBarSettings" }
 
     static let shared = StatusBarSettingsData()

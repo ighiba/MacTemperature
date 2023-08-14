@@ -20,7 +20,7 @@ class MainViewController: NSViewController {
         let tableViewSwiftUI = TemperatureTableView(dataSource: viewModel)
         let hostingController = NSHostingController(rootView: tableViewSwiftUI)
         hostingController.view.frame = NSRect(x: 0, y: 0, width: tableWidth, height: 400)
-        self.view = hostingController.view
+        view = hostingController.view
     }
 
     override func viewDidLoad() {

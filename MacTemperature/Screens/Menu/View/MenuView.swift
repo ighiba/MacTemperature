@@ -48,11 +48,11 @@ class MenuView: NSMenu {
         
         addTemperatureMenuItems()
         
-        self.addItem(showWindowItem)
-        self.addItem(NSMenuItem.separator())
-        self.addItem(settingsItem)
-        self.addItem(NSMenuItem.separator())
-        self.addItem(closeItem)
+        addItem(showWindowItem)
+        addItem(NSMenuItem.separator())
+        addItem(settingsItem)
+        addItem(NSMenuItem.separator())
+        addItem(closeItem)
     }
     
     private func addTemperatureMenuItems() {
@@ -65,8 +65,8 @@ class MenuView: NSMenu {
         let tempMenuItem = configureTemperatureMenuItem(type: type)
         tempViews[type] = configureTempView(type: type)
         tempMenuItem.view = tempViews[type]
-        self.addItem(tempMenuItem)
-        self.addItem(NSMenuItem.separator())
+        addItem(tempMenuItem)
+        addItem(NSMenuItem.separator())
     }
     
     private func configureTemperatureMenuItem(type: TemperatureSensorType) -> NSMenuItem {

@@ -10,18 +10,18 @@ import Cocoa
 extension NSMutableAttributedString {
     func addColorAttribute(_ color: NSColor, range: NSRange) {
         let colorAttribute: [NSAttributedString.Key: Any] = [.foregroundColor: color]
-        self.addAttributes(colorAttribute, range: range)
+        addAttributes(colorAttribute, range: range)
     }
     
-    class func formatTemperatureValue(_ floatValue: Float,
-                                scale: UInt8 = 0,
-                                colorProvider: (() -> NSColor)? = nil) -> NSMutableAttributedString {
+    class func formatTemperatureValue(
+        _ floatValue: Float,
+        scale: UInt8 = 0,
+        colorProvider: (() -> NSColor)? = nil
+    ) -> NSMutableAttributedString {
         let stringValue = String(format: "%.\(scale)f", floatValue)
         let newTitle = "\(stringValue)°C"
         
-        let defaultlColorProvider: () -> NSColor = {
-            return NSColor.labelColor
-        }
+        let defaultlColorProvider: () -> NSColor = { NSColor.labelColor }
         
         let getColor = colorProvider ?? defaultlColorProvider
         

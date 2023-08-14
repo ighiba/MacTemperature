@@ -26,7 +26,7 @@ class GeneralSettingsViewController: SettingsItemViewController, SettingsItemVie
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.view.window?.makeFirstResponder(nil)
+        view.window?.makeFirstResponder(nil)
     }
     
     // MARK: - Views
@@ -103,7 +103,7 @@ extension GeneralSettingsViewController {
     }
 
     @objc func setNewFrequency() {
-        self.view.window?.makeFirstResponder(nil)
+        view.window?.makeFirstResponder(nil)
         let newUpdateFrequency = Int(editFrequencyTextField.stringValue) ?? 1
         settings.updateFrequencyInSeconds = newUpdateFrequency
         delegate.setGeneralSettings(settings)

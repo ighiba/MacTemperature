@@ -19,17 +19,17 @@ class TemperaturesMenuView: NSView {
     init(title: String, type: TemperatureSensorType, initalData: [TemperatureData]) {
         super.init(frame: NSRect(x: 0, y: 0, width: statusBarMenuWidth, height: 300))
 
-        self.titleLabel = NSTextField(labelWithString: title)
-        self.titleLabel.font = .boldSystemFont(ofSize: 13)
-        self.rows = initalData.map { TemperatureStatusBarRow(data: $0) }
+        titleLabel = NSTextField(labelWithString: title)
+        titleLabel.font = .boldSystemFont(ofSize: 13)
+        rows = initalData.map { TemperatureStatusBarRow(data: $0) }
 
-        self.stackView = NSStackView(views: rows)
-        self.stackView.orientation = .vertical
+        stackView = NSStackView(views: rows)
+        stackView.orientation = .vertical
 
-        self.addSubview(titleLabel)
-        self.addSubview(stackView)
+        addSubview(titleLabel)
+        addSubview(stackView)
         
-        self.setupLayout()
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -38,8 +38,8 @@ class TemperaturesMenuView: NSView {
     
     override func layout() {
         super.layout()
-        self.frame = NSRect(
-            origin: self.frame.origin,
+        frame = NSRect(
+            origin: frame.origin,
             size: NSSize(
                 width: statusBarMenuWidth,
                 height: stackView.frame.height + stackView.frame.origin.x + 25
@@ -52,13 +52,13 @@ class TemperaturesMenuView: NSView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            stackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.85),
-            stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            stackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: stackViewTopSpacing),
             
             titleLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             titleLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.7),
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: titleTopSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: titleTopSpacing),
         ])
         
         for row in rows {

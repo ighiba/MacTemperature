@@ -8,6 +8,7 @@
 import Foundation
 
 class TemperatureDataContainer: TemperatureDataSource {
+    
     @Published var temperatureData: [TemperatureData] = TemperatureDataContainer.getSampleData()
     
     public func updateData(_ temperatureData: [TemperatureData]) {

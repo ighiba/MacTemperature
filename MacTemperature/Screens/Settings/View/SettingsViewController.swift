@@ -30,13 +30,13 @@ class SettingsViewControler: NSTabViewController {
 
     override func loadView() {
         super.loadView()
-        self.view.frame = NSRect(x: 0, y: 0, width: 600, height: 150)
+        view.frame = NSRect(x: 0, y: 0, width: 600, height: 150)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabStyle = .toolbar
+        tabStyle = .toolbar
         
         addTabViewItem(label: "General", systemSymbolName: "gearshape", viewController: GeneralSettingsViewController())
         addTabViewItem(label: "Menu Bar", systemSymbolName: "menubar.rectangle", viewController: MenuBarSettingsViewController())
@@ -45,7 +45,7 @@ class SettingsViewControler: NSTabViewController {
     
     private func addTabViewItem<T: SettingsItemView>(label: String, systemSymbolName: String, viewController: T) {
         let item = configureItem(label: label, systemSymbolName: systemSymbolName, viewController: viewController)
-        self.addTabViewItem(item)
+        addTabViewItem(item)
     }
     
     private func configureItem<T: SettingsItemView>(label: String, systemSymbolName: String, viewController: T) -> NSTabViewItem {

@@ -9,33 +9,31 @@ import Cocoa
 
 class SettingsItemViewController: NSViewController {
     
-    var settingsWidth: CGFloat {
-        return 600
-    }
+    var settingsWidth: CGFloat { 600 }
     
     override func loadView() {
-        self.view = settingsView
+        view = settingsView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(settingsStack)
-        self.settingsStack.orientation = .vertical
-        self.setupLayout()
+        view.addSubview(settingsStack)
+        settingsStack.orientation = .vertical
+        setupLayout()
     }
     
     func setupLayout() {
         settingsStack.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            settingsStack.topAnchor.constraint(greaterThanOrEqualTo: self.view.topAnchor, constant: 30),
-            settingsStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            settingsStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            settingsStack.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 30),
+            settingsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            settingsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
     
     lazy var settingsView: NSView = {
-        return NSView(frame: NSRect(x: 0, y: 0, width: self.settingsWidth, height: 200))
+        return NSView(frame: NSRect(x: 0, y: 0, width: settingsWidth, height: 200))
     }()
     
     var settingsStack: NSStackView = {

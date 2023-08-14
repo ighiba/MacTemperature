@@ -8,6 +8,7 @@
 import Foundation
 
 class MenuBarSettingsData: Storable {
+    
     static var storageKey: String { "menuBarSettings" }
 
     static let shared = MenuBarSettingsData()

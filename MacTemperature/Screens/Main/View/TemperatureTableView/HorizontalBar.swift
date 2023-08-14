@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HorizontalBar: View {
+    
     private let maxTemperature: Float = 130
     private let maxHeight: CGFloat = 20
     private var widthInCelsius: CGFloat { maxWidth / maxTemperature.cgFloat }
