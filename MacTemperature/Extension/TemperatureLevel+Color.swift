@@ -11,17 +11,34 @@ import SwiftUI
 extension TemperatureLevel {
     func getStatusBarColor() -> NSColor {
         switch self {
-        case .low:    return .labelColor
-        case .medium: return .systemOrange
-        case .high:   return .systemRed
+        case .low:
+            return .labelColor
+        case .medium:
+            return .systemOrange
+        case .high:
+            return .systemRed
+        }
+    }
+    
+    func getMenuItemColor() -> NSColor {
+        switch self {
+        case .low:
+            return .labelColor
+        case .medium:
+            return NSColor(named: "LevelColorMedium")!
+        case .high:
+            return .systemRed
         }
     }
     
     func getBarColor() -> Color {
         switch self {
-        case .low:    return .green
-        case .medium: return .orange
-        case .high:   return .red
+        case .low:
+            return .green
+        case .medium:
+            return .orange
+        case .high:
+            return .red
         }
     }
 }

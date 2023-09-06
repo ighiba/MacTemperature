@@ -81,6 +81,6 @@ class TemperaturesMenuView: NSView {
     
     private func getDefaultTemperatureAttributedString(_ floatValue: Float) -> NSMutableAttributedString {
         let level = TemperatureLevel.getLevel(floatValue)
-        return NSMutableAttributedString.formatTemperatureValue(floatValue, colorProvider: level.getStatusBarColor)
+        return NSMutableAttributedString.formatTemperatureValue(floatValue, colorProvider: level.getMenuItemColor)
     }
 }
