@@ -8,8 +8,7 @@
 import Foundation
 
 protocol Storable: Codable {
-    associatedtype ReturnType: Storable
     static var storageKey: String { get }
-    static func getDefaultData() -> ReturnType
-    func setData(_ settings: ReturnType)
+    static func getDefault() -> Self
+    func set(_ data: Self)
 }
