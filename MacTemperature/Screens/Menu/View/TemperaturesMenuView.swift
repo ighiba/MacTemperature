@@ -9,26 +9,20 @@ import Cocoa
 
 private let titleTopSpacing: CGFloat = 5
 private let stackViewTopSpacing: CGFloat = 10
+private let verticalSpacing: CGFloat = 16.5
+private let temperaturesMenuSectionHeight: CGFloat = 300
 
 class TemperaturesMenuView: NSView {
     
     private var titleLabel: NSTextField!
     private var stackView: NSStackView!
-    private var rows: [TemperatureStatusBarRow] = []
+    private var rows: [TemperatureStatusBarRow]
     
     init(title: String, type: TemperatureSensorType, initalData: [TemperatureData]) {
-        super.init(frame: NSRect(x: 0, y: 0, width: statusBarMenuWidth, height: 300))
-
-        titleLabel = NSTextField(labelWithString: title)
-        titleLabel.font = .boldSystemFont(ofSize: 13)
-        rows = initalData.map { TemperatureStatusBarRow(data: $0) }
-
-        stackView = NSStackView(views: rows)
-        stackView.orientation = .vertical
-
-        addSubview(titleLabel)
-        addSubview(stackView)
+        self.rows = initalData.map { TemperatureStatusBarRow(data: $0) }
+        super.init(frame: NSRect(x: 0, y: 0, width: statusBarMenuWidth, height: temperaturesMenuSectionHeight))
         
+        setupViews(title: title)
         setupLayout()
     }
     
@@ -46,13 +40,24 @@ class TemperaturesMenuView: NSView {
             )
         )
     }
+    
+    private func setupViews(title: String) {
+        titleLabel = NSTextField(labelWithString: title)
+        titleLabel.font = .boldSystemFont(ofSize: 13)
+
+        stackView = NSStackView(views: rows)
+        stackView.orientation = .vertical
+
+        addSubview(titleLabel)
+        addSubview(stackView)
+    }
 
     private func setupLayout() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            stackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
+            stackView.widthAnchor.constraint(equalTo: widthAnchor, constant: -2 * verticalSpacing),
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: stackViewTopSpacing),
             
