@@ -24,8 +24,8 @@ class MenuViewModel: MenuViewModelDelegate {
     
     init(menuBarSettings: MenuBarSettingsData) {
         self.menuBarSettings = menuBarSettings
-        loadInitialData(forSettings: menuBarSettings)
-        configureNotification()
+        self.loadInitialData(forSettings: menuBarSettings)
+        self.configureNotification()
     }
     
     private func loadInitialData(forSettings settings: MenuBarSettingsData) {
