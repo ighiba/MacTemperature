@@ -21,9 +21,8 @@ final class StatusBarSettingsData: Storable {
         self.statusBarAverageTemperatureFor = statusBarAverageTemperatureFor
     }
     
-    init() {
-        statusBarShowIcon = true
-        statusBarAverageTemperatureFor = .cpu
+    convenience init() {
+        self.init(statusBarShowIcon: true, statusBarAverageTemperatureFor: .cpu)
     }
     
     static func getDefault() -> StatusBarSettingsData {

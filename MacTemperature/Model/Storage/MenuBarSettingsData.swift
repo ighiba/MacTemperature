@@ -21,9 +21,8 @@ final class MenuBarSettingsData: Storable {
         self.gpuShowTemperatures = gpuShowTemperatures
     }
     
-    init() {
-        cpuShowTemperatures = true
-        gpuShowTemperatures = false
+    convenience init() {
+        self.init(cpuShowTemperatures: true, gpuShowTemperatures: false)
     }
     
     static func getDefault() -> MenuBarSettingsData {

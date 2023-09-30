@@ -23,10 +23,8 @@ final class GeneralSettingsData: Storable {
         self.updateFrequencyInSeconds = updateFrequencyInSeconds
     }
     
-    init() {
-        mainWindowOpenEveryLaunch = true
-        appShouldLaunchAfterStart = true
-        updateFrequencyInSeconds = 1
+    convenience init() {
+        self.init(mainWindowOpenEveryLaunch: true, appShouldLaunchAfterStart: true, updateFrequencyInSeconds: 1)
     }
     
     static func getDefault() -> GeneralSettingsData {
