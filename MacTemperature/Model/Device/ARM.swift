@@ -35,21 +35,30 @@ enum ARM {
     
     private func getCoresCount() -> CPUCores {
         switch self {
+        case .unknown:
+            return CPUCores(e: 0, p: 0)
             
-        case .M1:           return CPUCores(e: 4, p: 4)
-        case .M1Pro8c:      return CPUCores(e: 2, p: 6)
-        case .M1Pro10c:     return CPUCores(e: 2, p: 8)
-        case .M1Max:        return CPUCores(e: 2, p: 8)
-        case .M1Ultra:      return CPUCores(e: 4, p: 16)
+        case .M1:
+            return CPUCores(e: 4, p: 4)
+        case .M1Pro8c:
+            return CPUCores(e: 2, p: 6)
+        case .M1Pro10c:
+            return CPUCores(e: 2, p: 8)
+        case .M1Max:
+            return CPUCores(e: 2, p: 8)
+        case .M1Ultra:
+            return CPUCores(e: 4, p: 16)
             
-        case .M2:           return CPUCores(e: 4, p: 4)
-        case .M2Pro10c:     return CPUCores(e: 4, p: 6)
-        case .M2Pro12c:     return CPUCores(e: 4, p: 8)
-        case .M2Max:        return CPUCores(e: 4, p: 8)
-        case .M2Ultra:       return CPUCores(e: 8, p: 16)
-        
-        case .unknown:            return CPUCores(e: 0, p: 0)
-            
+        case .M2:
+            return CPUCores(e: 4, p: 4)
+        case .M2Pro10c:
+            return CPUCores(e: 4, p: 6)
+        case .M2Pro12c:
+            return CPUCores(e: 4, p: 8)
+        case .M2Max:
+            return CPUCores(e: 4, p: 8)
+        case .M2Ultra:
+            return CPUCores(e: 8, p: 16)
         }
     }
 }
