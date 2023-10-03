@@ -37,8 +37,6 @@ struct HorizontalBar: View {
     }
 }
 
-struct HorizontalBar_Previews: PreviewProvider {
-    static var previews: some View {
-        HorizontalBar(value: 40.0, maxWidth: 300)
-    }
+#Preview {
+    HorizontalBar(value: 40.0, maxWidth: 300)
 }

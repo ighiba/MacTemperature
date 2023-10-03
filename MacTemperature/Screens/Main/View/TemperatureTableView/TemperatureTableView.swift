@@ -36,11 +36,6 @@ struct TemperatureTableView<T: TemperatureDataSource>: View {
     }
 }
 
-struct TemperatureTableView_Previews: PreviewProvider {
-    
-    static let sampleDataSource = TemperatureDataContainer()
-
-    static var previews: some View {
-        TemperatureTableView(dataSource: sampleDataSource)
-    }
+#Preview {
+    TemperatureTableView(dataSource: TemperatureDataContainer())
 }
