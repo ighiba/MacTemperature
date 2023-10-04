@@ -11,14 +11,10 @@ import SwiftUI
 class MainViewController: NSViewController {
 
     var viewModel: MainViewModel!
-    
-    deinit {
-        print("MainViewController deinited")
-    }
 
     override func loadView() {
-        let tableViewSwiftUI = TemperatureTableView(dataSource: viewModel)
-        let hostingController = NSHostingController(rootView: tableViewSwiftUI)
+        let temperatureTableView = TemperatureTableView(dataSource: viewModel)
+        let hostingController = NSHostingController(rootView: temperatureTableView)
         hostingController.view.frame = NSRect(x: 0, y: 0, width: tableWidth, height: 400)
         view = hostingController.view
     }

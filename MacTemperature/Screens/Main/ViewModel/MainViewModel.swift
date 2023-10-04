@@ -22,10 +22,6 @@ class MainViewModel: TemperatureDataSource {
         loadAndUpdateInitalData()
     }
     
-    deinit {
-        print("MainViewModel deinited")
-    }
-    
     @objc func updateTemperatureData(_ notification: NSNotification) {
         guard let tempMonitorData = notification.object as? TemperatureMonitorData else { return }
         DispatchQueue.main.async { [weak self] in
