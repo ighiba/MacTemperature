@@ -51,7 +51,7 @@ class MenuViewModel: MenuViewModelDelegate {
     }
     
     private func configureNotification() {
-        NotificationCenter.default.addObserver(forName: .temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
+        NotificationCenter.default.addObserver(forName: .temperatureMonitorUpdateNotification, object: nil, queue: nil) { [weak self] notification in
             guard let tempMonitorData = notification.object as? TemperatureMonitorData else { return }
             DispatchQueue.main.async {
                 self?.temperatureMonitorData = tempMonitorData

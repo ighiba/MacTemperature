@@ -8,8 +8,8 @@
 import Foundation
 
 extension Notification.Name {
-    static let temperatureUpdateNotifaction = Notification.Name("ru.ighiba.TemperatureUpdateNotifaction")
-    static let isEnableStatusBarIconNotification = Notification.Name("ru.ighiba.isEnableStatusBarIconNotification")
-    static let avgTemperatureTypeChangedNotification = Notification.Name("ru.ighiba.avgTemperatureTypeChangedNotification")
+    static let temperatureMonitorUpdateNotification = Notification.Name("ru.ighiba.temperatureMonitorUpdateNotification")
+    static let isStatusBarIconEnabledChangeNotification = Notification.Name("ru.ighiba.isStatusBarIconEnabledChangeNotification")
+    static let averageTemperatureSensorChangeNotification = Notification.Name("ru.ighiba.averageTemperatureSensorChangeNotification")
     static let menuUpdateNotification = Notification.Name("ru.ighiba.menuUpdateNotification")
 }

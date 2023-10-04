@@ -24,7 +24,7 @@ class MainViewModel: TemperatureDataSource {
     }
     
     private func addTemperatureDataObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTemperatureData), name: .temperatureUpdateNotifaction, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTemperatureData), name: .temperatureMonitorUpdateNotification, object: nil)
     }
     
     @objc func updateTemperatureData(_ notification: NSNotification) {
