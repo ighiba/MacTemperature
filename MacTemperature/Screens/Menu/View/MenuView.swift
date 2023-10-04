@@ -18,11 +18,17 @@ class MenuView: NSMenu {
     
     private var cancellables = Set<AnyCancellable>()
     
-    var viewModel: MenuViewModelDelegate! {
-        didSet {
-            configureBindings()
-            configureMenu()
-        }
+    private let viewModel: MenuViewModelDelegate
+    
+    init(viewModel: MenuViewModelDelegate) {
+        self.viewModel = viewModel
+        super.init(title: "")
+        self.configureBindings()
+        self.configureMenu()
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Methods
