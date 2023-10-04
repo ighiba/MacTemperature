@@ -28,7 +28,7 @@ class SettingsViewModel: SettingsViewModelDelegate {
     func setGeneralSettings(_ settings: GeneralSettingsData) {
         generalSettings.set(settings)
         settingsStorage.saveData(settings)
-        NotificationCenter.default.post(name: .temperatureMonitorUpdateNotification, object: settings.updateFrequencyInSeconds)
+        NotificationCenter.default.post(name: .updateFrequencyChangeNotification, object: settings.updateFrequencyInSeconds)
         let appDelegate = NSApplication.shared.delegate as? AppDelegate
         appDelegate?.setAppToLaunchAtMacStart(state: settings.appShouldLaunchAfterStart)
     }

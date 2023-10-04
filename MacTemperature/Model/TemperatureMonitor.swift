@@ -41,7 +41,7 @@ class TemperatureMonitor {
     }
     
     private init () {
-        NotificationCenter.default.addObserver(forName: .temperatureMonitorUpdateNotification, object: nil, queue: nil) { [weak self] notification in
+        NotificationCenter.default.addObserver(forName: .updateFrequencyChangeNotification, object: nil, queue: nil) { [weak self] notification in
             guard let newUpdateFrequency = notification.object as? Int, newUpdateFrequency != self?.secondsBetweenUpdate else { return }
             self?.stop()
             self?.secondsBetweenUpdate = newUpdateFrequency
