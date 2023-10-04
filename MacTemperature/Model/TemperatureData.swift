@@ -24,3 +24,13 @@ struct TemperatureData: Identifiable {
         return String(format: "%.\(scale)f", floatValue)
     }
 }
+
+extension [TemperatureData] {
+    func getAverageTemperature() -> Float {
+        guard !self.isEmpty else { return 0 }
+        let temperatureValues = self.map({ $0.floatValue })
+        let temperatureSum = self.map({ $0.floatValue }).reduce(0, +)
+        
+        return temperatureSum / Float(temperatureValues.count)
+    }
+}

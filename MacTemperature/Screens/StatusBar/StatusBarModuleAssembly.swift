@@ -9,6 +9,6 @@ import Foundation
 
 class StatusBarModuleAssembly {
     class func configureModule() {
-        StatusBarManager.shared.temperatureManager = TemperatureManagerImpl()
+        _ = StatusBarManager.shared
     }
 }

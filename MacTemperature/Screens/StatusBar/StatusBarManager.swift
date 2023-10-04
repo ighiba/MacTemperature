@@ -11,41 +11,53 @@ import AppKit
 class StatusBarManager {
     
     static let shared = StatusBarManager()
+
+    private var isThermometerIconEnabled: Bool = false {
+        didSet {
+            reloadStatusBar()
+        }
+    }
+    private var averageTemperatureSensor: TemperatureSensorType = .cpu {
+        didSet {
+            reloadStatusBar()
+        }
+    }
     
     private let statusItem: NSStatusItem
-    private var isIconEnabled = true
-    private var avgTempType: TemperatureSensorType = .cpu
-    private var avgTempValue: Float = 0.0
-    private var avgTempCurrentLevel: TemperatureLevel { TemperatureLevel.getLevel(avgTempValue) }
-    
-    var temperatureManager: TemperatureManager!
     
     private init() {
         statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
         statusItem.button?.target = self
         statusItem.button?.action = #selector(statusBarButtonClicked)
-        isStatusBarIconEnabled(state: StatusBarSettingsData.shared.statusBarShowIcon)
 
         statusItem.menu = MenuModuleAssembly.configureModule()
         
+        loadSettings()
+        addObservers()
+    }
+    
+    private func loadSettings() {
+        let settings = StatusBarSettingsData.shared
+        isThermometerIconEnabled = settings.statusBarShowIcon
+        averageTemperatureSensor = settings.statusBarAverageTemperatureFor
+    }
+    
+    private func addObservers() {
         NotificationCenter.default.addObserver(forName: .temperatureUpdateNotifaction, object: nil, queue: nil) { [weak self] notification in
-            guard let tempMonitorData = notification.object as? TemperatureMonitorData, let strongSelf = self else { return }
+            guard let temperatureMonitorData = notification.object as? TemperatureMonitorData else { return }
             DispatchQueue.main.async {
-                strongSelf.setAvgAndUpdateStatusBar(tempMonitorData, for: strongSelf.avgTempType)
+                self?.temperatureMonitorDataDidUpdate(temperatureMonitorData)
             }
         }
         
         NotificationCenter.default.addObserver(forName: .avgTemperatureTypeChangedNotification, object: nil, queue: nil) { [weak self] notification in
-            guard let newAvgTempType = notification.object as? TemperatureSensorType, let strongSelf = self else { return }
-            guard newAvgTempType != strongSelf.avgTempType else { return }
-            
-            strongSelf.avgTempType = newAvgTempType
-            strongSelf.setAvgAndUpdateStatusBar(for: newAvgTempType)
+            guard let newAverageTemperatureSensor = notification.object as? TemperatureSensorType, newAverageTemperatureSensor != self?.averageTemperatureSensor else { return }
+            self?.averageTemperatureSensor = newAverageTemperatureSensor
         }
         
         NotificationCenter.default.addObserver(forName: .isEnableStatusBarIconNotification, object: nil, queue: nil) { [weak self] notification in
-            guard let statusBarShowIcon = notification.object as? Bool else { return }
-            self?.isStatusBarIconEnabled(state: statusBarShowIcon)
+            guard let isStatusBarIconEnabled = notification.object as? Bool else { return }
+            self?.isThermometerIconEnabled = isStatusBarIconEnabled
         }
         
         NotificationCenter.default.addObserver(forName: .menuUpdateNotification, object: nil, queue: nil) { [weak self] notification in
@@ -53,35 +65,43 @@ class StatusBarManager {
         }
     }
     
-    private func setAvgAndUpdateStatusBar(_ data: TemperatureMonitorData? = nil, for type: TemperatureSensorType) {
-        let tempMonitorData = data ?? TemperatureMonitor.lastData
-        let tempDataForAvg = tempMonitorData[type] ?? []
-        let avgTemp = temperatureManager.getAverageTemperatureFor(tempDataForAvg)
-        avgTempValue = avgTemp
-        updateStatusBarItemTitle(avgTemp)
+    private func reloadStatusBar() {
+        temperatureMonitorDataDidUpdate(TemperatureMonitor.lastData)
     }
 
-    private func updateStatusBarItemTitle(_ floatValue: Float? = nil) {
-        let value = floatValue ?? avgTempValue
-        let attributedTitle = NSMutableAttributedString.formatTemperatureValue(value, colorProvider: avgTempCurrentLevel.getStatusBarColor)
+    private func temperatureMonitorDataDidUpdate(_ temperatureData: TemperatureMonitorData) {
+        let temperatureDataForAverage = temperatureData[averageTemperatureSensor] ?? []
+        let averageTemperature = temperatureDataForAverage.getAverageTemperature()
+        let temperatureLevel = getTemperatureLevel(value: averageTemperature)
         
-        if let button = statusItem.button {
-            button.attributedTitle = attributedTitle
-        }
+        updateTemperatureLabel(value: averageTemperature, temperatureLevel: temperatureLevel)
+        updateThermometerIcon(temperatureLevel: temperatureLevel)
+    }
+
+    private func updateTemperatureLabel(value: Float, temperatureLevel: TemperatureLevel) {
+        let attributedTitle = NSMutableAttributedString.formatTemperatureValue(value, colorProvider: temperatureLevel.getStatusBarColor)
+        statusItem.button?.attributedTitle = attributedTitle
     }
     
-    private func isStatusBarIconEnabled( state: Bool) {
-        statusItem.button?.image = StatusBarSettingsData.shared.statusBarShowIcon ? avgTempCurrentLevel.getImage() : nil
+    private func updateThermometerIcon(temperatureLevel: TemperatureLevel) {
+        let newIcon: NSImage? = isThermometerIconEnabled ? temperatureLevel.getImage() : nil
+        guard newIcon != statusItem.button?.image else { return }
+        
+        statusItem.button?.image = newIcon
     }
     
-    func getDefaultTemperatureAttributedString(_ floatValue: Float) -> NSMutableAttributedString {
-        let level = TemperatureLevel.getLevel(floatValue)
-        return NSMutableAttributedString.formatTemperatureValue(floatValue, colorProvider: level.getStatusBarColor)
+    private func getTemperatureLevel(value: Float) -> TemperatureLevel {
+        TemperatureLevel.getLevel(value)
+    }
+    
+    func getDefaultTemperatureAttributedString(_ value: Float) -> NSMutableAttributedString {
+        let level = TemperatureLevel.getLevel(value)
+        return NSMutableAttributedString.formatTemperatureValue(value, colorProvider: level.getStatusBarColor)
     }
 }
 
 extension StatusBarManager {
     @objc func statusBarButtonClicked(_ sender: NSStatusBarButton) {
-        statusItem.menu?.popUp(positioning: nil, at: NSPoint(), in: statusItem.button)
+        statusItem.menu?.popUp(positioning: nil, at: .zero, in: statusItem.button)
     }
 }
