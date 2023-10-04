@@ -15,11 +15,16 @@ class MainViewModel: TemperatureDataSource {
     
     @Published var temperatureData: [TemperatureData] = []
     
-    var sensorsManager: SensorsManager!
+    private let sensorsManager: SensorsManager
     
-    init() {
+    init(sensorsManager: SensorsManager) {
+        self.sensorsManager = sensorsManager
+        self.addTemperatureDataObserver()
+        self.temperatureData = self.getInitalData()
+    }
+    
+    private func addTemperatureDataObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateTemperatureData), name: .temperatureUpdateNotifaction, object: nil)
-        temperatureData = getInitalData()
     }
     
     @objc func updateTemperatureData(_ notification: NSNotification) {
@@ -29,12 +34,12 @@ class MainViewModel: TemperatureDataSource {
         }
     }
     
-    func getInitalData() -> [TemperatureData] {
+    private func getInitalData() -> [TemperatureData] {
         let tempData = TemperatureMonitor.lastData.transformIntoTemperatureData()
         return !tempData.isEmpty ? tempData : getEmptyTemperatureData()
     }
     
-    func getEmptyTemperatureData() -> [TemperatureData] {
+    private func getEmptyTemperatureData() -> [TemperatureData] {
         let sensors = sensorsManager.getCurrentDeviceSensors([.cpu, .gpu])
         return sensors.map { TemperatureData(id: $0.key, title: $0.title, floatValue: 0.0) }
     }
