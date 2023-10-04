@@ -11,12 +11,7 @@ typealias TemperatureMonitorData = [TemperatureSensorType : [TemperatureData]]
 
 extension TemperatureMonitorData {
     func transformIntoTemperatureData() -> [TemperatureData] {
-        var tempData: [TemperatureData] = []
-        for type in TemperatureSensorType.allCases {
-            guard let data = self[type] else { continue }
-            tempData.append(contentsOf: data)
-        }
-        return tempData
+        return TemperatureSensorType.allCases.lazy.compactMap({ self[$0] }).reduce([], +)
     }
 }
 
@@ -27,10 +22,7 @@ class TemperatureMonitor {
     
     private var timer: DispatchSourceTimer?
     private var queue = DispatchQueue(label: "ru.ighiba.backgroundQueue")
-    
-    var temperatureManager: TemperatureManager!
-    var sensorsManager: SensorsManager!
-    
+
     private var secondsBetweenUpdate = GeneralSettingsData.shared.updateFrequencyInSeconds
     
     private var data: TemperatureMonitorData! {
@@ -39,6 +31,9 @@ class TemperatureMonitor {
             NotificationCenter.default.post(name: .temperatureMonitorUpdateNotification, object: data)
         }
     }
+    
+    var temperatureManager: TemperatureManager!
+    var sensorsManager: SensorsManager!
     
     private init () {
         NotificationCenter.default.addObserver(forName: .updateFrequencyChangeNotification, object: nil, queue: nil) { [weak self] notification in
