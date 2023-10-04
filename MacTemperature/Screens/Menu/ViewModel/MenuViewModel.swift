@@ -16,36 +16,37 @@ protocol MenuViewModelDelegate: AnyObject {
 }
 
 class MenuViewModel: MenuViewModelDelegate {
-    
-    private let menuBarSettings: MenuBarSettingsData
-    
+  
     @Published var temperatureMonitorData: TemperatureMonitorData = [:]
     var temperatureMonitorDataPublisher: Published<TemperatureMonitorData>.Publisher { $temperatureMonitorData }
     
-    init(menuBarSettings: MenuBarSettingsData) {
+    private let menuBarSettings: MenuBarSettingsData
+    private let sensorsManager: SensorsManager
+    
+    init(menuBarSettings: MenuBarSettingsData, sensorsManager: SensorsManager ) {
         self.menuBarSettings = menuBarSettings
+        self.sensorsManager = sensorsManager
         self.loadInitialData(forSettings: menuBarSettings)
         self.configureNotification()
     }
     
     private func loadInitialData(forSettings settings: MenuBarSettingsData) {
         if settings.cpuShowTemperatures {
-            temperatureMonitorData[.cpu] = loadInitialData(for: .cpu)
+            temperatureMonitorData[.cpu] = getInitialData(for: .cpu)
         }
         
         if settings.gpuShowTemperatures {
-            temperatureMonitorData[.gpu] = loadInitialData(for: .gpu)
+            temperatureMonitorData[.gpu] = getInitialData(for: .gpu)
         }
     }
     
-    private func loadInitialData(for type: TemperatureSensorType) -> [TemperatureData] {
+    private func getInitialData(for type: TemperatureSensorType) -> [TemperatureData] {
         let tempStatusData = TemperatureMonitor.lastData[type] ?? []
-        return !tempStatusData.isEmpty ? tempStatusData : getSampleData(for: type)
+        return !tempStatusData.isEmpty ? tempStatusData : getEmptyTemperatureData(for: type)
     }
     
-    private func getSampleData(for type: TemperatureSensorType) -> [TemperatureData] {
-        let sensorsManager = SensorsManagerImpl()
-        let sensors = sensorsManager.getSensorsForCurrentDevice(where: [type])
+    private func getEmptyTemperatureData(for sensorType: TemperatureSensorType) -> [TemperatureData] {
+        let sensors = sensorsManager.getCurrentDeviceSensors([sensorType])
         return sensors.map { TemperatureData(id: $0.key, title: $0.title, floatValue: 0.0) }
     }
     

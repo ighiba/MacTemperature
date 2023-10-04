@@ -9,7 +9,7 @@ import Foundation
 
 protocol SensorsManager: AnyObject {
     func getValues(_ sensors: [Sensor]) -> [SMCVal_t]
-    func getSensorsForCurrentDevice(where sensorTypes: [TemperatureSensorType]) -> [Sensor]
+    func getCurrentDeviceSensors(_ sensorTypes: [TemperatureSensorType]) -> [Sensor]
 }
 
 class SensorsManagerImpl: SensorsManager {
@@ -19,7 +19,7 @@ class SensorsManagerImpl: SensorsManager {
         return sensors.map({ SMCVal_t($0.key) })
     }
     
-    func getSensorsForCurrentDevice(where sensorTypes: [TemperatureSensorType]) -> [Sensor] {
+    func getCurrentDeviceSensors(_ sensorTypes: [TemperatureSensorType]) -> [Sensor] {
         let currentCpu = CurrentDevice.getCpu()
         return Sensors.getSensors(sensorTypes, for: currentCpu)
     }

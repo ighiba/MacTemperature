@@ -9,11 +9,13 @@ import Cocoa
 
 class MenuModuleAssembly {
     class func configureModule() -> NSMenu {
-        let menuBarView = MenuView()
-        let menuViewModel = MenuViewModel(menuBarSettings: MenuBarSettingsData.shared)
+        let view = MenuView()
         
-        menuBarView.viewModel = menuViewModel
+        let sensorsManager = SensorsManagerImpl()
+        let viewModel = MenuViewModel(menuBarSettings: MenuBarSettingsData.shared, sensorsManager: sensorsManager)
         
-        return menuBarView
+        view.viewModel = viewModel
+        
+        return view
     }
 }

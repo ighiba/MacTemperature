@@ -56,14 +56,14 @@ class TemperatureMonitor {
         timer?.setEventHandler { [weak self] in
             guard let strongSelf = self else { return }
             var newData: TemperatureMonitorData = [:]
-            for type in TemperatureSensorType.allCases {
-                let sensors = strongSelf.sensorsManager.getSensorsForCurrentDevice(where: [type])
+            for sensorType in TemperatureSensorType.allCases {
+                let sensors = strongSelf.sensorsManager.getCurrentDeviceSensors([sensorType])
                 var tempData: [TemperatureData] = []
                 for sensor in sensors {
                     guard let floatValue = strongSelf.temperatureManager.getTemperature(for: sensor) else { continue }
                     tempData.append(TemperatureData(id: sensor.key, title: sensor.title, floatValue: floatValue))
                 }
-                newData.updateValue(tempData, forKey: type)
+                newData.updateValue(tempData, forKey: sensorType)
             }
             strongSelf.data = newData
         }
