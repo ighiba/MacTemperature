@@ -17,8 +17,8 @@ extension TemperatureMonitorData {
 
 class TemperatureMonitor {
     
-    static var lastData: TemperatureMonitorData = [:]
     static let shared = TemperatureMonitor()
+    static var lastData: TemperatureMonitorData = [:]
     
     private var timer: DispatchSourceTimer?
     private var queue = DispatchQueue(label: "ru.ighiba.backgroundQueue")
@@ -49,18 +49,7 @@ class TemperatureMonitor {
         timer?.schedule(deadline: .now(), repeating: .seconds(secondsBetweenUpdate))
         
         timer?.setEventHandler { [weak self] in
-            guard let strongSelf = self else { return }
-            var newData: TemperatureMonitorData = [:]
-            for sensorType in TemperatureSensorType.allCases {
-                let sensors = strongSelf.sensorsManager.getCurrentDeviceSensors([sensorType])
-                var tempData: [TemperatureData] = []
-                for sensor in sensors {
-                    guard let floatValue = strongSelf.temperatureManager.getTemperature(for: sensor) else { continue }
-                    tempData.append(TemperatureData(id: sensor.key, title: sensor.title, floatValue: floatValue))
-                }
-                newData.updateValue(tempData, forKey: sensorType)
-            }
-            strongSelf.data = newData
+            self?.updateData()
         }
         
         timer?.resume()
@@ -69,5 +58,22 @@ class TemperatureMonitor {
     func stop() {
         timer?.cancel()
         timer = nil
+    }
+    
+    private func updateData() {
+        var newData: TemperatureMonitorData = [:]
+        for sensorType in TemperatureSensorType.allCases {
+            let sensors = sensorsManager.getCurrentDeviceSensors([sensorType])
+            let temperatureData = obtainTemeperatureData(forSensors: sensors)
+            newData.updateValue(temperatureData, forKey: sensorType)
+        }
+        data = newData
+    }
+    
+    private func obtainTemeperatureData(forSensors sensors: [Sensor]) -> [TemperatureData] {
+        return sensors.compactMap { sensor in
+            guard let temperatureValue = temperatureManager.obtainTemperature(for: sensor) else { return nil }
+            return TemperatureData(id: sensor.key, title: sensor.title, floatValue: temperatureValue)
+        }
     }
 }

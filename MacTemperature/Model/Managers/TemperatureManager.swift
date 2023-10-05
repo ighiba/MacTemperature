@@ -8,12 +8,12 @@
 import Foundation
 
 protocol TemperatureManager: AnyObject {
-    func getTemperature(for sensor: Sensor) -> Float?
+    func obtainTemperature(for sensor: Sensor) -> Float?
 }
 
 class TemperatureManagerImpl: TemperatureManager {
     
-    func getTemperature(for sensor: Sensor) -> Float? {
+    func obtainTemperature(for sensor: Sensor) -> Float? {
         var value = SMCVal_t(sensor.key)
         var result: kern_return_t
         
