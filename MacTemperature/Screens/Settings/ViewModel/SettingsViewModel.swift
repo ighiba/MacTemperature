@@ -29,8 +29,7 @@ class SettingsViewModel: SettingsViewModelDelegate {
         generalSettings.set(settings)
         settingsStorage.saveData(settings)
         NotificationCenter.default.post(name: .updateFrequencyChangeNotification, object: settings.updateFrequencyInSeconds)
-        let appDelegate = NSApplication.shared.delegate as? AppDelegate
-        appDelegate?.setAppToLaunchAtMacStart(state: settings.appShouldLaunchAfterStart)
+        NSApplication.appDelegate?.setAppToLaunchAtMacStart(state: settings.appShouldLaunchAfterStart)
     }
 
     func setMenuBarSettings(_ settings: MenuBarSettingsData) {

@@ -63,6 +63,7 @@
 		C08332A62A30DD6600C1ECF0 /* MenuModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08332A52A30DD6600C1ECF0 /* MenuModuleAssembly.swift */; };
 		C08332A82A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08332A72A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift */; };
 		C0D842D22AD1DFCC00B85E9F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D842D12AD1DFCC00B85E9F /* Constants.swift */; };
+		C0D842D42AD1E48F00B85E9F /* NSApplication+AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D842D32AD1E48F00B85E9F /* NSApplication+AppDelegate.swift */; };
 		C0E5F93C2A2CA5BC0098727E /* ARM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5F93B2A2CA5BC0098727E /* ARM.swift */; };
 		C0E5F93E2A2CA6120098727E /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5F93D2A2CA6120098727E /* Device.swift */; };
 /* End PBXBuildFile section */
@@ -146,6 +147,7 @@
 		C08332A52A30DD6600C1ECF0 /* MenuModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModuleAssembly.swift; sourceTree = "<group>"; };
 		C08332A72A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		C0D842D12AD1DFCC00B85E9F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C0D842D32AD1E48F00B85E9F /* NSApplication+AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApplication+AppDelegate.swift"; sourceTree = "<group>"; };
 		C0E5F93B2A2CA5BC0098727E /* ARM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARM.swift; sourceTree = "<group>"; };
 		C0E5F93D2A2CA6120098727E /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -292,6 +294,7 @@
 				C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */,
 				C00269E92A2668DB000BA655 /* TemperatureLevel+NSImage.swift */,
 				C08332A72A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift */,
+				C0D842D32AD1E48F00B85E9F /* NSApplication+AppDelegate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				C039703A2A2B4FF7007078AD /* StorageLoader.swift in Sources */,
 				C01DDC752A289ACA00E30383 /* HorizontalBar.swift in Sources */,
 				C065ACC92A25161200A82183 /* SensorsManager.swift in Sources */,
+				C0D842D42AD1E48F00B85E9F /* NSApplication+AppDelegate.swift in Sources */,
 				C039702E2A2A86C3007078AD /* SettingsStorage.swift in Sources */,
 				C039701E2A2A72F9007078AD /* SettingsItemViewController.swift in Sources */,
 				C0110B102A84F15400281D35 /* MenuViewModel.swift in Sources */,

@@ -14,4 +14,6 @@ struct Constants {
 struct WindowSize {
     let main = NSSize(width: 690, height: 400)
     let settings = NSSize(width: 600, height: 200)
+    
+    fileprivate init() {}
 }

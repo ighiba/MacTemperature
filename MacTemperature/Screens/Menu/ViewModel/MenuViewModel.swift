@@ -64,12 +64,10 @@ class MenuViewModel: MenuViewModelDelegate {
     }
     
     func showMainWindow() {
-        let appDelegate = NSApplication.shared.delegate as? AppDelegate
-        appDelegate?.showMainWindow()
+        NSApplication.appDelegate?.showMainWindow()
     }
     
     func showSettingsWindow() {
-        let appDelegate = NSApplication.shared.delegate as? AppDelegate
-        appDelegate?.showSettingsWindow()
+        NSApplication.appDelegate?.showSettingsWindow()
     }
 }
