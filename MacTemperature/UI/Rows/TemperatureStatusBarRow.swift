@@ -18,6 +18,9 @@ class TemperatureStatusBarRow: TemperatureStatusRow {
     }
     
     override func setupLayout() {
+        titleTextField.translatesAutoresizingMaskIntoConstraints = false
+        valueTextField.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             titleTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleTextField.topAnchor.constraint(equalTo: topAnchor),

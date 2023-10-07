@@ -7,21 +7,23 @@
 
 import Cocoa
 
-class TemperatureStatusRow: NSView {
-    
-    var key: String = ""
+private let frameRect = NSRect(x: 0, y: 0, width: 400, height: 50)
 
-    var frameRect = NSRect(x: 0, y: 0, width: 400, height: 50)
+class TemperatureStatusRow: NSView {
+
+    private(set) var titleTextField: NSTextField = NSTextField(labelWithString: "Unknown")
+    private(set) var valueTextField: NSTextField = NSTextField(labelWithString: "0.0")
+    
+    private(set) var key: String
     
     init(key: String, title: String, value: Float) {
+        self.key = key
         super.init(frame: frameRect)
         
-        self.key = key
         titleTextField.stringValue = title
         valueTextField.stringValue = "\(value)"
         
-        addSubview(titleTextField)
-        addSubview(valueTextField)
+        setupViews()
         setupLayout()
     }
     
@@ -33,7 +35,15 @@ class TemperatureStatusRow: NSView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setupViews() {
+        addSubview(titleTextField)
+        addSubview(valueTextField)
+    }
+    
     func setupLayout() {
+        titleTextField.translatesAutoresizingMaskIntoConstraints = false
+        valueTextField.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             titleTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleTextField.topAnchor.constraint(equalTo: topAnchor),
@@ -46,30 +56,4 @@ class TemperatureStatusRow: NSView {
             valueTextField.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
-    
-    var titleTextField: NSTextField = {
-        let textField = NSTextField()
-        
-        textField.isBezeled = false
-        textField.isEditable = false
-        textField.stringValue = "Unknown"
-        textField.drawsBackground = false
-        
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        return textField
-    }()
-    
-    var valueTextField: NSTextField = {
-        let textField = NSTextField()
-        
-        textField.isBezeled = false
-        textField.isEditable = false
-        textField.stringValue = "0.0"
-        textField.drawsBackground = false
-        
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        return textField
-    }()
 }

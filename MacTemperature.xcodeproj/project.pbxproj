@@ -255,6 +255,7 @@
 		C0110B1A2A85399300281D35 /* Rows */ = {
 			isa = PBXGroup;
 			children = (
+				C0110B242A853C9100281D35 /* TemperatureStatusBarRow.swift */,
 				C00269D82A25714C000BA655 /* TemperatureStatusRow.swift */,
 				C039701F2A2A743A007078AD /* SettingsRowContainer.swift */,
 			);
@@ -449,7 +450,6 @@
 		C0E0FF372A44A25100E38DF9 /* StatusBar */ = {
 			isa = PBXGroup;
 			children = (
-				C0110B242A853C9100281D35 /* TemperatureStatusBarRow.swift */,
 				C00269E22A264AFD000BA655 /* StatusBarManager.swift */,
 				C01DDC7D2A2904CC00E30383 /* StatusBarModuleAssembly.swift */,
 			);
