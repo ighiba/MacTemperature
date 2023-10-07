@@ -40,7 +40,7 @@ class MainViewModel: TemperatureDataSource {
     }
     
     private func getEmptyTemperatureData() -> [TemperatureData] {
-        let sensors = sensorsManager.getCurrentDeviceSensors([.cpu, .gpu])
+        let sensors = sensorsManager.getCurrentDeviceSensors(sensorTypes: [.cpu, .gpu])
         return sensors.map { TemperatureData(id: $0.key, title: $0.title, floatValue: 0.0) }
     }
 }

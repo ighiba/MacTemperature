@@ -81,6 +81,7 @@ class StatusBarManager {
     private func updateTemperatureLabel(value: Float, temperatureLevel: TemperatureLevel) {
         let attributedString = NSMutableAttributedString.formatTemperatureValue(value, colorProvider: temperatureLevel.getStatusBarColor)
         guard attributedString.string != statusItem.button?.attributedTitle.string else { return }
+        
         statusItem.button?.attributedTitle = attributedString
     }
     

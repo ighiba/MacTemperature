@@ -63,7 +63,7 @@ class TemperatureMonitor {
     private func updateData() {
         var newData: TemperatureMonitorData = [:]
         for sensorType in TemperatureSensorType.allCases {
-            let sensors = sensorsManager.getCurrentDeviceSensors([sensorType])
+            let sensors = sensorsManager.getCurrentDeviceSensors(sensorTypes: [sensorType])
             let temperatureData = obtainTemeperatureData(forSensors: sensors)
             newData.updateValue(temperatureData, forKey: sensorType)
         }

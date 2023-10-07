@@ -46,7 +46,7 @@ class MenuViewModel: MenuViewModelDelegate {
     }
     
     private func getEmptyTemperatureData(for sensorType: TemperatureSensorType) -> [TemperatureData] {
-        let sensors = sensorsManager.getCurrentDeviceSensors([sensorType])
+        let sensors = sensorsManager.getCurrentDeviceSensors(sensorTypes: [sensorType])
         return sensors.map { TemperatureData(id: $0.key, title: $0.title, floatValue: 0.0) }
     }
     
