@@ -7,9 +7,14 @@
 
 import Cocoa
 
+private let settingsWindowSize = Constants.windowSize.settings
+
 class SettingsItemViewController: NSViewController {
     
-    var settingsWidth: CGFloat { 600 }
+    let settingsWidth: CGFloat = settingsWindowSize.width
+    
+    private var settingsView: NSView = NSView(frame: NSRect(origin: .zero, size: settingsWindowSize))
+    private(set) var settingsStack = NSStackView()
     
     override func loadView() {
         view = settingsView
@@ -17,12 +22,17 @@ class SettingsItemViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(settingsStack)
-        settingsStack.orientation = .vertical
+        setupViews()
         setupLayout()
     }
     
-    func setupLayout() {
+    private func setupViews() {
+        settingsStack.orientation = .vertical
+        settingsStack.spacing = 15
+        view.addSubview(settingsStack)
+    }
+    
+    private func setupLayout() {
         settingsStack.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -31,14 +41,4 @@ class SettingsItemViewController: NSViewController {
             settingsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
-    
-    lazy var settingsView: NSView = {
-        return NSView(frame: NSRect(x: 0, y: 0, width: settingsWidth, height: 200))
-    }()
-    
-    var settingsStack: NSStackView = {
-        let stack = NSStackView()
-        stack.spacing = 15
-        return stack
-    }()
 }

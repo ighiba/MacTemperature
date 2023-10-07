@@ -62,6 +62,7 @@
 		C08332A22A30DC0100C1ECF0 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08332A12A30DC0100C1ECF0 /* MenuView.swift */; };
 		C08332A62A30DD6600C1ECF0 /* MenuModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08332A52A30DD6600C1ECF0 /* MenuModuleAssembly.swift */; };
 		C08332A82A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08332A72A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift */; };
+		C0D842D22AD1DFCC00B85E9F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D842D12AD1DFCC00B85E9F /* Constants.swift */; };
 		C0E5F93C2A2CA5BC0098727E /* ARM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5F93B2A2CA5BC0098727E /* ARM.swift */; };
 		C0E5F93E2A2CA6120098727E /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5F93D2A2CA6120098727E /* Device.swift */; };
 /* End PBXBuildFile section */
@@ -144,6 +145,7 @@
 		C08332A12A30DC0100C1ECF0 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		C08332A52A30DD6600C1ECF0 /* MenuModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModuleAssembly.swift; sourceTree = "<group>"; };
 		C08332A72A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
+		C0D842D12AD1DFCC00B85E9F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C0E5F93B2A2CA5BC0098727E /* ARM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARM.swift; sourceTree = "<group>"; };
 		C0E5F93D2A2CA6120098727E /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +187,7 @@
 		C00269E42A2665A1000BA655 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C0D842D12AD1DFCC00B85E9F /* Constants.swift */,
 				C039703B2A2B58DB007078AD /* NotificationNames.swift */,
 				C00269E52A2665B2000BA655 /* TemperatureLevel.swift */,
 			);
@@ -632,6 +635,7 @@
 				C039701E2A2A72F9007078AD /* SettingsItemViewController.swift in Sources */,
 				C0110B102A84F15400281D35 /* MenuViewModel.swift in Sources */,
 				C03970322A2AA79F007078AD /* GeneralSettingsData.swift in Sources */,
+				C0D842D22AD1DFCC00B85E9F /* Constants.swift in Sources */,
 				C01DDC7E2A2904CC00E30383 /* StatusBarModuleAssembly.swift in Sources */,
 				C03970272A2A74DD007078AD /* StatusBarSettingsViewController.swift in Sources */,
 				C0E5F93E2A2CA6120098727E /* Device.swift in Sources */,

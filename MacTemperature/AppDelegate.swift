@@ -69,9 +69,9 @@ extension AppDelegate {
     }
     
     func configureMainWindow(_ contentViewcontroller: NSViewController) -> NSWindow {
-        let windowSize = NSSize(width: tableWidth, height: 400)
+        let windowSize = Constants.windowSize.main
         
-        let newWindow = NSWindow(contentRect: NSRect(origin: CGPoint(), size: windowSize), styleMask: [.titled, .closable, .miniaturizable], backing: .buffered, defer: false)
+        let newWindow = NSWindow(contentRect: NSRect(origin: .zero, size: windowSize), styleMask: [.titled, .closable, .miniaturizable], backing: .buffered, defer: false)
         newWindow.contentViewController = contentViewcontroller
         
         newWindow.contentMinSize = windowSize

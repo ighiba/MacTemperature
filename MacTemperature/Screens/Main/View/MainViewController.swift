@@ -8,6 +8,8 @@
 import Cocoa
 import SwiftUI
 
+private let mainWindowSize = Constants.windowSize.main
+
 class MainViewController: NSViewController {
 
     private let viewModel: MainViewModel
@@ -24,7 +26,7 @@ class MainViewController: NSViewController {
     override func loadView() {
         let temperatureTableView = TemperatureTableView(dataSource: viewModel)
         let hostingController = NSHostingController(rootView: temperatureTableView)
-        hostingController.view.frame = NSRect(x: 0, y: 0, width: tableWidth, height: 400)
+        hostingController.view.frame = NSRect(origin: .zero, size: mainWindowSize)
         view = hostingController.view
     }
 
