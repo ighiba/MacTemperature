@@ -10,7 +10,8 @@ import Cocoa
 private let titleTopSpacing: CGFloat = 5
 private let stackViewTopSpacing: CGFloat = 10
 private let verticalSpacing: CGFloat = 16.5
-private let temperaturesMenuSectionHeight: CGFloat = 300
+
+private let defaultHeight: CGFloat = 300
 
 class TemperaturesMenuView: NSView {
     
@@ -20,7 +21,7 @@ class TemperaturesMenuView: NSView {
     
     init(title: String, type: TemperatureSensorType, initalData: [TemperatureData]) {
         self.rows = initalData.map { TemperatureStatusBarRow(data: $0) }
-        super.init(frame: NSRect(x: 0, y: 0, width: statusBarMenuWidth, height: temperaturesMenuSectionHeight))
+        super.init(frame: NSRect(x: 0, y: 0, width: Constants.width.statusBarMenu, height: defaultHeight))
         
         setupViews(title: title)
         setupLayout()
@@ -35,7 +36,7 @@ class TemperaturesMenuView: NSView {
         frame = NSRect(
             origin: frame.origin,
             size: NSSize(
-                width: statusBarMenuWidth,
+                width: Constants.width.statusBarMenu,
                 height: stackView.frame.height + stackView.frame.origin.x + 25
             )
         )

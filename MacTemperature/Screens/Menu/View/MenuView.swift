@@ -8,8 +8,6 @@
 import Cocoa
 import Combine
 
-let statusBarMenuWidth: CGFloat = 230
-
 class MenuView: NSMenu {
     
     // MARK: - Properties
