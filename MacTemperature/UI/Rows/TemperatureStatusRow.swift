@@ -7,8 +7,6 @@
 
 import Cocoa
 
-private let frameRect = NSRect(x: 0, y: 0, width: 400, height: 50)
-
 class TemperatureStatusRow: NSView {
 
     private(set) var titleTextField: NSTextField = NSTextField(labelWithString: "Unknown")
@@ -18,13 +16,13 @@ class TemperatureStatusRow: NSView {
     
     init(key: String, title: String, value: Float) {
         self.key = key
-        super.init(frame: frameRect)
+        super.init(frame: .zero)
         
-        titleTextField.stringValue = title
-        valueTextField.stringValue = "\(value)"
+        self.titleTextField.stringValue = title
+        self.valueTextField.stringValue = "\(value)"
         
-        setupViews()
-        setupLayout()
+        self.setupViews()
+        self.setupLayout()
     }
     
     convenience init(data: TemperatureData) {

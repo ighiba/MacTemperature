@@ -22,9 +22,8 @@ class SettingsRowContainer: NSView {
         self.views = views
         self.defaultWidth = width
         super.init(frame: NSRect(x: 0, y: 0, width: width, height: 50))
-        
-        setupViews()
-        setupLayout()
+        self.setupViews()
+        self.setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -41,6 +40,8 @@ class SettingsRowContainer: NSView {
     }
     
     private func setupLayout() {
+        let controlStackWidth = views.map({ $0.frame.width }).reduce(0, +)
+        
         titleTextField.translatesAutoresizingMaskIntoConstraints = false
         controlStack.translatesAutoresizingMaskIntoConstraints = false
         
@@ -49,7 +50,7 @@ class SettingsRowContainer: NSView {
             titleTextField.topAnchor.constraint(equalTo: topAnchor),
 
             controlStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: defaultWidth * 0.4),
-            controlStack.widthAnchor.constraint(equalToConstant: views.map({ $0.frame.width }).reduce(0, +)),
+            controlStack.widthAnchor.constraint(equalToConstant: controlStackWidth),
             controlStack.topAnchor.constraint(equalTo: topAnchor),
             controlStack.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])

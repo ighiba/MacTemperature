@@ -20,9 +20,8 @@ extension NSWindow {
 }
 
 fileprivate func makeVersionedTitle(_ title: String) -> String {
-    var newTitle = title
     if let version = Bundle.main.releaseVersionNumber {
-        newTitle += " (\(version))"
+        return "\(title) (\(version))"
     }
-    return newTitle
+    return title
 }
