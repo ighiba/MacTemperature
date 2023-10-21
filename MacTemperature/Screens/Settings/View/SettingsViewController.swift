@@ -24,9 +24,18 @@ protocol StatusBarSettingsDelegate: SettingsDelegate {
 
 class SettingsViewControler: NSTabViewController {
 
-    var viewModel: SettingsViewModelDelegate!
+    private let settingsView = NSView(frame: NSRect(x: 0, y: 0, width: 400, height: 200))
+
+    private let viewModel: SettingsViewModelDelegate
     
-    var settingsView = NSView(frame: NSRect(x: 0, y: 0, width: 400, height: 200))
+    init(viewModel: SettingsViewModelDelegate) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func loadView() {
         super.loadView()

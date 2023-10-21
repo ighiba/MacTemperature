@@ -9,13 +9,9 @@ import Cocoa
 
 class SettingsModuleAssembly {
     class func configureModule() -> NSViewController {
-        let view = SettingsViewControler()
-        let viewModel = SettingsViewModel()
-        
-        viewModel.settingsStorage = SettingsStorage()
-        
-        view.viewModel = viewModel
-        
-        return view
+        let settingsStorage = SettingsStorage()
+        let viewModel = SettingsViewModel(settingsStorage: settingsStorage)
+
+        return SettingsViewControler(viewModel: viewModel)
     }
 }

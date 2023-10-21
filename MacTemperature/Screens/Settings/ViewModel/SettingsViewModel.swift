@@ -23,7 +23,11 @@ class SettingsViewModel: SettingsViewModelDelegate {
     var menuBarSettings: MenuBarSettingsData { MenuBarSettingsData.shared }
     var statusBarSettings: StatusBarSettingsData { StatusBarSettingsData.shared }
     
-    var settingsStorage: SettingsStorage!
+    private let settingsStorage: SettingsStorage
+    
+    init(settingsStorage: SettingsStorage) {
+        self.settingsStorage = settingsStorage
+    }
     
     func setGeneralSettings(_ settings: GeneralSettingsData) {
         generalSettings.set(settings)
