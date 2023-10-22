@@ -24,7 +24,7 @@ protocol StatusBarSettingsDelegate: SettingsDelegate {
 
 class SettingsViewControler: NSTabViewController {
 
-    private let settingsView = NSView(frame: NSRect(x: 0, y: 0, width: 400, height: 200))
+    private let settingsView = NSView()
 
     private let viewModel: SettingsViewModelDelegate
     
@@ -39,14 +39,20 @@ class SettingsViewControler: NSTabViewController {
 
     override func loadView() {
         super.loadView()
-        view.frame = NSRect(x: 0, y: 0, width: 600, height: 150)
+        view.frame = NSRect(origin: .zero, size: Constants.windowSize.settings)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupStyle()
+        setupItems()
+    }
+    
+    private func setupStyle() {
         tabStyle = .toolbar
-        
+    }
+    
+    private func setupItems() {
         addTabViewItem(label: "General", systemSymbolName: "gearshape", viewController: GeneralSettingsViewController())
         addTabViewItem(label: "Menu Bar", systemSymbolName: "menubar.rectangle", viewController: MenuBarSettingsViewController())
         addTabViewItem(label: "Status Bar", systemSymbolName: "thermometer.medium", viewController: StatusBarSettingsViewController())
