@@ -96,4 +96,3 @@ extension SettingsViewControler: StatusBarSettingsDelegate {
         viewModel.setStatusBarSettings(settings)
     }
 }
-

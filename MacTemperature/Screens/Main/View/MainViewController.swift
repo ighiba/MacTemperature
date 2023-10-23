@@ -24,13 +24,18 @@ class MainViewController: NSViewController {
     }
     
     override func loadView() {
-        let temperatureTableView = TemperatureTableView(dataSource: viewModel)
-        let hostingController = NSHostingController(rootView: temperatureTableView)
-        hostingController.view.frame = NSRect(origin: .zero, size: mainWindowSize)
-        view = hostingController.view
+        view = configureView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    private func configureView() -> NSView {
+        let temperatureTableView = TemperatureTableView(dataSource: viewModel)
+        let hostingController = NSHostingController(rootView: temperatureTableView)
+        hostingController.view.frame = NSRect(origin: .zero, size: mainWindowSize)
+        
+        return hostingController.view
     }
 }
