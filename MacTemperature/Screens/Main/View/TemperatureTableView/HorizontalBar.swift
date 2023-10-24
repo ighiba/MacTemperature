@@ -13,20 +13,21 @@ struct HorizontalBar: View {
     private let maxHeight: CGFloat = 20
     private var widthInCelsius: CGFloat { maxWidth / maxTemperature.cgFloat }
     
+    private var barTintColor: Color { getColorByCurrentValue(value) }
+    private let barBackgroundColor: Color = Color(.lightGray)
+    
     var value: Float
     var maxWidth: CGFloat
-    
-    private var barColor: Color { getColorByCurrentValue(value) }
     
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(Color(.lightGray))
+                .fill(barBackgroundColor)
                 .frame(width: maxWidth, height: maxHeight)
         }
         .overlay(alignment: .leading) {
             Rectangle()
-                .fill(barColor)
+                .fill(barTintColor)
                 .frame(width: value.cgFloat * widthInCelsius, height: maxHeight)
         }
         .cornerRadius(maxHeight / 4.5)

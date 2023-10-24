@@ -22,6 +22,8 @@ protocol StatusBarSettingsDelegate: SettingsDelegate {
     func setStatusBarSettings(_ settings: StatusBarSettingsData)
 }
 
+private let settingsWindowSize: NSSize = Constants.windowSize.settings
+
 class SettingsViewControler: NSTabViewController {
 
     private let settingsView = NSView()
@@ -39,7 +41,7 @@ class SettingsViewControler: NSTabViewController {
 
     override func loadView() {
         super.loadView()
-        view.frame = NSRect(origin: .zero, size: Constants.windowSize.settings)
+        view.frame = NSRect(origin: .zero, size: settingsWindowSize)
     }
     
     override func viewDidLoad() {

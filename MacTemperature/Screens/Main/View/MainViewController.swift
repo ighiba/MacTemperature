@@ -8,7 +8,7 @@
 import Cocoa
 import SwiftUI
 
-private let mainWindowSize = Constants.windowSize.main
+private let mainWindowSize: NSSize = Constants.windowSize.main
 
 class MainViewController: NSViewController {
 
