@@ -55,20 +55,20 @@ class SettingsViewControler: NSTabViewController {
     }
     
     private func setupItems() {
-        addTabViewItem(label: "General", systemSymbolName: "gearshape", viewController: GeneralSettingsViewController())
-        addTabViewItem(label: "Menu Bar", systemSymbolName: "menubar.rectangle", viewController: MenuBarSettingsViewController())
-        addTabViewItem(label: "Status Bar", systemSymbolName: "thermometer.medium", viewController: StatusBarSettingsViewController())
+        addTabViewItem(label: "General", image: .settingsIconGeneral, viewController: GeneralSettingsViewController())
+        addTabViewItem(label: "Menu Bar", image: .settingsIconMenuBar, viewController: MenuBarSettingsViewController())
+        addTabViewItem(label: "Status Bar", image: .settingsIconStatusBar, viewController: StatusBarSettingsViewController())
     }
     
-    private func addTabViewItem<T: SettingsItemView>(label: String, systemSymbolName: String, viewController: T) {
-        let item = configureItem(label: label, systemSymbolName: systemSymbolName, viewController: viewController)
+    private func addTabViewItem<T: SettingsItemView>(label: String, image: NSImage, viewController: T) {
+        let item = configureItem(label: label, image: image, viewController: viewController)
         addTabViewItem(item)
     }
     
-    private func configureItem<T: SettingsItemView>(label: String, systemSymbolName: String, viewController: T) -> NSTabViewItem {
+    private func configureItem<T: SettingsItemView>(label: String, image: NSImage, viewController: T) -> NSTabViewItem {
         let item = NSTabViewItem(viewController: viewController)
         viewController.delegate = self as? T.D
-        item.configureItem(label: label, image: NSImage(systemSymbolName: systemSymbolName, accessibilityDescription: nil)!)
+        item.configureItem(label: label, image: image)
         return item
     }
 }
