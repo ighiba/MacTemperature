@@ -86,7 +86,7 @@ class StatusBarManager {
     }
     
     private func updateThermometerIcon(temperatureLevel: TemperatureLevel) {
-        let newIcon: NSImage? = isThermometerIconEnabled ? temperatureLevel.getImage() : nil
+        let newIcon: NSImage? = isThermometerIconEnabled ? temperatureLevel.getIcon() : nil
         guard newIcon != statusItem.button?.image else { return }
         
         statusItem.button?.image = newIcon

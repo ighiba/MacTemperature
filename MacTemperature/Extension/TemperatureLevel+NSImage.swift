@@ -8,14 +8,14 @@
 import Cocoa
 
 extension TemperatureLevel {
-    func getImage() -> NSImage {
+    func getIcon() -> NSImage {
         switch self {
         case .low:
-            return NSImage(systemSymbolName: "thermometer.low", accessibilityDescription: nil)!
+            return .temperatureLevelIconLow
         case .medium:
-            return NSImage(systemSymbolName: "thermometer.medium", accessibilityDescription: nil)!
+            return .temperatureLevelIconMedium
         case .high:
-            return NSImage(systemSymbolName: "thermometer.high", accessibilityDescription: nil)!
+            return .temperatureLevelIconHigh
         }
     }
 }
