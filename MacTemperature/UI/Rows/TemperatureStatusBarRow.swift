@@ -7,17 +7,40 @@
 
 import Cocoa
 
-class TemperatureStatusBarRow: TemperatureStatusRow {
+private let titleWidthMultiplier: CGFloat = 0.8
+
+class TemperatureStatusBarRow: NSView {
     
-    override init(key: String, title: String, value: Float) {
-        super.init(key: key, title: title, value: value)
+    private(set) var titleTextField: NSTextField = NSTextField(labelWithString: "Unknown")
+    private(set) var valueTextField: NSTextField = NSTextField(labelWithString: "0.0")
+    
+    private(set) var key: String
+    
+    init(key: String, title: String, value: Float) {
+        self.key = key
+        super.init(frame: .zero)
+        
+        self.titleTextField.stringValue = title
+        self.valueTextField.stringValue = "\(value)"
+        
+        self.setupViews()
+        self.setupLayout()
+    }
+    
+    convenience init(data: TemperatureData) {
+        self.init(key: data.id, title: data.title, value: data.floatValue)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setupLayout() {
+    private func setupViews() {
+        addSubview(titleTextField)
+        addSubview(valueTextField)
+    }
+    
+    func setupLayout() {
         titleTextField.translatesAutoresizingMaskIntoConstraints = false
         valueTextField.translatesAutoresizingMaskIntoConstraints = false
         
@@ -25,7 +48,7 @@ class TemperatureStatusBarRow: TemperatureStatusRow {
             titleTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleTextField.topAnchor.constraint(equalTo: topAnchor),
             titleTextField.bottomAnchor.constraint(equalTo: bottomAnchor),
-            titleTextField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+            titleTextField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: titleWidthMultiplier),
             
             valueTextField.leadingAnchor.constraint(equalTo: titleTextField.trailingAnchor),
             valueTextField.trailingAnchor.constraint(equalTo: trailingAnchor),

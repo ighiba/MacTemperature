@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C00269D72A257118000BA655 /* TemperatureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269D62A257118000BA655 /* TemperatureData.swift */; };
-		C00269D92A25714C000BA655 /* TemperatureStatusRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269D82A25714C000BA655 /* TemperatureStatusRow.swift */; };
 		C00269E32A264AFD000BA655 /* StatusBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E22A264AFD000BA655 /* StatusBarManager.swift */; };
 		C00269E62A2665B2000BA655 /* TemperatureLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E52A2665B2000BA655 /* TemperatureLevel.swift */; };
 		C00269E82A2668BB000BA655 /* TemperatureLevel+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */; };
@@ -88,7 +87,6 @@
 
 /* Begin PBXFileReference section */
 		C00269D62A257118000BA655 /* TemperatureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureData.swift; sourceTree = "<group>"; };
-		C00269D82A25714C000BA655 /* TemperatureStatusRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureStatusRow.swift; sourceTree = "<group>"; };
 		C00269E22A264AFD000BA655 /* StatusBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarManager.swift; sourceTree = "<group>"; };
 		C00269E52A2665B2000BA655 /* TemperatureLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureLevel.swift; sourceTree = "<group>"; };
 		C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TemperatureLevel+Color.swift"; sourceTree = "<group>"; };
@@ -263,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				C0110B242A853C9100281D35 /* TemperatureStatusBarRow.swift */,
-				C00269D82A25714C000BA655 /* TemperatureStatusRow.swift */,
 				C039701F2A2A743A007078AD /* SettingsRowContainer.swift */,
 			);
 			path = Rows;
@@ -612,7 +609,6 @@
 				C065ACC42A24F37D00A82183 /* Sensors.swift in Sources */,
 				C01DDC712A27C9FD00E30383 /* TemperatureTableView.swift in Sources */,
 				C01DDC732A27F26500E30383 /* TemperatureDataContainer.swift in Sources */,
-				C00269D92A25714C000BA655 /* TemperatureStatusRow.swift in Sources */,
 				C0110B182A85396C00281D35 /* SettingsItemView.swift in Sources */,
 				C0110B252A853C9100281D35 /* TemperatureStatusBarRow.swift in Sources */,
 				C03C210D2A26BD6B009A7C8E /* TemperatureMonitor.swift in Sources */,
