@@ -7,7 +7,8 @@
 
 import Cocoa
 
-private let settingsWindowSize = Constants.windowSize.settings
+private let settingsWindowSize: NSSize = Constants.windowSize.settings
+private let verticalSpacing: CGFloat = 15
 
 class SettingsItemViewController: NSViewController {
     
@@ -28,7 +29,7 @@ class SettingsItemViewController: NSViewController {
     
     private func setupViews() {
         settingsStack.orientation = .vertical
-        settingsStack.spacing = 15
+        settingsStack.spacing = verticalSpacing
         view.addSubview(settingsStack)
     }
     
@@ -36,7 +37,9 @@ class SettingsItemViewController: NSViewController {
         settingsStack.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            settingsStack.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 30),
+            settingsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            settingsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            settingsStack.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: verticalSpacing * 2),
             settingsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             settingsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
