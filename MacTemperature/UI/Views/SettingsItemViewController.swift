@@ -15,7 +15,7 @@ class SettingsItemViewController: NSViewController {
     let settingsWidth: CGFloat = settingsWindowSize.width
     
     private var settingsView: NSView = NSView(frame: NSRect(origin: .zero, size: settingsWindowSize))
-    private(set) var settingsStack = NSStackView()
+    private(set) var settingsRowsStack = NSStackView()
     
     override func loadView() {
         view = settingsView
@@ -28,20 +28,19 @@ class SettingsItemViewController: NSViewController {
     }
     
     private func setupViews() {
-        settingsStack.orientation = .vertical
-        settingsStack.spacing = verticalSpacing
-        view.addSubview(settingsStack)
+        settingsRowsStack.orientation = .vertical
+        settingsRowsStack.spacing = verticalSpacing
+        view.addSubview(settingsRowsStack)
     }
     
     private func setupLayout() {
-        settingsStack.translatesAutoresizingMaskIntoConstraints = false
+        settingsRowsStack.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            settingsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            settingsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            settingsStack.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: verticalSpacing * 2),
-            settingsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            settingsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            settingsRowsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            settingsRowsStack.topAnchor.constraint(equalTo: view.topAnchor, constant: verticalSpacing * 2),
+            settingsRowsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            settingsRowsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
 }

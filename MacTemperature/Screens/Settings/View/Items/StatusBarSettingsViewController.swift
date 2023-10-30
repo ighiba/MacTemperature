@@ -25,19 +25,19 @@ class StatusBarSettingsViewController: SettingsItemViewController, SettingsItemV
     }
     
     private func setupViews() {
-        settingsStack.addArrangedSubview(showIconContainer)
-        settingsStack.addArrangedSubview(averageTemeperatureSensorContainer)
+        settingsRowsStack.addArrangedSubview(showIconContainer)
+        settingsRowsStack.addArrangedSubview(averageTemeperatureSensorContainer)
     }
     
     // MARK: - Views
     
-    lazy var showIconContainer = SettingsRowContainer(
+    lazy var showIconContainer = SettingRowContainer(
         title: "Icon",
         views: [configureShowIconCheckbox()],
         width: settingsWidth
     )
     
-    lazy var averageTemeperatureSensorContainer = SettingsRowContainer(
+    lazy var averageTemeperatureSensorContainer = SettingRowContainer(
         title: "Average temperature for",
         views: [configureTemperatureSensorsPopUpButton()],
         width: settingsWidth

@@ -1,5 +1,5 @@
 //
-//  SettingsRowContainer.swift
+//  SettingRowContainer.swift
 //  MacTemperature
 //
 //  Created by Ivan Ghiba on 02.06.2023.
@@ -9,7 +9,7 @@ import Cocoa
 
 private let spacing: CGFloat = 10
 
-class SettingsRowContainer: NSView {
+class SettingRowContainer: NSView {
     
     private let defaultWidth: CGFloat
     

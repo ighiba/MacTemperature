@@ -31,7 +31,7 @@
 		C033A53F2A36923D002998B4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C033A53E2A36923D002998B4 /* README.md */; };
 		C03970172A2A4167007078AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970162A2A4167007078AD /* SettingsViewController.swift */; };
 		C039701E2A2A72F9007078AD /* SettingsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039701D2A2A72F9007078AD /* SettingsItemViewController.swift */; };
-		C03970202A2A743A007078AD /* SettingsRowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039701F2A2A743A007078AD /* SettingsRowContainer.swift */; };
+		C03970202A2A743A007078AD /* SettingRowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039701F2A2A743A007078AD /* SettingRowContainer.swift */; };
 		C03970232A2A748A007078AD /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970222A2A748A007078AD /* GeneralSettingsViewController.swift */; };
 		C03970252A2A74B9007078AD /* MenuBarSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970242A2A74B9007078AD /* MenuBarSettingsViewController.swift */; };
 		C03970272A2A74DD007078AD /* StatusBarSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03970262A2A74DD007078AD /* StatusBarSettingsViewController.swift */; };
@@ -111,7 +111,7 @@
 		C033A53E2A36923D002998B4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C03970162A2A4167007078AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C039701D2A2A72F9007078AD /* SettingsItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemViewController.swift; sourceTree = "<group>"; };
-		C039701F2A2A743A007078AD /* SettingsRowContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowContainer.swift; sourceTree = "<group>"; };
+		C039701F2A2A743A007078AD /* SettingRowContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRowContainer.swift; sourceTree = "<group>"; };
 		C03970222A2A748A007078AD /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; };
 		C03970242A2A74B9007078AD /* MenuBarSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarSettingsViewController.swift; sourceTree = "<group>"; };
 		C03970262A2A74DD007078AD /* StatusBarSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarSettingsViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				C0110B242A853C9100281D35 /* TemperatureStatusBarRow.swift */,
-				C039701F2A2A743A007078AD /* SettingsRowContainer.swift */,
+				C039701F2A2A743A007078AD /* SettingRowContainer.swift */,
 			);
 			path = Rows;
 			sourceTree = "<group>";
@@ -618,7 +618,7 @@
 				C0545EFF2A8A4D8E002CD969 /* VersionedTitle.swift in Sources */,
 				C08332A22A30DC0100C1ECF0 /* MenuView.swift in Sources */,
 				C03970302A2AA719007078AD /* Storable.swift in Sources */,
-				C03970202A2A743A007078AD /* SettingsRowContainer.swift in Sources */,
+				C03970202A2A743A007078AD /* SettingRowContainer.swift in Sources */,
 				C03970172A2A4167007078AD /* SettingsViewController.swift in Sources */,
 				C0E5F93C2A2CA5BC0098727E /* ARM.swift in Sources */,
 				C08332A62A30DD6600C1ECF0 /* MenuModuleAssembly.swift in Sources */,

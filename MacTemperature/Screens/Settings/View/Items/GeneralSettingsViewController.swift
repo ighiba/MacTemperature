@@ -19,9 +19,9 @@ class GeneralSettingsViewController: SettingsItemViewController, SettingsItemVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingsStack.addArrangedSubview(mainWindowCheckbox)
-        settingsStack.addArrangedSubview(launchAfterStartnCheckbox)
-        settingsStack.addArrangedSubview(updateFrequency)
+        settingsRowsStack.addArrangedSubview(mainWindowCheckbox)
+        settingsRowsStack.addArrangedSubview(launchAfterStartnCheckbox)
+        settingsRowsStack.addArrangedSubview(updateFrequency)
     }
     
     override func viewDidAppear() {
@@ -31,19 +31,19 @@ class GeneralSettingsViewController: SettingsItemViewController, SettingsItemVie
     
     // MARK: - Views
     
-    lazy var mainWindowCheckbox = SettingsRowContainer(
+    lazy var mainWindowCheckbox = SettingRowContainer(
         title: "Main window",
         views: [getMainWindowCheckboxButton()],
         width: settingsWidth
     )
     
-    lazy var launchAfterStartnCheckbox = SettingsRowContainer(
+    lazy var launchAfterStartnCheckbox = SettingRowContainer(
         title: "Launch after start",
         views: [getLaunchAfterStartCheckboxButton()],
         width: settingsWidth
     )
     
-    lazy var updateFrequency = SettingsRowContainer(
+    lazy var updateFrequency = SettingRowContainer(
         title: "Update frequency",
         views: [
             editFrequencyTextField,

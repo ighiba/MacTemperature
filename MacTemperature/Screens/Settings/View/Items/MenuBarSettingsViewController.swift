@@ -19,19 +19,19 @@ class MenuBarSettingsViewController: SettingsItemViewController, SettingsItemVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingsStack.addArrangedSubview(cpuShowTemperatures)
-        settingsStack.addArrangedSubview(gpuShowTemperatures)
+        settingsRowsStack.addArrangedSubview(cpuShowTemperatures)
+        settingsRowsStack.addArrangedSubview(gpuShowTemperatures)
     }
     
     // MARK: - Views
     
-    lazy var cpuShowTemperatures = SettingsRowContainer(
+    lazy var cpuShowTemperatures = SettingRowContainer(
         title: "CPU",
         views: [getCpuShowTemperaturesCheckboxButton()],
         width: settingsWidth
     )
     
-    lazy var gpuShowTemperatures = SettingsRowContainer(
+    lazy var gpuShowTemperatures = SettingRowContainer(
         title: "GPU",
         views: [getGpuShowTemperaturesCheckboxButton()],
         width: settingsWidth
