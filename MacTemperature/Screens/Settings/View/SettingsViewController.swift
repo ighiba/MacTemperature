@@ -26,7 +26,7 @@ private let settingsWindowSize: NSSize = Constants.windowSize.settings
 
 class SettingsViewControler: NSTabViewController {
 
-    private let settingsView = NSView()
+    private let settingsView: NSView = NSView()
 
     private let viewModel: SettingsViewModelDelegate
     

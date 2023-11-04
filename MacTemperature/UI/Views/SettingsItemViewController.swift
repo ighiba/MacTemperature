@@ -15,7 +15,7 @@ class SettingsItemViewController: NSViewController {
     let settingsWidth: CGFloat = settingsWindowSize.width
     
     private var settingsView: NSView = NSView(frame: NSRect(origin: .zero, size: settingsWindowSize))
-    private(set) var settingsRowsStack = NSStackView()
+    private(set) var settingsRowsStack: NSStackView = NSStackView()
     
     override func loadView() {
         view = settingsView

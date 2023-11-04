@@ -11,10 +11,10 @@ import Combine
 class MenuView: NSMenu {
     
     // MARK: - Properties
-
-    private var tempViews: [TemperatureSensorType : TemperaturesMenuView] = [:]
     
     private var cancellables = Set<AnyCancellable>()
+
+    private var temperatureViews: [TemperatureSensorType : TemperaturesMenuView] = [:]
     
     private let viewModel: MenuViewModelDelegate
     
@@ -22,7 +22,7 @@ class MenuView: NSMenu {
         self.viewModel = viewModel
         super.init(title: "")
         self.configureBindings()
-        self.configureMenu()
+        self.setupMenuItems()
     }
     
     required init(coder: NSCoder) {
@@ -36,13 +36,13 @@ class MenuView: NSMenu {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] tempMonitorData in
                 for (sensor, data) in tempMonitorData {
-                    self?.tempViews[sensor]?.updateRows(data: data)
+                    self?.temperatureViews[sensor]?.updateRows(data: data)
                 }
             }
             .store(in: &cancellables)
     }
     
-    private func configureMenu() {
+    private func setupMenuItems() {
         let closeItem = NSMenuItem(title: "Close", action: #selector(closeButtonClicked), keyEquivalent: "q")
         let showWindowItem = NSMenuItem(title: "Show main window", action: #selector(showMainWindowClicked), keyEquivalent: "")
         let settingsItem = NSMenuItem(title: "Settings", action: #selector(settingsClicked), keyEquivalent: ",")
@@ -67,8 +67,8 @@ class MenuView: NSMenu {
     
     private func addTemperatureMenuItem(type: TemperatureSensorType) {
         let tempMenuItem = configureTemperatureMenuItem(type: type)
-        tempViews[type] = configureTempView(type: type)
-        tempMenuItem.view = tempViews[type]
+        temperatureViews[type] = configureTempView(type: type)
+        tempMenuItem.view = temperatureViews[type]
         addItem(tempMenuItem)
         addItem(.separator())
     }
