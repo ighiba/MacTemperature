@@ -43,12 +43,9 @@ class MenuView: NSMenu {
     }
     
     private func setupMenuItems() {
-        let closeItem = NSMenuItem(title: "Close", action: #selector(closeButtonClicked), keyEquivalent: "q")
-        let showWindowItem = NSMenuItem(title: "Show main window", action: #selector(showMainWindowClicked), keyEquivalent: "")
-        let settingsItem = NSMenuItem(title: "Settings", action: #selector(settingsClicked), keyEquivalent: ",")
-        closeItem.target = self
-        showWindowItem.target = self
-        settingsItem.target = self
+        let closeItem = NSMenuItem(title: "Close", target: self, action: #selector(closeButtonClicked), keyEquivalent: "q")
+        let showWindowItem = NSMenuItem(title: "Show main window", target: self, action: #selector(showMainWindowClicked), keyEquivalent: "")
+        let settingsItem = NSMenuItem(title: "Settings", target: self, action: #selector(settingsClicked), keyEquivalent: ",")
         
         addTemperatureMenuItems()
         

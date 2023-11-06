@@ -46,6 +46,7 @@
 		C039703C2A2B58DB007078AD /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039703B2A2B58DB007078AD /* NotificationNames.swift */; };
 		C03C210D2A26BD6B009A7C8E /* TemperatureMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */; };
 		C03C210F2A275165009A7C8E /* TemperaturesMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C210E2A275165009A7C8E /* TemperaturesMenuView.swift */; };
+		C051A7D72AF81D2D000D08D2 /* NSMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051A7D62AF81D2D000D08D2 /* NSMenuItem.swift */; };
 		C0545EFD2A8A4D80002CD969 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0545EFC2A8A4D80002CD969 /* Bundle.swift */; };
 		C0545EFF2A8A4D8E002CD969 /* VersionedTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0545EFE2A8A4D8E002CD969 /* VersionedTitle.swift */; };
 		C065AC962A23D1B400A82183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065AC952A23D1B400A82183 /* AppDelegate.swift */; };
@@ -126,6 +127,7 @@
 		C039703B2A2B58DB007078AD /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		C03C210C2A26BD6B009A7C8E /* TemperatureMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureMonitor.swift; sourceTree = "<group>"; };
 		C03C210E2A275165009A7C8E /* TemperaturesMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperaturesMenuView.swift; sourceTree = "<group>"; };
+		C051A7D62AF81D2D000D08D2 /* NSMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMenuItem.swift; sourceTree = "<group>"; };
 		C0545EFC2A8A4D80002CD969 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		C0545EFE2A8A4D8E002CD969 /* VersionedTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionedTitle.swift; sourceTree = "<group>"; };
 		C065AC922A23D1B400A82183 /* MacTemperature.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacTemperature.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +292,7 @@
 				C0110B222A853BCD00281D35 /* Float+CGFloat.swift */,
 				C0D842D32AD1E48F00B85E9F /* NSApplication+AppDelegate.swift */,
 				C0A31DDD2AE82D160057CF9E /* NSImage.swift */,
+				C051A7D62AF81D2D000D08D2 /* NSMenuItem.swift */,
 				C08332A72A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift */,
 				C0110B202A853B8C00281D35 /* NSTabViewItem.swift */,
 				C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */,
@@ -645,6 +648,7 @@
 				C00269E82A2668BB000BA655 /* TemperatureLevel+Color.swift in Sources */,
 				C03970382A2AC876007078AD /* StatusBarSettingsData.swift in Sources */,
 				C065ACC22A24F24300A82183 /* AppleSMC.swift in Sources */,
+				C051A7D72AF81D2D000D08D2 /* NSMenuItem.swift in Sources */,
 				C03970232A2A748A007078AD /* GeneralSettingsViewController.swift in Sources */,
 				C0110B212A853B8C00281D35 /* NSTabViewItem.swift in Sources */,
 				C065ACCB2A2517BC00A82183 /* TemperatureManager.swift in Sources */,
