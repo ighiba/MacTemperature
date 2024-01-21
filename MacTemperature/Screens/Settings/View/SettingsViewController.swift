@@ -38,16 +38,17 @@ class SettingsViewControler: NSTabViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func loadView() {
-        super.loadView()
-        view.frame = NSRect(origin: .zero, size: settingsWindowSize)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupViews()
         setupStyle()
         setupItems()
+    }
+    
+    private func setupViews() {
+        view.frame = NSRect(origin: .zero, size: settingsWindowSize)
     }
     
     private func setupStyle() {

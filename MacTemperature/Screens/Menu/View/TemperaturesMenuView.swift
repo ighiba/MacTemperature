@@ -22,9 +22,8 @@ class TemperaturesMenuView: NSView {
     init(title: String, type: TemperatureSensorType, initalData: [TemperatureData]) {
         self.rows = initalData.map { TemperatureStatusBarRow(data: $0) }
         super.init(frame: NSRect(x: 0, y: 0, width: Constants.width.statusBarMenu, height: defaultHeight))
-        
-        setupViews(title: title)
-        setupLayout()
+        self.setupViews(title: title)
+        self.setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -33,6 +32,7 @@ class TemperaturesMenuView: NSView {
     
     override func layout() {
         super.layout()
+        
         frame = NSRect(
             origin: frame.origin,
             size: NSSize(

@@ -14,13 +14,10 @@ class StatusBarSettingsViewController: SettingsItemViewController, SettingsItemV
     var settings: StatusBarSettingsData  { delegate.statusBarSettings }
     
     var delegate: StatusBarSettingsDelegate!
-
-    override func loadView() {
-        super.loadView()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupViews()
     }
     

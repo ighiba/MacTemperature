@@ -19,10 +19,8 @@ class TemperatureStatusBarRow: NSView {
     init(key: String, title: String, value: Float) {
         self.key = key
         super.init(frame: .zero)
-        
         self.titleTextField.stringValue = title
         self.valueTextField.stringValue = "\(value)"
-        
         self.setupViews()
         self.setupLayout()
     }

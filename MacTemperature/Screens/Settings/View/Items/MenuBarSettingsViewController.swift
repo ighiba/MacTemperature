@@ -13,12 +13,9 @@ class MenuBarSettingsViewController: SettingsItemViewController, SettingsItemVie
     
     var delegate: MenuBarSettingsDelegate!
     
-    override func loadView() {
-        super.loadView()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         settingsRowsStack.addArrangedSubview(cpuShowTemperatures)
         settingsRowsStack.addArrangedSubview(gpuShowTemperatures)
     }

@@ -29,7 +29,7 @@ extension [TemperatureData] {
     func getAverageTemperature() -> Float {
         guard !self.isEmpty else { return 0 }
         let temperatureValues = self.map({ $0.floatValue })
-        let temperatureSum = self.map({ $0.floatValue }).reduce(0, +)
+        let temperatureSum = temperatureValues.reduce(0, +)
         
         return temperatureSum / Float(temperatureValues.count)
     }

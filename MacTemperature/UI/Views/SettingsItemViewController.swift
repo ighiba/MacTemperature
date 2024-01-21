@@ -23,6 +23,7 @@ class SettingsItemViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupViews()
         setupLayout()
     }

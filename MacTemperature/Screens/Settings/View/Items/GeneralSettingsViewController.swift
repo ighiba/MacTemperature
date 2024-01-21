@@ -13,12 +13,9 @@ class GeneralSettingsViewController: SettingsItemViewController, SettingsItemVie
     
     var delegate: GeneralSettingsDelegate!
     
-    override func loadView() {
-        super.loadView()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         settingsRowsStack.addArrangedSubview(mainWindowCheckbox)
         settingsRowsStack.addArrangedSubview(launchAfterStartnCheckbox)
         settingsRowsStack.addArrangedSubview(updateFrequency)
@@ -26,6 +23,7 @@ class GeneralSettingsViewController: SettingsItemViewController, SettingsItemVie
     
     override func viewDidAppear() {
         super.viewDidAppear()
+        
         view.window?.makeFirstResponder(nil)
     }
     
