@@ -38,6 +38,7 @@ class TemperatureMonitor {
     private init () {
         NotificationCenter.default.addObserver(forName: .updateFrequencyChangeNotification, object: nil, queue: nil) { [weak self] notification in
             guard let newUpdateFrequency = notification.object as? Int, newUpdateFrequency != self?.secondsBetweenUpdate else { return }
+            
             self?.stop()
             self?.secondsBetweenUpdate = newUpdateFrequency
             self?.start()
@@ -73,6 +74,7 @@ class TemperatureMonitor {
     private func obtainTemeperatureData(forSensors sensors: [Sensor]) -> [TemperatureData] {
         return sensors.compactMap { sensor in
             guard let temperatureValue = temperatureManager.obtainTemperature(for: sensor) else { return nil }
+            
             return TemperatureData(id: sensor.key, title: sensor.title, floatValue: temperatureValue)
         }
     }

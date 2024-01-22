@@ -45,6 +45,7 @@ class StatusBarManager {
     private func addObservers() {
         NotificationCenter.default.addObserver(forName: .temperatureMonitorUpdateNotification, object: nil, queue: nil) { [weak self] notification in
             guard let temperatureMonitorData = notification.object as? TemperatureMonitorData else { return }
+            
             DispatchQueue.main.async {
                 self?.temperatureMonitorDataDidUpdate(temperatureMonitorData)
             }
@@ -52,11 +53,13 @@ class StatusBarManager {
         
         NotificationCenter.default.addObserver(forName: .averageTemperatureSensorChangeNotification, object: nil, queue: nil) { [weak self] notification in
             guard let newAverageTemperatureSensor = notification.object as? TemperatureSensorType, newAverageTemperatureSensor != self?.averageTemperatureSensor else { return }
+            
             self?.averageTemperatureSensor = newAverageTemperatureSensor
         }
         
         NotificationCenter.default.addObserver(forName: .isStatusBarIconEnabledChangeNotification, object: nil, queue: nil) { [weak self] notification in
             guard let isStatusBarIconEnabled = notification.object as? Bool else { return }
+            
             self?.isThermometerIconEnabled = isStatusBarIconEnabled
         }
         

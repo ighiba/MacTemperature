@@ -78,6 +78,7 @@ class TemperaturesMenuView: NSView {
     public func updateRows(data: [TemperatureData]) {
         for item in data {
             guard let row = rows.first(where: { $0.key == item.id }) else { continue }
+            
             let newAttributedString = getDefaultTemperatureAttributedString(item.floatValue)
             newAttributedString.setAlignment(.right, range: NSRange(location: 0, length: newAttributedString.length))
             row.valueTextField.attributedStringValue = newAttributedString

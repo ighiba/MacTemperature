@@ -31,6 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     func windowWillClose(_ notification: Notification) {
         guard let windowToClose = notification.object as? NSWindow else { return }
+        
         if windowToClose == window {
             hideMainWindow()
         } else if windowToClose == settingsWindow {
@@ -103,6 +104,7 @@ extension AppDelegate {
             window?.makeKeyAndOrderFront(self)
             return
         }
+        
         let mainController = MainModuleAssembly.configureModule()
         window = configureMainWindow(mainController)
         window?.makeKeyAndOrderFront(self)
@@ -114,6 +116,7 @@ extension AppDelegate {
             settingsWindow?.makeKeyAndOrderFront(self)
             return
         }
+        
         let settingsController = SettingsModuleAssembly.configureModule()
         settingsWindow = configureSettingsWindow(settingsController)
         settingsWindow?.makeKeyAndOrderFront(self)

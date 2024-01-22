@@ -71,6 +71,7 @@ class CurrentDevice {
 
     class func getCpu() -> ARM {
         guard let modelID = Self.getModelIdentifier() else { return .unknown }
+        
         return ARM.get(modelId: modelID, by: Self.processorCount)
     }
 }

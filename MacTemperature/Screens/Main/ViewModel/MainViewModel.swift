@@ -29,6 +29,7 @@ class MainViewModel: TemperatureDataSource {
     
     @objc func updateTemperatureData(_ notification: NSNotification) {
         guard let tempMonitorData = notification.object as? TemperatureMonitorData else { return }
+        
         DispatchQueue.main.async { [weak self] in
             self?.temperatureData = tempMonitorData.transformIntoTemperatureData()
         }
