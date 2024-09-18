@@ -27,8 +27,8 @@ class StatusBarManager {
     
     private init() {
         statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
-        statusItem.button?.target = self
         statusItem.button?.action = #selector(statusBarButtonClicked)
+        statusItem.button?.target = self
 
         statusItem.menu = MenuModuleAssembly.configureModule()
         
@@ -77,12 +77,13 @@ class StatusBarManager {
         let averageTemperature = temperatureDataForAverage.getAverageTemperature()
         let temperatureLevel = getTemperatureLevel(value: averageTemperature)
         
-        updateTemperatureLabel(value: averageTemperature, temperatureLevel: temperatureLevel)
+        updateTemperatureLabel(floatValue: averageTemperature)
         updateThermometerIcon(temperatureLevel: temperatureLevel)
     }
 
-    private func updateTemperatureLabel(value: Float, temperatureLevel: TemperatureLevel) {
-        let attributedString = NSMutableAttributedString.formatTemperatureValue(value, colorProvider: temperatureLevel.getStatusBarColor)
+    private func updateTemperatureLabel(floatValue: Float) {
+        let valueColor = TemperatureLevel.getLevel(floatValue).getStatusBarColor()
+        let attributedString = NSMutableAttributedString.formatTemperatureValue(floatValue, valueColor: valueColor)
         guard attributedString.string != statusItem.button?.attributedTitle.string else { return }
         
         statusItem.button?.attributedTitle = attributedString
@@ -100,8 +101,8 @@ class StatusBarManager {
     }
     
     func getDefaultTemperatureAttributedString(_ value: Float) -> NSMutableAttributedString {
-        let level = TemperatureLevel.getLevel(value)
-        return NSMutableAttributedString.formatTemperatureValue(value, colorProvider: level.getStatusBarColor)
+        let valueColor = TemperatureLevel.getLevel(value).getStatusBarColor()
+        return NSMutableAttributedString.formatTemperatureValue(value, valueColor: valueColor)
     }
 }
 
