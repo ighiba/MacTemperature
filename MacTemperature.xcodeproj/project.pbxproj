@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C000F8092C9B07600058E363 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000F8082C9B07560058E363 /* Temperature.swift */; };
 		C00269D72A257118000BA655 /* TemperatureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269D62A257118000BA655 /* TemperatureData.swift */; };
 		C00269E32A264AFD000BA655 /* StatusBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E22A264AFD000BA655 /* StatusBarManager.swift */; };
-		C00269E62A2665B2000BA655 /* TemperatureLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E52A2665B2000BA655 /* TemperatureLevel.swift */; };
 		C00269E82A2668BB000BA655 /* TemperatureLevel+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */; };
 		C00269EA2A2668DB000BA655 /* TemperatureLevel+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00269E92A2668DB000BA655 /* TemperatureLevel+NSImage.swift */; };
 		C0110B082A840F8700281D35 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0110B072A840F8700281D35 /* main.swift */; };
@@ -87,9 +87,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C000F8082C9B07560058E363 /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		C00269D62A257118000BA655 /* TemperatureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureData.swift; sourceTree = "<group>"; };
 		C00269E22A264AFD000BA655 /* StatusBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarManager.swift; sourceTree = "<group>"; };
-		C00269E52A2665B2000BA655 /* TemperatureLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureLevel.swift; sourceTree = "<group>"; };
 		C00269E72A2668BB000BA655 /* TemperatureLevel+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TemperatureLevel+Color.swift"; sourceTree = "<group>"; };
 		C00269E92A2668DB000BA655 /* TemperatureLevel+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TemperatureLevel+NSImage.swift"; sourceTree = "<group>"; };
 		C0110B072A840F8700281D35 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -193,7 +193,6 @@
 			children = (
 				C0D842D12AD1DFCC00B85E9F /* Constants.swift */,
 				C039703B2A2B58DB007078AD /* NotificationNames.swift */,
-				C00269E52A2665B2000BA655 /* TemperatureLevel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -407,6 +406,7 @@
 				C039702C2A2A85E8007078AD /* Storage */,
 				C065ACC12A24F24300A82183 /* AppleSMC.swift */,
 				C065ACC32A24F37D00A82183 /* Sensors.swift */,
+				C000F8082C9B07560058E363 /* Temperature.swift */,
 				C03970332A2AC7F5007078AD /* TemperatureSensorType.swift */,
 				C00269D62A257118000BA655 /* TemperatureData.swift */,
 				C01DDC722A27F26500E30383 /* TemperatureDataContainer.swift */,
@@ -615,7 +615,6 @@
 				C0110B182A85396C00281D35 /* SettingsItemView.swift in Sources */,
 				C0110B252A853C9100281D35 /* TemperatureStatusBarRow.swift in Sources */,
 				C03C210D2A26BD6B009A7C8E /* TemperatureMonitor.swift in Sources */,
-				C00269E62A2665B2000BA655 /* TemperatureLevel.swift in Sources */,
 				C0110B232A853BCD00281D35 /* Float+CGFloat.swift in Sources */,
 				C08332A82A30E15200C1ECF0 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				C0545EFF2A8A4D8E002CD969 /* VersionedTitle.swift in Sources */,
@@ -644,6 +643,7 @@
 				C0D842D22AD1DFCC00B85E9F /* Constants.swift in Sources */,
 				C01DDC7E2A2904CC00E30383 /* StatusBarModuleAssembly.swift in Sources */,
 				C03970272A2A74DD007078AD /* StatusBarSettingsViewController.swift in Sources */,
+				C000F8092C9B07600058E363 /* Temperature.swift in Sources */,
 				C0E5F93E2A2CA6120098727E /* Device.swift in Sources */,
 				C00269E82A2668BB000BA655 /* TemperatureLevel+Color.swift in Sources */,
 				C03970382A2AC876007078AD /* StatusBarSettingsData.swift in Sources */,

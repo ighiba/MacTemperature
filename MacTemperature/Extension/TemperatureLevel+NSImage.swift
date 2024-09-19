@@ -7,7 +7,7 @@
 
 import Cocoa
 
-extension TemperatureLevel {
+extension Temperature.Level {
     func getIcon() -> NSImage {
         switch self {
         case .low:

@@ -75,34 +75,26 @@ class StatusBarManager {
     private func temperatureMonitorDataDidUpdate(_ temperatureData: TemperatureMonitorData) {
         let temperatureDataForAverage = temperatureData[averageTemperatureSensor] ?? []
         let averageTemperature = temperatureDataForAverage.getAverageTemperature()
-        let temperatureLevel = getTemperatureLevel(value: averageTemperature)
         
-        updateTemperatureLabel(floatValue: averageTemperature)
-        updateThermometerIcon(temperatureLevel: temperatureLevel)
+        updateTemperatureLabel(temperature: averageTemperature)
+        updateThermometerIcon(temperature: averageTemperature)
     }
 
-    private func updateTemperatureLabel(floatValue: Float) {
-        let valueColor = TemperatureLevel.getLevel(floatValue).getStatusBarColor()
-        let attributedString = NSMutableAttributedString.formatTemperatureValue(floatValue, valueColor: valueColor)
+    private func updateTemperatureLabel(temperature: Temperature) {
+        let attributedString = NSMutableAttributedString.makeTemperatureAttributedString(
+            temperature.value,
+            valueColor: temperature.level.getStatusBarColor()
+        )
         guard attributedString.string != statusItem.button?.attributedTitle.string else { return }
         
         statusItem.button?.attributedTitle = attributedString
     }
     
-    private func updateThermometerIcon(temperatureLevel: TemperatureLevel) {
-        let newIcon: NSImage? = isThermometerIconEnabled ? temperatureLevel.getIcon() : nil
+    private func updateThermometerIcon(temperature: Temperature) {
+        let newIcon: NSImage? = isThermometerIconEnabled ? temperature.level.getIcon() : nil
         guard newIcon != statusItem.button?.image else { return }
         
         statusItem.button?.image = newIcon
-    }
-    
-    private func getTemperatureLevel(value: Float) -> TemperatureLevel {
-        TemperatureLevel.getLevel(value)
-    }
-    
-    func getDefaultTemperatureAttributedString(_ value: Float) -> NSMutableAttributedString {
-        let valueColor = TemperatureLevel.getLevel(value).getStatusBarColor()
-        return NSMutableAttributedString.formatTemperatureValue(value, valueColor: valueColor)
     }
 }
 

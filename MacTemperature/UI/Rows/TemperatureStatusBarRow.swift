@@ -26,7 +26,7 @@ class TemperatureStatusBarRow: NSView {
     }
     
     convenience init(data: TemperatureData) {
-        self.init(key: data.id, title: data.title, value: data.floatValue)
+        self.init(key: data.id, title: data.title, value: data.temperature.value)
     }
     
     required init?(coder: NSCoder) {

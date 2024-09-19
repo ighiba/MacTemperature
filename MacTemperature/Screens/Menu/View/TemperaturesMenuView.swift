@@ -79,14 +79,16 @@ class TemperaturesMenuView: NSView {
         for item in data {
             guard let row = rows.first(where: { $0.key == item.id }) else { continue }
             
-            let newAttributedString = getDefaultTemperatureAttributedString(item.floatValue)
-            newAttributedString.setAlignment(.right, range: NSRange(location: 0, length: newAttributedString.length))
-            row.valueTextField.attributedStringValue = newAttributedString
+            row.valueTextField.attributedStringValue = makeTemperatureAttributedString(item.temperature)
         }
     }
     
-    private func getDefaultTemperatureAttributedString(_ floatValue: Float) -> NSMutableAttributedString {
-        let valueColor = TemperatureLevel.getLevel(floatValue).getStatusBarColor()
-        return NSMutableAttributedString.formatTemperatureValue(floatValue, valueColor: valueColor)
+    private func makeTemperatureAttributedString(_ temperature: Temperature) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString.makeTemperatureAttributedString(
+            temperature.value,
+            valueColor: temperature.level.getStatusBarColor()
+        )
+        attributedString.setAlignment(.right, range: NSRange(location: 0, length: attributedString.length))
+        return attributedString
     }
 }

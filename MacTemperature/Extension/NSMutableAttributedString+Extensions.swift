@@ -8,11 +8,7 @@
 import Cocoa
 
 extension NSMutableAttributedString {
-    func addColorAttribute(_ color: NSColor, range: NSRange) {
-        addAttributes([.foregroundColor: color], range: range)
-    }
-    
-    class func formatTemperatureValue(
+    static func makeTemperatureAttributedString(
         _ floatValue: Float,
         scale: UInt8 = 0,
         valueColor: NSColor = .labelColor
@@ -28,5 +24,9 @@ extension NSMutableAttributedString {
         attributedTitle.addColorAttribute(.labelColor, range: rangeToPaintC)
         
         return attributedTitle
+    }
+    
+    func addColorAttribute(_ color: NSColor, range: NSRange) {
+        addAttributes([.foregroundColor: color], range: range)
     }
 }

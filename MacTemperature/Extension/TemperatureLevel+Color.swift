@@ -8,7 +8,7 @@
 import Cocoa
 import SwiftUI
 
-extension TemperatureLevel {
+extension Temperature.Level {
     func getStatusBarColor() -> NSColor {
         switch self {
         case .low:

@@ -22,12 +22,12 @@ struct TemperatureTableView<T: TemperatureDataSource>: View {
             }
             .width(titleColumnWidth)
             TableColumn("   °C") { data in
-                Text(data.stringValue)
+                Text(data.temperature.getStringValue())
                     .frame(width: temperatureColumWidth, alignment: .center)
             }
             .width(temperatureColumWidth)
             TableColumn("") { data in
-                HorizontalBar(value: data.floatValue, maxWidth: barColumnWidth)
+                HorizontalBar(temperature: data.temperature, maxWidth: barColumnWidth)
                     .frame(width: barColumnWidth, alignment: .center)
             }
             .width(barColumnWidth)

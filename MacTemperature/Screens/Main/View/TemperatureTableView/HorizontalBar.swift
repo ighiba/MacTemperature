@@ -13,10 +13,10 @@ struct HorizontalBar: View {
     private let maxHeight: CGFloat = 20
     private var widthInCelsius: CGFloat { maxWidth / maxTemperature.cgFloat }
     
-    private var barTintColor: Color { getColorByCurrentValue(value) }
+    private var barTintColor: Color { temperature.level.getBarColor() }
     private let barBackgroundColor: Color = Color(.lightGray)
     
-    var value: Float
+    var temperature: Temperature
     var maxWidth: CGFloat
     
     var body: some View {
@@ -28,16 +28,12 @@ struct HorizontalBar: View {
         .overlay(alignment: .leading) {
             Rectangle()
                 .fill(barTintColor)
-                .frame(width: value.cgFloat * widthInCelsius, height: maxHeight)
+                .frame(width: temperature.value.cgFloat * widthInCelsius, height: maxHeight)
         }
         .cornerRadius(maxHeight / 4.5)
-    }
-    
-    private func getColorByCurrentValue(_ value: Float) -> Color {
-        return TemperatureLevel.getLevel(value).getBarColor()
     }
 }
 
 #Preview {
-    HorizontalBar(value: 40.0, maxWidth: 300)
+    HorizontalBar(temperature: 40.0, maxWidth: 300)
 }
